@@ -45,7 +45,7 @@ export default function LoginPage() {
     } else if (!e.target.password.value) {
       alert("Password is required");
     } else if (
-      e.target.email.value === "a@a" &&
+      e.target.email.value === "a" &&
       e.target.password.value === "a"
     ) {
       navigate("/home");
