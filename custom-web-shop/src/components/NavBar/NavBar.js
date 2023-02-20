@@ -6,8 +6,8 @@ import Cart from "./Cart/Cart";
 
 export default function NavBar() {
   return (
-    <div>
-      <img src={pieskii} alt="Pieskii"></img> <br></br>
+    <div className="navBar">
+      <img src={pieskii} alt="Pieskii"></img>
       <SearchBar />
       <AccountList />
       <Cart />
