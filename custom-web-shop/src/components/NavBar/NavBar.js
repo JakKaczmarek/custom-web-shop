@@ -7,7 +7,7 @@ import Cart from "./SignIO/SignIO";
 export default function NavBar() {
   return (
     <div className="navBar">
-      <img src={pieskii} alt="Pieskii"></img>
+      <img src={pieskii} alt="Pieskii" style={{ width: 170, height: 70 }}></img>
       <SearchBar />
       <AccountList />
       <Cart />
