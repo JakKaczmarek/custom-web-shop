@@ -6,8 +6,18 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  width: auto;
   background-color: rgb(178, 190, 223);
 }
 
 .products {
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.product {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
