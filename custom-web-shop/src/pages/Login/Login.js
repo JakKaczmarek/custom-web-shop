@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import pieskii from "../../components/NavBar/pieskii.png";
 
 function Copyright(props) {
   return (
@@ -66,9 +67,12 @@ export default function LoginPage() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "black" }}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <img
+            src={pieskii}
+            alt="Pieskii"
+            style={{ width: 250, height: 70 }}
+          ></img>
+
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
