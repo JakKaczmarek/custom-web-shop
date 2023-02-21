@@ -6,16 +6,18 @@ import Button from "@mui/material/Button";
 
 export default function Sign() {
   // const navigate = useNavigate();
-  // const handleSubmit = () => {
-  //   navigate("/");
-  // };
+  const handleSubmit = () => {
+    window.alert("BYE");
+    //   navigate("/");
+  };
 
   return (
     <Stack spacing={2} direction="row">
       <Button
         variant="text"
-        // onClick={handleSubmit}
+        onClick={handleSubmit}
         sx={{ mt: 3, mb: 2, color: "black" }}
+        data-testid="1"
       >
         <LogoutIcon />
         SIGN OUT
