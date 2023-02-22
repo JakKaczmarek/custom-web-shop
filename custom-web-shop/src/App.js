@@ -1,16 +1,24 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/Login/Login";
-import MainPage from "./pages/Main/Main";
+import Login from "./pages/Login/Login";
+import Main from "./pages/Main/Main";
+import { useState } from "react";
+import { createContext } from "react";
+
+export const AuthContext = createContext(false);
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   return (
     <div className="App">
       <div className="app">
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/login" element={<LoginPage />} />
-        </Routes>
+        <AuthContext.Provider value={[isAuthenticated, setIsAuthenticated]}>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </AuthContext.Provider>
       </div>
     </div>
   );

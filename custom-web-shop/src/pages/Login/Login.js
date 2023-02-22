@@ -12,6 +12,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import pieskii from "../../components/NavBar/pieskii.png";
+import { AuthContext } from "../../App";
+import { useContext } from "react";
 
 function Copyright(props) {
   return (
@@ -33,8 +35,9 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function LoginPage() {
+export default function Login() {
   const navigate = useNavigate();
+  const auth = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,6 +50,7 @@ export default function LoginPage() {
       e.target.email.value === "b" &&
       e.target.password.value === "b"
     ) {
+      auth[1](true);
       navigate("/");
     } else {
       alert("Wrong email or password combination");
