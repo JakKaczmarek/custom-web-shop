@@ -44,10 +44,10 @@ export default function LoginPage() {
     } else if (!e.target.password.value) {
       alert("Password is required");
     } else if (
-      e.target.email.value === "a" &&
-      e.target.password.value === "a"
+      e.target.email.value === "b" &&
+      e.target.password.value === "b"
     ) {
-      navigate("/home");
+      navigate("/");
     } else {
       alert("Wrong email or password combination");
     }

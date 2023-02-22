@@ -5,10 +5,10 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
 export default function Sign() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const handleSubmit = () => {
-    window.alert("BYE");
-    //   navigate("/");
+    window.alert("Try to log in");
+    navigate("/login");
   };
 
   return (
@@ -20,7 +20,7 @@ export default function Sign() {
         data-testid="1"
       >
         <LogoutIcon />
-        SIGN OUT
+        SIGN IN
       </Button>
     </Stack>
   );

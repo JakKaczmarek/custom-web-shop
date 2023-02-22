@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-export default function FadeMenu() {
+export default function AccountList() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -18,6 +18,7 @@ export default function FadeMenu() {
   return (
     <div>
       <Button
+        data-testid="button"
         id="fade-button"
         aria-controls={open ? "fade-menu" : undefined}
         aria-haspopup="true"
@@ -29,6 +30,7 @@ export default function FadeMenu() {
         Account
       </Button>
       <Menu
+        data-testid="menu"
         id="fade-menu"
         MenuListProps={{
           "aria-labelledby": "fade-button",
