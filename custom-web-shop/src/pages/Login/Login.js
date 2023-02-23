@@ -85,6 +85,7 @@ export default function Login() {
             sx={{ mt: 1 }}
           >
             <TextField
+              inputProps={{ "data-testid": "email-input" }}
               margin="normal"
               required
               fullWidth
@@ -95,6 +96,7 @@ export default function Login() {
               autoFocus
             />
             <TextField
+              inputProps={{ "data-testid": "password-input" }}
               margin="normal"
               required
               fullWidth
@@ -109,6 +111,7 @@ export default function Login() {
               label="Remember me"
             />
             <Button
+              data-testid="login-button"
               type="submit"
               fullWidth
               variant="contained"

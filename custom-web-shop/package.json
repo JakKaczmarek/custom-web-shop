@@ -44,6 +44,9 @@
     ]
   },
   "devDependencies": {
-    "jest": "^27.5.1"
+    "@testing-library/jest-native": "^5.4.2",
+    "install": "^0.13.0",
+    "jest": "^27.5.1",
+    "jest-styled-components": "^7.1.1"
   }
 }

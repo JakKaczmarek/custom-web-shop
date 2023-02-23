@@ -21,8 +21,8 @@ export default function Sign() {
       <Button
         variant="text"
         onClick={handleSubmit}
-        sx={{ mt: 3, mb: 2, color: "black" }}
-        data-testid="1"
+        style={{ color: "black" }}
+        data-testid="buttonSO"
       >
         {authentication[0] ? <LogoutIcon /> : <LoginIcon />}
         {authentication[0] ? "SIGN OUT" : "SIGN IN"}
