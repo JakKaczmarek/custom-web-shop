@@ -15,30 +15,78 @@ import basset_hound from "./dogs/basset_hound.jpg";
 export default function Products() {
   return (
     <div className="products">
-      <img src={border_collie} alt="border_collie" className="product"></img>
-      <img src={dobermann} alt="dobermann" className="product"></img>
-      <img src={dalmatian} alt="dalmatian" className="product"></img>
-      <img src={collie_rough} alt="collie_rough" className="product"></img>
-      <img src={great_dane} alt="great_dane" className="product"></img>
+      <img
+        src={border_collie}
+        alt="border_collie"
+        className="product"
+        style={{ width: 400, height: 400 }}
+      ></img>
+      <img
+        src={dobermann}
+        alt="dobermann"
+        className="product"
+        style={{ width: 400, height: 400 }}
+      ></img>
+      <img
+        src={dalmatian}
+        alt="dalmatian"
+        className="product"
+        style={{ width: 400, height: 400 }}
+      ></img>
+      <img
+        src={collie_rough}
+        alt="collie_rough"
+        className="product"
+        style={{ width: 400, height: 400 }}
+      ></img>
+      <img
+        src={great_dane}
+        alt="great_dane"
+        className="product"
+        style={{ width: 400, height: 400 }}
+      ></img>
       <img
         src={bernese_mountain}
         alt="bernese_mountain"
         className="product"
+        style={{ width: 400, height: 400 }}
       ></img>
-      <img src={deerhound} alt="deerhound" className="product"></img>
-      <img src={spitz} alt="spitz" className="product"></img>
+      <img
+        src={deerhound}
+        alt="deerhound"
+        className="product"
+        style={{ width: 400, height: 400 }}
+      ></img>
+      <img
+        src={spitz}
+        alt="spitz"
+        className="product"
+        style={{ width: 400, height: 400 }}
+      ></img>
       <img
         src={german_shepherd}
         alt="german_shepherd"
         className="product"
+        style={{ width: 400, height: 400 }}
       ></img>
-      <img src={beagle} alt="beagle" className="product"></img>
+      <img
+        src={beagle}
+        alt="beagle"
+        className="product"
+        style={{ width: 400, height: 400 }}
+      ></img>
       <img
         src={airedale_terrier}
         alt="airedale_terrier"
         className="product"
+        style={{ width: 400, height: 400 }}
       ></img>
-      <img src={basset_hound} alt="basset_hound" className="product"></img>
+      <img
+        src={basset_hound}
+        alt="basset_hound"
+        className="product"
+        style={{ width: 400, height: 400 }}
+      ></img>
     </div>
   );
 }

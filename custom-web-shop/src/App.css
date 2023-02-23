@@ -13,6 +13,7 @@ body {
 .products {
   flex-wrap: wrap;
   text-align: center;
+  padding-top: 30px;
 }
 
 .product {
