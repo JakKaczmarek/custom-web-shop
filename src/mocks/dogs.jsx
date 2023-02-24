@@ -3,7 +3,7 @@ import {
   // basset_hound,
   // beagle,
   // bernese_mountain,
-  border_collie,
+  bordercollie,
   // collie_rough,
   // dalmatian,
   // deerhound,
@@ -11,6 +11,6 @@ import {
   // german_shepherd,
   // great_dane,
   // spitz,
-} from '../components/Products/dogs';
+} from "../components/Products/dogs";
 
-export const dogs = [{ src: border_collie, alt: 'border_collie' }];
+export const dogs = [{ src: bordercollie, alt: "bordercollie" }];

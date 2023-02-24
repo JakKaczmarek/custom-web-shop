@@ -1,20 +1,19 @@
-import { border } from '@mui/system';
-import React from 'react';
-import { dogs } from '../../mocks/dogs';
+import React from "react";
+import { dogs } from "../../mocks/dogs";
 import {
-  airedale_terrier,
-  basset_hound,
+  airedaleterrier,
+  bassethound,
   beagle,
-  bernese_mountain,
-  border_collie,
-  collie_rough,
+  bernesemountain,
+  bordercollie,
+  collierough,
   dalmatian,
   deerhound,
   dobermann,
-  german_shepherd,
-  great_dane,
+  germanshepherd,
+  greatdane,
   spitz,
-} from './dogs';
+} from "./dogs";
 
 export default function Products() {
   return (
@@ -28,8 +27,8 @@ export default function Products() {
         />
       ))}
       <img
-        src={border_collie}
-        alt="border_collie"
+        src={bordercollie}
+        alt="bordercollie"
         className="product"
         style={{ width: 400, height: 400 }}
       />
@@ -46,20 +45,20 @@ export default function Products() {
         style={{ width: 400, height: 400 }}
       />
       <img
-        src={collie_rough}
-        alt="collie_rough"
+        src={collierough}
+        alt="collierough"
         className="product"
         style={{ width: 400, height: 400 }}
       />
       <img
-        src={great_dane}
-        alt="great_dane"
+        src={greatdane}
+        alt="greatdane"
         className="product"
         style={{ width: 400, height: 400 }}
       />
       <img
-        src={bernese_mountain}
-        alt="bernese_mountain"
+        src={bernesemountain}
+        alt="bernesemountain"
         className="product"
         style={{ width: 400, height: 400 }}
       />
@@ -76,8 +75,8 @@ export default function Products() {
         style={{ width: 400, height: 400 }}
       />
       <img
-        src={german_shepherd}
-        alt="german_shepherd"
+        src={germanshepherd}
+        alt="germanshepherd"
         className="product"
         style={{ width: 400, height: 400 }}
       />
@@ -88,14 +87,14 @@ export default function Products() {
         style={{ width: 400, height: 400 }}
       />
       <img
-        src={airedale_terrier}
-        alt="airedale_terrier"
+        src={airedaleterrier}
+        alt="airedaleterrier"
         className="product"
         style={{ width: 400, height: 400 }}
       />
       <img
-        src={basset_hound}
-        alt="basset_hound"
+        src={bassethound}
+        alt="bassethound"
         className="product"
         style={{ width: 400, height: 400 }}
       />

@@ -1,19 +1,19 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import pieskii from '../../components/NavBar/pieskii.png';
-import { AuthContext } from '../../App';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import pieskii from "../../components/NavBar/pieskii.png";
+import { AuthContext } from "../../App";
 
 function Copyright(props) {
   return (
@@ -21,15 +21,14 @@ function Copyright(props) {
       variant="body2"
       color="text.secondary"
       align="center"
+      /* eslint-disable react/jsx-props-no-spreading */
       {...props}
     >
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
         Your Website
-      </Link>
-      {' '}
-      {new Date().getFullYear()}
-      .
+      </Link>{" "}
+      {new Date().getFullYear()}.
     </Typography>
   );
 }
@@ -44,17 +43,17 @@ export default function Login() {
     e.preventDefault();
 
     if (!e.target.email.value) {
-      alert('Email is required');
+      alert("Email is required");
     } else if (!e.target.password.value) {
-      alert('Password is required');
+      alert("Password is required");
     } else if (
-      e.target.email.value === 'b'
-      && e.target.password.value === 'b'
+      e.target.email.value === "b" &&
+      e.target.password.value === "b"
     ) {
       auth[1](true);
-      navigate('/');
+      navigate("/");
     } else {
-      alert('Wrong email or password combination');
+      alert("Wrong email or password combination");
     }
   };
 
@@ -65,16 +64,12 @@ export default function Login() {
         <Box
           sx={{
             marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
           }}
         >
-          <img
-            src={pieskii}
-            alt="Pieskii"
-            style={{ width: 250, height: 70 }}
-          />
+          <img src={pieskii} alt="Pieskii" style={{ width: 250, height: 70 }} />
 
           <Typography component="h1" variant="h5">
             Sign in
@@ -86,7 +81,7 @@ export default function Login() {
             sx={{ mt: 1 }}
           >
             <TextField
-              inputProps={{ 'data-testid': 'email-input' }}
+              inputProps={{ "data-testid": "email-input" }}
               margin="normal"
               required
               fullWidth
@@ -97,7 +92,7 @@ export default function Login() {
               autoFocus
             />
             <TextField
-              inputProps={{ 'data-testid': 'password-input' }}
+              inputProps={{ "data-testid": "password-input" }}
               margin="normal"
               required
               fullWidth
@@ -116,7 +111,7 @@ export default function Login() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, background: 'black' }}
+              sx={{ mt: 3, mb: 2, background: "black" }}
             >
               Sign In
             </Button>
@@ -125,7 +120,7 @@ export default function Login() {
                 <Link
                   href="#"
                   variant="body2"
-                  sx={{ mt: 3, mb: 2, color: 'black' }}
+                  sx={{ mt: 3, mb: 2, color: "black" }}
                 >
                   Forgot password?
                 </Link>
@@ -134,7 +129,7 @@ export default function Login() {
                 <Link
                   href="#"
                   variant="body2"
-                  sx={{ mt: 3, mb: 2, color: 'black' }}
+                  sx={{ mt: 3, mb: 2, color: "black" }}
                 >
                   Don't have an account? Sign Up
                 </Link>

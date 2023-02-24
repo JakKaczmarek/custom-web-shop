@@ -1,9 +1,9 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Fade from '@mui/material/Fade';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Fade from "@mui/material/Fade";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export default function AccountList() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -20,11 +20,11 @@ export default function AccountList() {
       <Button
         data-testid="button"
         id="fade-button"
-        aria-controls={open ? 'fade-menu' : undefined}
+        aria-controls={open ? "fade-menu" : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{ mt: 3, mb: 2, color: 'black' }}
+        sx={{ mt: 3, mb: 2, color: "black" }}
       >
         <AccountCircleIcon />
         Account
@@ -33,7 +33,7 @@ export default function AccountList() {
         data-testid="menu"
         id="fade-menu"
         MenuListProps={{
-          'aria-labelledby': 'fade-button',
+          "aria-labelledby": "fade-button",
         }}
         anchorEl={anchorEl}
         open={open}
