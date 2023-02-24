@@ -1,0 +1,12 @@
+export { default as border_collie } from './border_collie.jpg';
+export { default as dobermann } from './dobermann.jpg';
+export { default as dalmatian } from './dalmatian.jpg';
+export { default as collie_rough } from './collie_rough.jpg';
+export { default as bernese_mountain } from './bernese_mountain.jpg';
+export { default as great_dane } from './great_dane.jpg';
+export { default as deerhound } from './deerhound.jpg';
+export { default as spitz } from './spitz.jpg';
+export { default as german_shepherd } from './german_shepherd.jpg';
+export { default as beagle } from './beagle.jpg';
+export { default as airedale_terrier } from './airedale_terrier.jpg';
+export { default as basset_hound } from './basset_hound.jpg';
