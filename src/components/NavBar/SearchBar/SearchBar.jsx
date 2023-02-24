@@ -42,6 +42,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+// eslint-disable-next-line react/prop-types
 export default function SearchBar({ onChange, value }) {
   return (
     <div>

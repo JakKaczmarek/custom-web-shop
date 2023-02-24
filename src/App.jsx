@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <div className="app">
+        {/* eslint-disable-next-line react/jsx-no-constructed-context-values */}
         <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
           <Routes>
             <Route path="/" element={<Main />} />

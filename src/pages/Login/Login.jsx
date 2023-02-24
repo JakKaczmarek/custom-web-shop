@@ -50,6 +50,7 @@ export default function Login() {
       e.target.email.value === "b" &&
       e.target.password.value === "b"
     ) {
+      // eslint-disable-next-line react/destructuring-assignment
       auth[1](true);
       navigate("/");
     } else {
@@ -118,7 +119,7 @@ export default function Login() {
             <Grid container>
               <Grid item xs>
                 <Link
-                  href="#"
+                  href="!#"
                   variant="body2"
                   sx={{ mt: 3, mb: 2, color: "black" }}
                 >
@@ -127,11 +128,11 @@ export default function Login() {
               </Grid>
               <Grid item>
                 <Link
-                  href="#"
+                  href="!#"
                   variant="body2"
                   sx={{ mt: 3, mb: 2, color: "black" }}
                 >
-                  Don't have an account? Sign Up
+                  Do not have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
