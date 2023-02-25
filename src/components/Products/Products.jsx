@@ -20,6 +20,7 @@ export default function Products() {
     <div className="products">
       {dogs.map((dog) => (
         <img
+          key={dog.id}
           src={dog.src}
           alt={dog.alt}
           className="product"

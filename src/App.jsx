@@ -1,10 +1,9 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useState, createContext } from "react";
+import { useState } from "react";
 import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
-
-export const AuthContext = createContext(false);
+import { AuthContext } from "./contexts/AuthContext";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

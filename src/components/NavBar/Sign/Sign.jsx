@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useContext } from "react";
-import { AuthContext } from "../../../App";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function Sign() {
   const navigate = useNavigate();

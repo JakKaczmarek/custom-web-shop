@@ -1,4 +1,5 @@
 import {
+  beagle,
   // airedale_terrier,
   // basset_hound,
   // beagle,
@@ -13,4 +14,7 @@ import {
   // spitz,
 } from "../components/Products/dogs";
 
-export const dogs = [{ src: bordercollie, alt: "bordercollie" }];
+export const dogs = [
+  { src: bordercollie, alt: "bordercollie", id: 1 },
+  { src: beagle, alt: "beagle", id: 2 },
+];

@@ -13,7 +13,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import pieskii from "../../components/NavBar/pieskii.png";
-import { AuthContext } from "../../App";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function Copyright(props) {
   return (
@@ -37,7 +37,7 @@ const theme = createTheme();
 
 export default function Login() {
   const navigate = useNavigate();
-  const auth = useContext(AuthContext);
+  const { setIsAuthenticated } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,8 +50,7 @@ export default function Login() {
       e.target.email.value === "b" &&
       e.target.password.value === "b"
     ) {
-      // eslint-disable-next-line react/destructuring-assignment
-      auth[1](true);
+      setIsAuthenticated(true);
       navigate("/");
     } else {
       alert("Wrong email or password combination");
