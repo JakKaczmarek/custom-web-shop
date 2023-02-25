@@ -12,7 +12,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import pieskii from "../../components/NavBar/pieskii.png";
+import logoebike from "../../components/NavBar/logoebike.png";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Copyright(props) {
@@ -69,7 +69,11 @@ export default function Login() {
             alignItems: "center",
           }}
         >
-          <img src={pieskii} alt="Pieskii" style={{ width: 250, height: 70 }} />
+          <img
+            src={logoebike}
+            alt="logoebike"
+            style={{ width: 190, height: 80 }}
+          />
 
           <Typography component="h1" variant="h5">
             Sign in
