@@ -1,19 +1,5 @@
 import React from "react";
 import { dogs } from "../../mocks/dogs";
-import {
-  airedaleterrier,
-  bassethound,
-  beagle,
-  bernesemountain,
-  bordercollie,
-  collierough,
-  dalmatian,
-  deerhound,
-  dobermann,
-  germanshepherd,
-  greatdane,
-  spitz,
-} from "./dogs";
 
 export default function Products() {
   return (
@@ -27,7 +13,7 @@ export default function Products() {
           style={{ width: 400, height: 400 }}
         />
       ))}
-      <img
+      {/* <img
         src={bordercollie}
         alt="bordercollie"
         className="product"
@@ -98,7 +84,7 @@ export default function Products() {
         alt="bassethound"
         className="product"
         style={{ width: 400, height: 400 }}
-      />
+      /> */}
     </div>
   );
 }

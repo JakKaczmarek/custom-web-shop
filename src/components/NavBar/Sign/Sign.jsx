@@ -12,7 +12,6 @@ export default function Sign() {
   const { isAuthenticated } = useContext(AuthContext);
 
   const handleSubmit = () => {
-    window.alert("Try to log in");
     navigate("/login");
   };
 
