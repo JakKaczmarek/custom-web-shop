@@ -2,10 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { bikes } from "../../mocks/bikes";
 
-// function ShowProduct() {
-//   return <img src={bikes.src} alt={bikes.alt} />;
-// }
-
 export default function Products() {
   return (
     <div className="products">
@@ -26,7 +22,7 @@ export default function Products() {
                 <b>{bike.bikeName}</b>
               </p>
               <p> ${bike.price}</p>
-              <NavLink to={`/${bike.id}`}>
+              <NavLink to={`/product/${bike.id}`}>
                 <button type="button" className="infoBtn">
                   <b>Show info</b>
                 </button>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
 import { AuthContext } from "./contexts/AuthContext";
+import Product from "./pages/Product/Product";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login />} />
-            <Route path="product/:id" element={<Main />} />
+            <Route path="/product/:id" element={<Product />} />
           </Routes>
         </AuthContext.Provider>
       </div>
