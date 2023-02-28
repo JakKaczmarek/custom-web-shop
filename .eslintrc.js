@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: ["react", "prettier"],
   rules: {
+    "arrow-body-style": "off",
     "no-alert": "off",
     "react/react-in-jsx-scope": 0,
     "linebreak-style": ["error", "windows"],
