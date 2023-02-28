@@ -7,7 +7,7 @@ body {
   align-items: center;
   justify-content: space-around;
   width: auto;
-  background-color: rgb(178, 190, 223);
+  background-color: rgb(170, 171, 175);
 }
 
 .products {
@@ -30,15 +30,42 @@ body {
   margin-right: 2px;
   margin-bottom: 10px;
   padding: 5px;
+  overflow: hidden;
 }
 
+.description {
+}
+
+.infoBtn {
+  background-color: transparent;
+  border: 2px solid rgb(19, 19, 19);
+  min-width: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px;
+}
+.infoBtn:hover {
+  background-color: rgb(19, 19, 19);
+  color: white;
+  cursor: pointer;
+}
+
+/* .imge:hover {
+  display: block;
+  transform: scale(1.1);
+} */
 /* .product .bike {
 } */
 /* .product .description {
   text-align: center;
 } */
 
-/* .product:hover {
-  transform: scale(1.1); */
-/* } */
+.product .bike .image:hover {
+  display: block;
+  transform: scale(1.1);
+  transition: ease-in 0.25s;
+}
 /* filter: blur(3px); */
+/* background-color: rgb(178, 190, 223); */

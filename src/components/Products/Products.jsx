@@ -1,5 +1,10 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { bikes } from "../../mocks/bikes";
+
+// function ShowProduct() {
+//   return <img src={bikes.src} alt={bikes.alt} />;
+// }
 
 export default function Products() {
   return (
@@ -12,6 +17,7 @@ export default function Products() {
                 key={bike.id}
                 src={bike.src}
                 alt={bike.alt}
+                className="image"
                 style={{ width: 380, height: 380 }}
               />
             </div>
@@ -19,8 +25,12 @@ export default function Products() {
               <p>
                 <b>{bike.bikeName}</b>
               </p>
-              <p> {bike.price}</p>
-              <button type="button">Show more info</button>
+              <p> ${bike.price}</p>
+              <NavLink to={`/${bike.id}`}>
+                <button type="button" className="infoBtn">
+                  <b>Show info</b>
+                </button>
+              </NavLink>
             </div>
           </div>
         );
