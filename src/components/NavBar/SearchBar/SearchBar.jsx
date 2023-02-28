@@ -43,7 +43,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 // eslint-disable-next-line react/prop-types
-export default function SearchBar({ onChange, value }) {
+export default function SearchBar({ value }) {
   return (
     <div>
       <Search>
@@ -53,7 +53,7 @@ export default function SearchBar({ onChange, value }) {
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
-          onChange={(e) => onChange(e.target.value)}
+          // onChange={(e) => onChange(e.target.value)}
           value={value}
         />
       </Search>

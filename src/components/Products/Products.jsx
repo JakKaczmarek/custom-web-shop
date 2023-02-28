@@ -7,7 +7,7 @@ export default function Products() {
     <div className="products">
       {bikes.map((bike) => {
         return (
-          <div className="product">
+          <div className="product" key={bike.id}>
             <div className="bike">
               <img
                 key={bike.id}
