@@ -1,7 +1,7 @@
 import React from "react";
 import logoebike from "./logoebike.png";
 import SearchBar from "./SearchBar/SearchBar";
-import AccountList from "./AccountList/AccountList";
+import AccountList from "./ShoppingCart/ShoppingCart";
 import Sign from "./Sign/Sign";
 
 export default function NavBar() {
