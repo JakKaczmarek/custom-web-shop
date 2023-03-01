@@ -1,19 +1,9 @@
 import { createContext, useState } from "react";
-import { bikes } from "../mocks/bikes";
 
 export const ShopContext = createContext();
 
-const getDefaultCart = () => {
-  const cart = {};
-  for (let i = 1; i < bikes.length + 1; i += 1) {
-    cart[i] = {};
-  }
-
-  return cart;
-};
-
 export function ShopContextProvider({ children }) {
-  const [cartItems, setCartItems] = useState(getDefaultCart());
+  const [cartItems, setCartItems] = useState({});
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

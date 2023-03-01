@@ -22,7 +22,7 @@ export function CartItem(data) {
           <input
             value={cartItems[id]}
             onChange={(e) =>
-              updateCartItemCount(Number(e.target.value).toString(), id)
+              updateCartItemCount(Number(e.target.value.toString()), id)
             }
           />
           <button type="button" onClick={() => addToCart(id)}>
