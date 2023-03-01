@@ -15,7 +15,6 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-
   text-align: center;
   padding-top: 30px;
 }
@@ -31,9 +30,6 @@ body {
   margin-bottom: 10px;
   padding: 5px;
   overflow: hidden;
-}
-
-.description {
 }
 
 .infoBtn {
@@ -52,20 +48,108 @@ body {
   cursor: pointer;
 }
 
-/* .imge:hover {
-  display: block;
-  transform: scale(1.1);
-} */
-/* .product .bike {
-} */
-/* .product .description {
-  text-align: center;
-} */
-
 .product .bike .image:hover {
   display: block;
   transform: scale(1.1);
   transition: ease-in 0.25s;
 }
-/* filter: blur(3px); */
-/* background-color: rgb(178, 190, 223); */
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.container .description {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  flex-direction: column;
+  width: 30%;
+  margin-right: 5%;
+  margin-bottom: 10%;
+  margin-top: 2.5%;
+}
+
+.container .description .descriptionHeader {
+  font-size: 35px;
+}
+
+.container .productBike {
+  margin-top: 5%;
+}
+
+.container .productBike .image {
+  width: 450px;
+  height: 450px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 5%;
+}
+.container .productBike .image:hover {
+  transform: scale(1.1);
+  display: block;
+}
+.container .productBike .title {
+  margin-top: 5%;
+  font-weight: 600;
+  font-size: 30px;
+}
+.container .productBike .price {
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: large;
+}
+.container .productBike .addToCartBtn {
+  background-color: transparent;
+  border: 2px solid rgb(19, 19, 19);
+  min-width: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-left: 40px;
+  font-size: 17px;
+}
+
+.container .productBike .addToCartBtn:hover {
+  background-color: rgb(19, 19, 19);
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 950px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .container .productBike {
+    margin: auto;
+    margin-top: 8%;
+  }
+
+  .container .description {
+    width: 65%;
+  }
+
+  .container .productBike .image {
+    width: 350px;
+    height: 350px;
+  }
+}
+@media (max-width: 415px) {
+  .container .productBike .image {
+    width: 300px;
+    height: 300px;
+  }
+  .container .description {
+    width: 80%;
+  }
+}
