@@ -127,8 +127,8 @@ export default function Login() {
                 <Checkbox
                   value="remember"
                   color="primary"
-                  labelStyle={{ color: "white" }}
-                  iconStyle={{ color: "white" }}
+                  labelstyle={{ color: "white" }}
+                  iconstyle={{ color: "white" }}
                 />
               }
               label="Remember me"

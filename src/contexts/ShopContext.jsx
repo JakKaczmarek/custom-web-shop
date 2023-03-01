@@ -1,13 +1,14 @@
 import { createContext, useState } from "react";
 import { bikes } from "../mocks/bikes";
 
-export const ShopContext = createContext(null);
+export const ShopContext = createContext();
 
 const getDefaultCart = () => {
   const cart = {};
-  for (let i = 1; i < bikes.length + 1; i = +1) {
-    cart[i] = 0;
+  for (let i = 1; i < bikes.length + 1; i += 1) {
+    cart[i] = {};
   }
+
   return cart;
 };
 
@@ -26,17 +27,12 @@ export function ShopContextProvider({ children }) {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
   };
 
-  const checkout = () => {
-    setCartItems(getDefaultCart());
-  };
-
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const contextValue = {
     cartItems,
     addToCart,
     updateCartItemCount,
     removeFromCart,
-    checkout,
   };
   console.log(cartItems);
   return (
