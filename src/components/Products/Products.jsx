@@ -22,11 +22,16 @@ export default function Products() {
                 <b>{bike.bikeName}</b>
               </p>
               <p> ${bike.price}</p>
-              <NavLink to={`/product/${bike.id}`}>
-                <button type="button" className="infoBtn">
-                  <b>Show info</b>
+              <div className="Btns">
+                <NavLink to={`/product/${bike.id}`}>
+                  <button type="button" className="infoBtn">
+                    <b>Show Info</b>
+                  </button>
+                </NavLink>
+                <button type="button" className="addToCartBtn">
+                  <b>Add To Cart</b>
                 </button>
-              </NavLink>
+              </div>
             </div>
           </div>
         );
