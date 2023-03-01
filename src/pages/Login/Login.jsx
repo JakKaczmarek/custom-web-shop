@@ -91,9 +91,17 @@ export default function Login() {
               fullWidth
               id="email"
               label="Email Address"
+              InputLabelProps={{ style: { color: "gray" } }}
               name="email"
               autoComplete="email"
               autoFocus
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "&.Mui-focused fieldSet": {
+                    borderColor: "gray",
+                  },
+                },
+              }}
             />
             <TextField
               inputProps={{ "data-testid": "password-input" }}
@@ -102,12 +110,27 @@ export default function Login() {
               fullWidth
               name="password"
               label="Password"
+              InputLabelProps={{ style: { color: "gray" } }}
               type="password"
               id="password"
               autoComplete="current-password"
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  "&.Mui-focused fieldSet": {
+                    borderColor: "gray",
+                  },
+                },
+              }}
             />
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={
+                <Checkbox
+                  value="remember"
+                  color="primary"
+                  labelStyle={{ color: "white" }}
+                  iconStyle={{ color: "white" }}
+                />
+              }
               label="Remember me"
             />
             <Button
@@ -124,7 +147,7 @@ export default function Login() {
                 <Link
                   href="!#"
                   variant="body2"
-                  sx={{ mt: 3, mb: 2, color: "black" }}
+                  sx={{ color: "black", textDecorationColor: "grey" }}
                 >
                   Forgot password?
                 </Link>
@@ -133,7 +156,7 @@ export default function Login() {
                 <Link
                   href="!#"
                   variant="body2"
-                  sx={{ mt: 3, mb: 2, color: "black" }}
+                  sx={{ color: "black", textDecorationColor: "grey" }}
                 >
                   Do not have an account? Sign Up
                 </Link>
