@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { bikes } from "../../mocks/bikes";
+import { ShopContext } from "../../contexts/ShopContext";
 
-export default function Products() {
+export default function Products(data) {
+  const { id } = data;
+  const { addToCart, cartItems } = useContext(ShopContext);
+  const cartItemAmount = cartItems[id];
+
   return (
     <div className="products">
       {bikes.map((bike) => {
@@ -28,8 +33,12 @@ export default function Products() {
                     <b>Show Info</b>
                   </button>
                 </NavLink>
-                <button type="button" className="addToCartBtn">
-                  <b>Add To Cart</b>
+                <button
+                  type="button"
+                  className="addToCartBtn"
+                  onClick={() => addToCart(id)}
+                >
+                  Add To Cart {cartItemAmount > 0 && <>({cartItemAmount})</>}
                 </button>
               </div>
             </div>

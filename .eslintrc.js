@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: ["react", "prettier"],
   rules: {
+    "react/prop-types": "off",
     "arrow-body-style": "off",
     "no-alert": "off",
     "react/react-in-jsx-scope": 0,
