@@ -24,7 +24,7 @@ export function ShopContextProvider({ children }) {
     updateCartItemCount,
     removeFromCart,
   };
-  console.log(cartItems);
+  // console.log(cartItems);
   return (
     <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
   );
