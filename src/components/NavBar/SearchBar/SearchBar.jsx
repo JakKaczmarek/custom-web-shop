@@ -53,7 +53,7 @@ export default function SearchBar({ value }) {
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
-          // onChange={(e) => onChange(e.target.value)}
+          // onChange={(e) => setQuery(e.target.value)}
           value={value}
         />
       </Search>
