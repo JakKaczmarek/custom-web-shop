@@ -5,10 +5,23 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: auto;
   background-color: rgb(170, 171, 175);
   margin-bottom: 30px;
+}
+
+.navBar .image {
+  margin-left: 7%;
+}
+
+.navBar .right {
+  display: flex;
+  flex-direction: row;
+  margin-right: 7%;
+}
+.navBar .right .cart {
+  margin-right: 50px;
 }
 
 .Search {
