@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { CartItem } from "./CartItem";
 import { ShopContext } from "../../contexts/ShopContext";
 import { bikes } from "../../mocks/bikes";
+import NavBar from "../../components/NavBar/NavBar";
 
 export default function Cart() {
   const { cartItems } = useContext(ShopContext);
@@ -9,6 +10,7 @@ export default function Cart() {
 
   return (
     <div className="cart">
+      <NavBar />
       <div>
         <h1>Your Cart Items</h1>
       </div>

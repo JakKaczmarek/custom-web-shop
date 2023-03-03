@@ -5,7 +5,6 @@ export function CartItem({ data }) {
   const { id, bikeName, price, src, alt } = data;
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
     useContext(ShopContext);
-  console.log(data);
   return (
     <div className="cartItem">
       <img src={src} alt={alt} />
