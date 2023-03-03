@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useMemo } from "react";
 
 export const ShopContext = createContext();
 
@@ -20,13 +20,15 @@ export function ShopContextProvider({ children }) {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
   };
 
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const contextValue = {
-    cartItems,
-    addToCart,
-    updateCartItemCount,
-    removeFromCart,
-  };
+  const contextValue = useMemo(
+    () => ({
+      cartItems,
+      addToCart,
+      updateCartItemCount,
+      removeFromCart,
+    }),
+    [cartItems, addToCart, updateCartItemCount, removeFromCart]
+  );
   return (
     <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
   );

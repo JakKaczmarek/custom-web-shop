@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
 import { AuthContext } from "./contexts/AuthContext";
@@ -10,13 +10,19 @@ import { ShopContextProvider } from "./contexts/ShopContext";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const value = useMemo(
+    () => ({
+      isAuthenticated,
+      setIsAuthenticated,
+    }),
+    [isAuthenticated, setIsAuthenticated]
+  );
 
   return (
     <div className="App">
       <div className="app">
         <ShopContextProvider>
-          {/* eslint-disable-next-line react/jsx-no-constructed-context-values */}
-          <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+          <AuthContext.Provider value={value}>
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/login" element={<Login />} />
