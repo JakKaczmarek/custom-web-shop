@@ -25,8 +25,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="http://localhost:3000/">
+        eBike Shop{" "}
       </Link>{" "}
       {new Date().getFullYear()}.
     </Typography>
@@ -38,6 +38,10 @@ const theme = createTheme();
 export default function Login() {
   const navigate = useNavigate();
   const { setIsAuthenticated } = useContext(AuthContext);
+
+  const logoSumbit = () => {
+    navigate("/");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,10 +73,12 @@ export default function Login() {
             alignItems: "center",
           }}
         >
-          <img
+          <input
+            type="image"
             src={logoebike}
             alt="logoebike"
             style={{ width: 190, height: 80 }}
+            onClick={logoSumbit}
           />
 
           <Typography component="h1" variant="h5">
