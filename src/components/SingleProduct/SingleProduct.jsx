@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import { bikes } from "../../mocks/bikes";
 import NavBar from "../NavBar/NavBar";
-// import { ShopContext } from "../../contexts/ShopContext";
+import { ShopContext } from "../../contexts/ShopContext";
 
 function SingleProduct() {
   const { id } = useParams();
   const [productId, setProductId] = useState(-1);
-  // const { addToCart } = useContext(ShopContext);
+  const { addToCart } = useContext(ShopContext);
 
   useEffect(() => {
     setProductId(bikes.findIndex((bike) => bike.id.toString() === id));
@@ -27,7 +27,11 @@ function SingleProduct() {
             <p className="title">{bikes[productId].bikeName}</p>
             <p className="price">
               ${bikes[productId].price}.00{" "}
-              <button type="button" className="addToCartBtn">
+              <button
+                type="button"
+                className="addToCartBtn"
+                onClick={() => addToCart(bikes[productId].id)}
+              >
                 Add To Cart
               </button>
             </p>
