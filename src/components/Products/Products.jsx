@@ -3,11 +3,8 @@ import { NavLink } from "react-router-dom";
 import { bikes } from "../../mocks/bikes";
 import { ShopContext } from "../../contexts/ShopContext";
 
-export default function Products(data) {
-  const { id } = data;
-  const { addToCart, cartItems } = useContext(ShopContext);
-  const cartItemAmount = cartItems[id];
-
+export default function Products() {
+  const { addToCart } = useContext(ShopContext);
   const [query, setQuery] = useState("");
 
   return (
@@ -51,10 +48,9 @@ export default function Products(data) {
                     <button
                       type="button"
                       className="addToCartBtn"
-                      onClick={() => addToCart(id)}
+                      onClick={() => addToCart(bike.id)}
                     >
                       Add To Cart{" "}
-                      {cartItemAmount > 0 && <>({cartItemAmount})</>}
                     </button>
                   </div>
                 </div>

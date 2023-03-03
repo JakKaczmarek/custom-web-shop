@@ -6,7 +6,10 @@ export function ShopContextProvider({ children }) {
   const [cartItems, setCartItems] = useState({});
 
   const addToCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: prev[itemId] ? prev[itemId] + 1 : 1,
+    }));
   };
 
   const removeFromCart = (itemId) => {
@@ -24,7 +27,6 @@ export function ShopContextProvider({ children }) {
     updateCartItemCount,
     removeFromCart,
   };
-  // console.log(cartItems);
   return (
     <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
   );
