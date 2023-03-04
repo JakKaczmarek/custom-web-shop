@@ -3,11 +3,17 @@ import { useParams } from "react-router";
 import { bikes } from "../../mocks/bikes";
 import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
+import Popup from "../Popup/Popup";
 
 function SingleProduct() {
   const { id } = useParams();
   const [productId, setProductId] = useState(-1);
   const { addToCart } = useContext(ShopContext);
+  const [openPopup, setOpenPopup] = useState(false);
+
+  function Click() {
+    setOpenPopup(true);
+  }
 
   useEffect(() => {
     setProductId(bikes.findIndex((bike) => bike.id.toString() === id));
@@ -30,10 +36,11 @@ function SingleProduct() {
               <button
                 type="button"
                 className="addToCartBtn"
-                onClick={() => addToCart(bikes[productId].id)}
+                onClick={() => Click(addToCart(bikes[productId].id))}
               >
                 Add To Cart
               </button>
+              {openPopup && <Popup closePopup={setOpenPopup} />}
             </p>
           </div>
           <div className="description">

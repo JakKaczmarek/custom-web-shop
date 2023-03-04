@@ -6,7 +6,6 @@ import NavBar from "../../components/NavBar/NavBar";
 
 export default function Cart() {
   const { cartItems } = useContext(ShopContext);
-  console.log(cartItems);
 
   return (
     <div className="cart">

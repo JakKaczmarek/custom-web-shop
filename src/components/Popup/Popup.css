@@ -1,0 +1,29 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 253, 253);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popupInner {
+  position: relative;
+  padding: 50px;
+  width: 100%;
+  max-width: 640px;
+  background-color: rgb(96, 165, 69);
+  border-radius: 15px;
+}
+
+.popupInner .closeBtn {
+  position: absolute;
+  top: 130px;
+  right: 300px;
+  border-radius: 15px;
+  padding: 7px;
+}

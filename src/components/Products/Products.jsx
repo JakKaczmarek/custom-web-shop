@@ -1,11 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { bikes } from "../../mocks/bikes";
 import { ShopContext } from "../../contexts/ShopContext";
+import Popup from "../Popup/Popup";
 
 export default function Products() {
   const { addToCart } = useContext(ShopContext);
   const [query, setQuery] = useState("");
+  const [openPopup, setOpenPopup] = useState(false);
+
+  function Click() {
+    setOpenPopup(true);
+  }
 
   return (
     <div>
@@ -48,10 +54,11 @@ export default function Products() {
                     <button
                       type="button"
                       className="addToCartBtn"
-                      onClick={() => addToCart(bike.id)}
+                      onClick={() => Click(addToCart(bike.id))}
                     >
                       Add To Cart{" "}
                     </button>
+                    {openPopup && <Popup closePopup={setOpenPopup} />}
                   </div>
                 </div>
               </div>
