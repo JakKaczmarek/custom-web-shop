@@ -19,7 +19,7 @@ export function CartItem({ data }) {
             -{" "}
           </button>
           <input
-            value={cartItems[id]}
+            value={cartItems[id][0]}
             onChange={(e) =>
               updateCartItemCount(Number(e.target.value.toString()), id)
             }

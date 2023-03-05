@@ -1,4 +1,5 @@
 import { createContext, useState, useMemo } from "react";
+import { bikes } from "../mocks/bikes";
 
 export const ShopContext = createContext();
 
@@ -6,14 +7,24 @@ export function ShopContextProvider({ children }) {
   const [cartItems, setCartItems] = useState({});
 
   const addToCart = (itemId) => {
+    const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
+    const bike = bikes[bikeIdx];
+    console.log(itemId);
     setCartItems((prev) => ({
       ...prev,
-      [itemId]: prev[itemId] ? prev[itemId] + 1 : 1,
+      [itemId]: prev[itemId]
+        ? [prev[itemId][0] + 1, bike.price]
+        : [1, bike.price],
     }));
   };
 
   const removeFromCart = (itemId) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+    const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
+    const bike = bikes[bikeIdx];
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: [prev[itemId][0] - 1, bike.price],
+    }));
   };
 
   const updateCartItemCount = (newAmount, itemId) => {
