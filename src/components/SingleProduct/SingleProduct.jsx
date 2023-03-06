@@ -1,18 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSnackbar } from "notistack";
 import { bikes } from "../../mocks/bikes";
 import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
-import Popup from "../Popup/Popup";
 
 function SingleProduct() {
   const { id } = useParams();
   const [productId, setProductId] = useState(-1);
   const { addToCart } = useContext(ShopContext);
-  const [openPopup, setOpenPopup] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
-  function Click() {
-    setOpenPopup(true);
+  function Click(variant) {
+    enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
 
   useEffect(() => {
@@ -40,7 +41,6 @@ function SingleProduct() {
               >
                 Add To Cart
               </button>
-              {openPopup && <Popup closePopup={setOpenPopup} />}
             </p>
           </div>
           <div className="description">

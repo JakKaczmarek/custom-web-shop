@@ -1,16 +1,17 @@
 import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useSnackbar } from "notistack";
 import { bikes } from "../../mocks/bikes";
 import { ShopContext } from "../../contexts/ShopContext";
-import Popup from "../Popup/Popup";
 
 export default function Products() {
   const { addToCart } = useContext(ShopContext);
   const [query, setQuery] = useState("");
-  const [openPopup, setOpenPopup] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
-  function Click() {
-    setOpenPopup(true);
+  function Click(variant) {
+    enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
 
   return (
@@ -58,7 +59,6 @@ export default function Products() {
                     >
                       Add To Cart{" "}
                     </button>
-                    {openPopup && <Popup closePopup={setOpenPopup} />}
                   </div>
                 </div>
               </div>

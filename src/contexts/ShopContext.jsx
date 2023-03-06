@@ -23,8 +23,6 @@ export function ShopContextProvider({ children }) {
     const cartItemsCopy = JSON.parse(JSON.stringify(cartItems));
     delete cartItemsCopy[itemId];
 
-    console.log(cartItemsCopy);
-
     if (cartItems[itemId][0] - 1 < 1) {
       setCartItems(cartItemsCopy);
     } else {

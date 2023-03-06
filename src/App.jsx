@@ -1,6 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useState, useMemo } from "react";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { SnackbarProvider } from "notistack";
 import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
 import { AuthContext } from "./contexts/AuthContext";
@@ -21,16 +23,24 @@ function App() {
   return (
     <div className="App">
       <div className="app">
-        <ShopContextProvider>
-          <AuthContext.Provider value={value}>
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/product/:id" element={<SingleProduct />} />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
-          </AuthContext.Provider>
-        </ShopContextProvider>
+        <SnackbarProvider
+          maxSnack={2}
+          autoHideDuration={1500}
+          style={{
+            backgroundColor: "rgb(22 163 74)",
+          }}
+        >
+          <ShopContextProvider>
+            <AuthContext.Provider value={value}>
+              <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/product/:id" element={<SingleProduct />} />
+                <Route path="/cart" element={<Cart />} />
+              </Routes>
+            </AuthContext.Provider>
+          </ShopContextProvider>
+        </SnackbarProvider>
       </div>
     </div>
   );
