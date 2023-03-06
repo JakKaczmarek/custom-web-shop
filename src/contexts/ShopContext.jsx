@@ -9,7 +9,6 @@ export function ShopContextProvider({ children }) {
   const addToCart = (itemId) => {
     const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
     const bike = bikes[bikeIdx];
-    console.log(itemId);
     setCartItems((prev) => ({
       ...prev,
       [itemId]: prev[itemId]
@@ -21,10 +20,19 @@ export function ShopContextProvider({ children }) {
   const removeFromCart = (itemId) => {
     const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
     const bike = bikes[bikeIdx];
-    setCartItems((prev) => ({
-      ...prev,
-      [itemId]: [prev[itemId][0] - 1, bike.price],
-    }));
+    const cartItemsCopy = JSON.parse(JSON.stringify(cartItems));
+    delete cartItemsCopy[itemId];
+
+    console.log(cartItemsCopy);
+
+    if (cartItems[itemId][0] - 1 < 1) {
+      setCartItems(cartItemsCopy);
+    } else {
+      setCartItems((prev) => ({
+        ...prev,
+        [itemId]: [prev[itemId][0] - 1, bike.price],
+      }));
+    }
   };
 
   const updateCartItemCount = (newAmount, itemId) => {
