@@ -42,10 +42,10 @@ export default function Products() {
                   />
                 </div>
                 <div className="description">
-                  <p>
+                  <p className="bikeName">
                     <b>{bike.bikeName}</b>
                   </p>
-                  <p> ${bike.price}</p>
+                  <p className="bikePrice"> ${bike.price}</p>
                   <div className="Btns">
                     <NavLink to={`/product/${bike.id}`}>
                       <button type="button" className="infoBtn">
@@ -57,7 +57,7 @@ export default function Products() {
                       className="addToCartBtn"
                       onClick={() => Click(addToCart(bike.id))}
                     >
-                      Add To Cart{" "}
+                      <b>Add To Cart </b>
                     </button>
                   </div>
                 </div>

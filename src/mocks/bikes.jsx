@@ -60,7 +60,7 @@ export const bikes = [
     src: bike7,
     alt: "bike7",
     id: 7,
-    bikeName: "Cube Acid 240 Hybrid Rookie SLX 400 ",
+    bikeName: "Cube Acid 240 Hybrid Rookie",
     price: 3500.0,
   },
   {
