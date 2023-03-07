@@ -20,23 +20,29 @@ export default function Cart() {
   };
 
   return (
-    <div className="cart">
+    <div className="shoppingCart">
       <NavBar />
-      <div>
-        <h1>Your Cart Items</h1>
-      </div>
+      <span>
+        <h1 className="cartTitle">Your Cart Items</h1>
+      </span>
       <div className="cart">
-        {bikes.map((bike) => {
-          if (cartItems[bike.id] && cartItems[bike.id] !== 0) {
-            return <CartItem data={bike} key={bike.id} />;
-          }
-          return false;
-        })}
-        <div>
+        <div className="cartBikes">
+          {bikes.map((bike) => {
+            if (cartItems[bike.id] && cartItems[bike.id] !== 0) {
+              return <CartItem data={bike} key={bike.id} />;
+            }
+            return false;
+          })}
+        </div>
+        <div className="cartSummary">
           {" "}
-          <h2> Subtotal: ${totalPrice} </h2>
+          <p className="subPrice"> Subtotal: ${totalPrice} </p>
+          <p className="subPrice">Discount: $0</p>
+          <p className="subPrice">Shipping: $0</p>
+          <p className="totalPrice">Total: ${totalPrice} </p>
           <button
             type="button"
+            className="cartContinueShoppingBtn"
             onClick={() => {
               handleSubmit();
             }}

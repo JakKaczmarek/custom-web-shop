@@ -44,7 +44,7 @@ nav {
 
 .descriptionSingle {
   padding: 30px;
-  float: left;
+  float: right;
   width: 55%;
   border-left: 2px solid #efefef;
 }
@@ -64,7 +64,7 @@ nav {
   border: 1px solid #d9d9d9;
   padding: 8px 0px;
   margin-bottom: 20px;
-  color: #515151;
+  color: #302f2f;
   text-transform: uppercase;
   width: 125px;
   font-family: inherit;

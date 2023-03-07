@@ -143,73 +143,7 @@ body {
   transition: ease-in 0.25s;
 }
 
-/* .container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  overflow: hidden;
-}
-
-.container .description {
-  display: flex;
-  flex-wrap: wrap;
-  text-align: left;
-  flex-direction: column;
-  width: 30%;
-  margin-right: 5%;
-  margin-bottom: 10%;
-  margin-top: 2.5%;
-}
-
-.container .description .descriptionHeader {
-  font-size: 35px;
-}
-
-.container .productBike {
-  margin-top: 5%;
-}
-
-.container .productBike .image {
-  width: 450px;
-  height: 450px;
-  border: 2px solid black;
-  padding: 5%;
-}
-.container .productBike .image:hover {
-  transform: scale(1.1);
-  display: block;
-}
-.container .productBike .title {
-  margin-top: 5%;
-  font-weight: 600;
-  font-size: 30px;
-}
-.container .productBike .price {
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: large;
-}
-.container .productBike .addToCartBtn {
-  background-color: transparent;
-  border: 2px solid rgb(19, 19, 19);
-  min-width: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-top: 10px;
-  margin-left: 40px;
-  font-size: 17px;
-}
-
-.container .productBike .addToCartBtn:hover {
-  background-color: rgb(19, 19, 19);
-  color: white;
-  cursor: pointer;
-}
-
+/* 
 @media (max-width: 950px) {
   .container {
     display: flex;
@@ -238,28 +172,49 @@ body {
   }
   .container .description {
     width: 80%;
-  }
-} */
+  } */
+
+.cartTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
 .cartItem {
   width: 700px;
   height: 250px;
   display: flex;
-
   align-items: center;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 25px;
   margin: 30px;
+  background-color: white;
 }
 
 .cartItem img {
   width: 200px;
   height: 200px;
+  margin-left: 10px;
 }
 
 .cartItem .description {
   width: 100%;
   font-size: 30px;
+  margin-left: 40px;
+}
+
+.cartSummary {
+  background-color: white;
+  padding: 35px;
+}
+
+.subPrice {
+  border-bottom: 2px solid #e1e0e0;
+  padding-bottom: 9px;
 }
 
 .countHandler input {
@@ -268,90 +223,29 @@ body {
   font-weight: bolder;
 }
 
-/* .container {
+.shoppingCart .cart {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  overflow: hidden;
+}
+.cartContinueShoppingBtn {
+  outline: 0;
+  border: 0;
+  background: none;
+  border: 1px solid #d9d9d9;
+  padding: 8px 0px;
+  margin-bottom: 20px;
+  color: #302f2f;
+  text-transform: uppercase;
+  width: 125px;
+  font-family: inherit;
+  margin-right: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
-.container .description {
-  display: flex;
-  flex-wrap: wrap;
-  text-align: left;
-  flex-direction: column;
-  width: 30%;
-  margin-right: 5%;
-  margin-bottom: 10%;
-  margin-top: 2.5%;
-}
-
-.container .description .descriptionHeader {
-  font-size: 35px;
-}
-
-.container .productBike {
-  margin-top: 5%;
-}
-
-.container .productBike .image {
-  width: 450px;
-  height: 450px;
-  border: 2px solid black;
-  padding: 5%;
-}
-.container .productBike .image:hover {
-  transform: scale(1.1);
-  display: block;
-}
-.container .productBike .title {
-  margin-top: 5%;
-  font-weight: 600;
-  font-size: 30px;
-}
-.container .productBike .price {
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: large;
-}
-.container .productBike .addToCartBtn {
-  background-color: transparent;
-  border: 2px solid rgb(19, 19, 19);
-  min-width: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-top: 10px;
-  margin-left: 40px;
-  font-size: 17px;
-}
-
-.container .productBike .addToCartBtn:hover {
-  background-color: rgb(19, 19, 19);
-  color: white;
+.cartContinueShoppingBtn:hover {
+  border: 1px solid #c9940d;
+  color: #c9940d;
   cursor: pointer;
 }
-
-@media (max-width: 950px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .container .productBike {
-    margin: auto;
-    margin-top: 8%;
-  }
-
-  .container .description {
-    width: 65%;
-  }
-
-  .container .productBike .image {
-    width: 350px;
-    height: 350px;
-  } */
