@@ -27,7 +27,7 @@ function App() {
           maxSnack={2}
           autoHideDuration={1500}
           style={{
-            backgroundColor: "rgb(22 163 74)",
+            backgroundColor: "#c9940d",
           }}
         >
           <ShopContextProvider>

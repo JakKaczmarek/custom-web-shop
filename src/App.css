@@ -1,5 +1,6 @@
 body {
-  background-color: rgb(254, 254, 254);
+  background-color: rgb(231, 229, 229);
+  font-family: "Raleway";
 }
 .navBar {
   display: flex;
@@ -34,14 +35,13 @@ body {
 .Search .SearchInput {
   display: block;
   margin: 0 auto;
-  background-color: transparent;
+  background-color: white;
   border: 2px solid rgb(19, 19, 19);
   min-width: 280px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-radius: 15px;
 }
 
 .products {
@@ -79,9 +79,11 @@ body {
 
 .bikeName {
   font-size: 28px;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 .bikePrice {
-  font-size: 30px;
+  font-size: 40px;
+  font-family: "Courier New", monospace;
 }
 
 .Btns {
@@ -91,17 +93,20 @@ body {
 }
 
 .infoBtn {
+  outline: 0;
+  border: 0;
   background-color: white;
   min-width: 100px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
-  margin: 18px;
+  margin: 10px;
   color: rgb(0, 0, 0);
   -webkit-box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
   -moz-box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
   box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 .infoBtn:hover {
   background-color: rgb(19, 19, 19);
@@ -110,17 +115,20 @@ body {
 }
 
 .addToCartBtn {
+  outline: 0;
+  border: 0;
   background-color: white;
   min-width: 100px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 8px;
   padding-bottom: 8px;
-  margin: 18px;
+  margin: 10px;
   color: rgb(0, 0, 0);
   -webkit-box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
   -moz-box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
   box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .addToCartBtn:hover {
@@ -135,7 +143,7 @@ body {
   transition: ease-in 0.25s;
 }
 
-.container {
+/* .container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -167,7 +175,6 @@ body {
   width: 450px;
   height: 450px;
   border: 2px solid black;
-  border-radius: 10px;
   padding: 5%;
 }
 .container .productBike .image:hover {
@@ -192,7 +199,6 @@ body {
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-radius: 15px;
   margin-top: 10px;
   margin-left: 40px;
   font-size: 17px;
@@ -233,7 +239,7 @@ body {
   .container .description {
     width: 80%;
   }
-}
+} */
 
 .cartItem {
   width: 700px;
@@ -261,3 +267,91 @@ body {
   text-align: center;
   font-weight: bolder;
 }
+
+/* .container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.container .description {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  flex-direction: column;
+  width: 30%;
+  margin-right: 5%;
+  margin-bottom: 10%;
+  margin-top: 2.5%;
+}
+
+.container .description .descriptionHeader {
+  font-size: 35px;
+}
+
+.container .productBike {
+  margin-top: 5%;
+}
+
+.container .productBike .image {
+  width: 450px;
+  height: 450px;
+  border: 2px solid black;
+  padding: 5%;
+}
+.container .productBike .image:hover {
+  transform: scale(1.1);
+  display: block;
+}
+.container .productBike .title {
+  margin-top: 5%;
+  font-weight: 600;
+  font-size: 30px;
+}
+.container .productBike .price {
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: large;
+}
+.container .productBike .addToCartBtn {
+  background-color: transparent;
+  border: 2px solid rgb(19, 19, 19);
+  min-width: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  margin-left: 40px;
+  font-size: 17px;
+}
+
+.container .productBike .addToCartBtn:hover {
+  background-color: rgb(19, 19, 19);
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 950px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .container .productBike {
+    margin: auto;
+    margin-top: 8%;
+  }
+
+  .container .description {
+    width: 65%;
+  }
+
+  .container .productBike .image {
+    width: 350px;
+    height: 350px;
+  } */

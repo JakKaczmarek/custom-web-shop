@@ -39,7 +39,7 @@ export const bikes = [
     src: bike4,
     alt: "bike4",
     id: 4,
-    bikeName: "Cube Reaction Hybrid SLT 625",
+    bikeName: "Cube Reaction Hybrid SLT",
     price: 5000.0,
   },
   {
@@ -60,7 +60,7 @@ export const bikes = [
     src: bike7,
     alt: "bike7",
     id: 7,
-    bikeName: "Cube Acid 240 Hybrid Rookie",
+    bikeName: "Cube Acid Hybrid Rookie",
     price: 3500.0,
   },
   {
@@ -81,14 +81,14 @@ export const bikes = [
     src: bike10,
     alt: "bike10",
     id: 10,
-    bikeName: "Cube Supreme Hybrid ONE 400 ",
+    bikeName: "Cube Supreme Hybrid ONE",
     price: 3600.0,
   },
   {
     src: bike11,
     alt: "bike11",
     id: 11,
-    bikeName: "Cube Nuride Hybrid EXC 625",
+    bikeName: "Cube Nuride Hybrid EXC",
     price: 4500.0,
   },
   {
