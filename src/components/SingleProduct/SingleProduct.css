@@ -45,14 +45,22 @@ nav {
 }
 
 @media (max-width: 640px) {
+  .allCard {
+    top: 20%;
+  }
+
+  .bikePhotoSingle {
+    text-align: center;
+  }
   .bikePhotoSingle .imageSingle {
     max-height: 300px;
     transition: all 0.3s ease;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .bikePhotoSingle .imageSingle {
     max-height: 200px;
+    float: right;
   }
 }
 

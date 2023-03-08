@@ -45,16 +45,21 @@ export default function Cart() {
             <p className="subPrice">Discount: $0</p>
             <p className="subPrice">Shipping: $0</p>
             <p className="totalPrice">Total: ${totalPrice} </p>
-            <button
-              type="button"
-              className="cartContinueShoppingBtn"
-              onClick={() => {
-                handleSubmit();
-              }}
-            >
-              {" "}
-              Continue Shopping{" "}
-            </button>
+            <div className="cartBtns">
+              <button type="button" className="cartCheckoutShoppingBtn">
+                Checkout
+              </button>
+              <button
+                type="button"
+                className="cartContinueShoppingBtn"
+                onClick={() => {
+                  handleSubmit();
+                }}
+              >
+                {" "}
+                Continue Shopping{" "}
+              </button>
+            </div>
           </div>
           <div className="cartHelp">
             <div className="cartHelpTitle">

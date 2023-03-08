@@ -4,7 +4,7 @@ body {
 }
 .navBar {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   width: auto;
@@ -17,6 +17,7 @@ body {
 
 .navBar .image {
   margin-left: 7%;
+  margin-right: 7%;
 }
 
 .navBar .right {
@@ -34,7 +35,7 @@ body {
   width: 50%;
 }
 .Search .SearchInput {
-  display: block;
+  display: flex;
   margin: 0 auto;
   background-color: white;
   border: 2px solid rgb(19, 19, 19);
@@ -68,7 +69,7 @@ body {
   box-shadow: inset 0px 0px 9px 2px rgba(150, 145, 145, 1);
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .product {
     max-width: 300px;
     height: auto;
@@ -80,6 +81,29 @@ body {
   .bike .image {
     max-width: 250px;
     max-height: 250px;
+  }
+  .Search {
+    margin-left: 50px;
+  }
+  .navBar {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 750px) {
+  .cartItem {
+    flex-wrap: wrap;
+    width: 360px;
+    margin-left: 8px;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+  }
+  .navBar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
   }
 }
 
@@ -160,37 +184,6 @@ body {
   transition: ease-in 0.25s;
 }
 
-/* 
-@media (max-width: 950px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .container .productBike {
-    margin: auto;
-    margin-top: 8%;
-  }
-
-  .container .description {
-    width: 65%;
-  }
-
-  .container .productBike .image {
-    width: 350px;
-    height: 350px;
-  }
-}
-@media (max-width: 415px) {
-  .container .productBike .image {
-    width: 300px;
-    height: 300px;
-  }
-  .container .description {
-    width: 80%;
-  } */
-
 .cartTitle {
   display: flex;
   align-items: center;
@@ -208,9 +201,11 @@ body {
   justify-content: space-around;
 }
 
+.cartBikes {
+  width: 610px;
+}
+
 .cartItem {
-  width: 700px;
-  height: 250px;
   display: flex;
   align-items: center;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
@@ -262,6 +257,11 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+.cartBtns {
+  display: flex;
+  justify-content: space-between;
+}
 .cartContinueShoppingBtn {
   outline: 0;
   border: 0;
@@ -282,6 +282,28 @@ body {
 .cartContinueShoppingBtn:hover {
   border: 1px solid #c9940d;
   color: #c9940d;
+  cursor: pointer;
+}
+
+.cartCheckoutShoppingBtn {
+  outline: 0;
+  border: 0;
+  background: none;
+  border: 1px solid #b7b5b5;
+  padding: 8px 0px;
+  margin-bottom: 20px;
+  color: #302f2f;
+  background-color: #c9940d;
+  text-transform: uppercase;
+  width: 125px;
+  font-family: inherit;
+  margin-right: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.cartCheckoutShoppingBtn:hover {
+  color: #ffffff;
   cursor: pointer;
 }
 
