@@ -15,17 +15,27 @@ export function CartItem({ data }) {
         </p>
         <p> Price: ${price}</p>
         <div className="countHandler">
-          <button type="button" onClick={() => removeFromCart(id)}>
+          <button
+            type="button"
+            className="countHandlerMinus"
+            onClick={() => removeFromCart(id)}
+          >
             {" "}
             -{" "}
           </button>
           <input
             value={cartItems[id][0]}
+            disabled
+            className="countHandlerInput"
             onChange={(e) =>
               updateCartItemCount(Number(e.target.value.toString()), id)
             }
           />
-          <button type="button" onClick={() => addToCart(id)}>
+          <button
+            type="button"
+            className="countHandlerPlus"
+            onClick={() => addToCart(id)}
+          >
             {" "}
             +{" "}
           </button>

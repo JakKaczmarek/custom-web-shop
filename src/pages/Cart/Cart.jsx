@@ -24,6 +24,10 @@ export default function Cart() {
       <NavBar />
       <span>
         <h1 className="cartTitle">Your Cart Items</h1>
+        <p className="cartTitleDescription">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
+          urna, dignissim nec auctor in, mattis vitae leo.
+        </p>
       </span>
       <div className="cart">
         <div className="cartBikes">
@@ -35,21 +39,37 @@ export default function Cart() {
           })}
         </div>
         <div className="cartSummary">
-          {" "}
-          <p className="subPrice"> Subtotal: ${totalPrice} </p>
-          <p className="subPrice">Discount: $0</p>
-          <p className="subPrice">Shipping: $0</p>
-          <p className="totalPrice">Total: ${totalPrice} </p>
-          <button
-            type="button"
-            className="cartContinueShoppingBtn"
-            onClick={() => {
-              handleSubmit();
-            }}
-          >
+          <div className="cartTotalPrice">
             {" "}
-            Continue Shopping{" "}
-          </button>
+            <p className="subPrice"> Subtotal: ${totalPrice} </p>
+            <p className="subPrice">Discount: $0</p>
+            <p className="subPrice">Shipping: $0</p>
+            <p className="totalPrice">Total: ${totalPrice} </p>
+            <button
+              type="button"
+              className="cartContinueShoppingBtn"
+              onClick={() => {
+                handleSubmit();
+              }}
+            >
+              {" "}
+              Continue Shopping{" "}
+            </button>
+          </div>
+          <div className="cartHelp">
+            <div className="cartHelpTitle">
+              <h5>Support</h5>
+            </div>
+            <div className="cartHelpText">
+              <h3>
+                <i className="cartPhone" /> +43 100 783 001
+              </h3>
+              <span className="small">
+                Please contact with us if you have any questions. We are
+                avalible 24h.
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

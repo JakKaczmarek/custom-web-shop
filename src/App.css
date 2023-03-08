@@ -23,6 +23,7 @@ body {
   display: flex;
   flex-direction: row;
   margin-right: 7%;
+  transition: all 0.3s ease;
 }
 .navBar .right .cart {
   margin-right: 50px;
@@ -67,6 +68,21 @@ body {
   box-shadow: inset 0px 0px 9px 2px rgba(150, 145, 145, 1);
 }
 
+@media (max-width: 450px) {
+  .product {
+    max-width: 300px;
+    height: auto;
+    transition: all 0.3s ease;
+  }
+  .bike {
+    max-width: 300px;
+  }
+  .bike .image {
+    max-width: 250px;
+    max-height: 250px;
+  }
+}
+
 .bike {
   padding: 20px;
 }
@@ -79,11 +95,10 @@ body {
 
 .bikeName {
   font-size: 28px;
-  font-family: Georgia, "Times New Roman", Times, serif;
 }
+
 .bikePrice {
   font-size: 40px;
-  font-family: "Courier New", monospace;
 }
 
 .Btns {
@@ -95,18 +110,19 @@ body {
 .infoBtn {
   outline: 0;
   border: 0;
-  background-color: white;
-  min-width: 100px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin: 10px;
-  color: rgb(0, 0, 0);
-  -webkit-box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
-  -moz-box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
-  box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
-  font-family: Georgia, "Times New Roman", Times, serif;
+  background: none;
+  border: 1px solid #d9d9d9;
+  padding: 8px 0px;
+  margin-bottom: 20px;
+  color: #000000;
+  background-color: #ffffff;
+  text-transform: uppercase;
+  width: 125px;
+  font-family: inherit;
+  margin-right: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 .infoBtn:hover {
   background-color: rgb(19, 19, 19);
@@ -117,18 +133,19 @@ body {
 .addToCartBtn {
   outline: 0;
   border: 0;
-  background-color: white;
-  min-width: 100px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin: 10px;
-  color: rgb(0, 0, 0);
-  -webkit-box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
-  -moz-box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
-  box-shadow: 0px 0px 9px 2px rgba(150, 145, 145, 1);
-  font-family: Georgia, "Times New Roman", Times, serif;
+  background: none;
+  border: 1px solid #d9d9d9;
+  padding: 8px 0px;
+  margin-bottom: 20px;
+  color: #000000;
+  background-color: #ffffff;
+  text-transform: uppercase;
+  width: 125px;
+  font-family: inherit;
+  margin-right: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .addToCartBtn:hover {
@@ -179,6 +196,12 @@ body {
   align-items: center;
   justify-content: center;
 }
+.cartTitleDescription {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
 .cart {
   display: flex;
   flex-wrap: wrap;
@@ -191,7 +214,7 @@ body {
   display: flex;
   align-items: center;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  margin: 30px;
+  margin-bottom: 30px;
   background-color: white;
 }
 
@@ -208,8 +231,20 @@ body {
 }
 
 .cartSummary {
+  max-width: 350px;
+}
+
+.cartSummary .cartTotalPrice {
   background-color: white;
-  padding: 35px;
+  padding: 20px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cartSummary .cartHelp {
+  background-color: white;
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
 .subPrice {
@@ -245,6 +280,66 @@ body {
 }
 
 .cartContinueShoppingBtn:hover {
+  border: 1px solid #c9940d;
+  color: #c9940d;
+  cursor: pointer;
+}
+
+.countHandler .countHandlerMinus {
+  outline: 0;
+  border: 0;
+  background: none;
+  border: 1px solid #d9d9d9;
+  padding: 8px 0px;
+  margin-bottom: 20px;
+  color: #302f2f;
+  text-transform: uppercase;
+  width: 40px;
+  font-family: inherit;
+  margin-right: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.countHandler .countHandlerMinus:hover {
+  border: 1px solid #c9940d;
+  color: #c9940d;
+  cursor: pointer;
+}
+
+.countHandler .countHandlerInput {
+  outline: 0;
+  border: 0;
+  background: none;
+  border: 1px solid #d9d9d9;
+  padding: 8px 0px;
+  margin-bottom: 20px;
+  color: #302f2f;
+  text-transform: uppercase;
+  width: 100px;
+  font-family: inherit;
+  margin-right: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.countHandler .countHandlerPlus {
+  outline: 0;
+  border: 0;
+  background: none;
+  border: 1px solid #d9d9d9;
+  padding: 8px 0px;
+  margin-bottom: 20px;
+  color: #302f2f;
+  text-transform: uppercase;
+  width: 40px;
+  font-family: inherit;
+  margin-right: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.countHandler .countHandlerPlus:hover {
   border: 1px solid #c9940d;
   color: #c9940d;
   cursor: pointer;

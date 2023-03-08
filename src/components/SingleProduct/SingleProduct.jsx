@@ -29,14 +29,14 @@ function SingleProduct() {
   }, []);
   if (productId > -1) {
     return (
-      <body>
-        <div>
-          <NavBar />
+      <div>
+        <NavBar />
+        <div className="allCard">
+          <nav>
+            <ArrowBackIosIcon className="arrowSingle" onClick={backSumbit} />
+            Back to all bikes
+          </nav>
           <div className="cardSingle">
-            <nav>
-              <ArrowBackIosIcon className="arrowSingle" onClick={backSumbit} />
-              Back to all bikes
-            </nav>
             <div className="bikePhotoSingle">
               {" "}
               <img
@@ -71,7 +71,7 @@ function SingleProduct() {
             <br />
           </div>
         </div>
-      </body>
+      </div>
     );
   }
   return <p>Loading...</p>;
