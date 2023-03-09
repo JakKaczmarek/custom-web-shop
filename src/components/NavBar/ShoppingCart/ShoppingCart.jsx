@@ -1,21 +1,29 @@
-import * as React from "react";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+import React, { useContext } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
 import { useNavigate } from "react-router-dom";
+import { ShopContext } from "../../../contexts/ShopContext";
 
 export default function ShoppingCart() {
+  const { itemCount } = useContext(ShopContext);
+
   const navigate = useNavigate();
 
   const handleSubmit = () => {
     navigate("/cart");
   };
   return (
-    <Stack spacing={2} direction="row">
-      <Button style={{ color: "black" }} onClick={handleSubmit}>
-        <ShoppingCartIcon />
-        CART
-      </Button>
-    </Stack>
+    <Badge
+      sx={{
+        "& .MuiBadge-badge": {
+          color: "black",
+          backgroundColor: "#c9940d",
+        },
+      }}
+      badgeContent={itemCount}
+      onClick={handleSubmit}
+    >
+      <ShoppingCartIcon />{" "}
+    </Badge>
   );
 }

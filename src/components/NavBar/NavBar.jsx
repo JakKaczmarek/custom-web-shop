@@ -6,7 +6,6 @@ import Sign from "./Sign/Sign";
 
 export default function NavBar() {
   const navigate = useNavigate();
-
   const handleSubmit = () => {
     navigate("/");
   };

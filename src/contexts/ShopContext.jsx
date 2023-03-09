@@ -5,10 +5,12 @@ export const ShopContext = createContext();
 
 export function ShopContextProvider({ children }) {
   const [cartItems, setCartItems] = useState({});
+  const [itemCount, setItemCount] = useState(0);
 
   const addToCart = (itemId) => {
     const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
     const bike = bikes[bikeIdx];
+    setItemCount(itemCount + 1);
     setCartItems((prev) => ({
       ...prev,
       [itemId]: prev[itemId]
@@ -22,6 +24,8 @@ export function ShopContextProvider({ children }) {
     const bike = bikes[bikeIdx];
     const cartItemsCopy = JSON.parse(JSON.stringify(cartItems));
     delete cartItemsCopy[itemId];
+
+    setItemCount(Math.max(itemCount - 1, 0));
 
     if (cartItems[itemId][0] - 1 < 1) {
       setCartItems(cartItemsCopy);
@@ -40,6 +44,7 @@ export function ShopContextProvider({ children }) {
   const contextValue = useMemo(
     () => ({
       cartItems,
+      itemCount,
       addToCart,
       updateCartItemCount,
       removeFromCart,
