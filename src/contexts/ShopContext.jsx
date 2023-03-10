@@ -3,6 +3,8 @@ import { bikes } from "../mocks/bikes";
 
 export const ShopContext = createContext();
 
+// @TODO: Replace cartItem structure from [quantity, price] to Object like {quantity, price}
+// It's better not to operate on array indexes if we do not have to
 export function ShopContextProvider({ children }) {
   const [cartItems, setCartItems] = useState({});
   const [itemCount, setItemCount] = useState(0);
