@@ -367,3 +367,16 @@ body {
   color: #c9940d;
   cursor: pointer;
 }
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.checkoutInfo {
+  border: #302f2f 1px solid;
+  border-radius: 20px;
+  margin: auto;
+  padding: 30px;
+}
