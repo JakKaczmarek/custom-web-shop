@@ -15,7 +15,10 @@ export default function Cart() {
   });
 
   const navigate = useNavigate();
-  const handleSubmit = () => {
+  const handleSubmitCart = () => {
+    navigate("/checkout");
+  };
+  const handleSubmitHome = () => {
     navigate("/");
   };
 
@@ -46,14 +49,20 @@ export default function Cart() {
             <p className="subPrice">Shipping: $0</p>
             <p className="totalPrice">Total: ${totalPrice} </p>
             <div className="cartBtns">
-              <button type="button" className="cartCheckoutShoppingBtn">
+              <button
+                type="button"
+                className="cartCheckoutShoppingBtn"
+                onClick={() => {
+                  handleSubmitCart();
+                }}
+              >
                 Checkout
               </button>
               <button
                 type="button"
                 className="cartContinueShoppingBtn"
                 onClick={() => {
-                  handleSubmit();
+                  handleSubmitHome();
                 }}
               >
                 {" "}
