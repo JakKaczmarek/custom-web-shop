@@ -45,7 +45,12 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // @TODO: I'd suggest to assign credentials values to it's own variables
+    // const email = e.target.email.value;
+    // const password = e.target.password.value;
 
+    // @TODO: I'd suggest to rewrite these ifs to guard clauses to make it clearer
+    // https://learningactors.com/javascript-guard-clauses-how-you-can-refactor-conditional-logic/
     if (!e.target.email.value) {
       alert("Email is required");
     } else if (!e.target.password.value) {
