@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { bikes } from "../../mocks/bikes";
 import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
-import "./SingleProduct.css";
 
 function SingleProduct() {
   const { id } = useParams();
