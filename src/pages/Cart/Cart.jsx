@@ -76,7 +76,7 @@ export default function Cart() {
             </div>
             <div className="cartHelpText">
               <h3>
-                <i className="cartPhone" /> +43 100 783 001
+                <i className="cartPhone" /> +48 100 989 001
               </h3>
               <span className="small">
                 Please contact with us if you have any questions. We are

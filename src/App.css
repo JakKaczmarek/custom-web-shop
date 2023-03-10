@@ -380,3 +380,12 @@ body {
   margin: auto;
   padding: 30px;
 }
+
+.checkoutInfoTitle {
+  font-size: 23px;
+  font-weight: 600;
+}
+.paymentBtns {
+  display: flex;
+  flex-direction: column;
+}
