@@ -1,7 +1,7 @@
 import React from "react";
-import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
+import Field from "./Field";
 
 export default function Payment() {
   const navigate = useNavigate();
@@ -20,52 +20,18 @@ export default function Payment() {
       <div className="checkoutInfo">
         <p className="checkoutInfoTitle">Billing Address</p>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="firstName"
+          <Field
             label="First Name"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="firstName"
             autoComplete="given-name"
-            autoFocus
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
-          <TextField
-            margin="normal"
-            required
-            id="lastName"
-            label="Last Name"
-            InputLabelProps={{ style: { color: "gray" } }}
-            name="lastName"
-            autoComplete="family-name"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
+          />
+          <Field label="Last Name" name="lastName" autoComplete="family-name" />
         </div>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="adress"
+          <Field
             label="Adress Line"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="street-address"
             autoComplete="street-address"
-            className="adress"
             sx={{
               width: 600,
               "& .MuiOutlinedInput-root": {
@@ -74,91 +40,40 @@ export default function Payment() {
                 },
               },
             }}
-          />{" "}
+          />
         </div>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="city"
+          <Field
             label="City"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="address-level2"
             autoComplete="address-level2"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
-          <TextField
-            margin="normal"
-            id="provinceState"
+          />
+          <Field
             label="Province/State"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="address-level1"
             autoComplete="address-level1"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
+          />
         </div>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="country"
+          <Field
             label="Country"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="country-name"
             autoComplete="country-name"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
-          <TextField
-            margin="normal"
-            required
-            id="zipPostal"
+          />
+          <Field
             label="Zip/Postal Code"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="postal-code"
             autoComplete="postal-code"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
+          />
         </div>
         <p className="checkoutInfoTitle">Credit Card</p>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="cardNumber"
+          <Field
             label="Card number"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="cc-number"
             autoComplete="cc-number"
-            inputProps={{ maxLength: 19 }}
             placeholder="####-####-####-####"
+            inputProps={{ maxLength: 19 }}
             sx={{
               width: 600,
               "& .MuiOutlinedInput-root": {
@@ -167,49 +82,25 @@ export default function Payment() {
                 },
               },
             }}
-          />{" "}
+          />
         </div>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="cc-exp"
-            label="Expiry Date"
-            InputLabelProps={{ style: { color: "gray" } }}
-            name="cc-exp"
-            autoComplete="cc-exp"
-            inputProps={{ maxLength: 7 }}
+          <Field
+            label="Card number"
+            name="cc-number"
+            autoComplete="cc-number"
             placeholder="00/0000"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
-          <TextField
-            margin="normal"
-            required
-            id="cc-csc"
+            inputProps={{ maxLength: 7 }}
+          />
+          <Field
             label="Security Code"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="cvc"
             autoComplete="cvc"
-            inputProps={{ maxLength: 3 }}
             placeholder="___"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
+            inputProps={{ maxLength: 3 }}
+          />
         </div>
-        <div>
+        <div className="paymentBtns">
           <Button
             onClick={handleSubmitPrevious}
             type="submit"
@@ -219,8 +110,6 @@ export default function Payment() {
           >
             Previous
           </Button>
-        </div>
-        <div>
           <Button
             onClick={handleSubmit}
             type="submit"

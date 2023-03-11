@@ -11,7 +11,7 @@ export default function Cart() {
   let totalPrice = 0;
 
   Object.keys(cartItems).forEach((key) => {
-    totalPrice += cartItems[key][0] * cartItems[key][1];
+    totalPrice += cartItems[key].quantity * cartItems[key].price;
   });
 
   const navigate = useNavigate();

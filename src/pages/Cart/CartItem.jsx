@@ -24,7 +24,7 @@ export function CartItem({ data }) {
             -{" "}
           </button>
           <input
-            value={cartItems[id][0]}
+            value={cartItems[id].quantity}
             disabled
             className="countHandlerInput"
             onChange={(e) =>

@@ -1,11 +1,11 @@
 import React from "react";
-import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
+import Field from "./Field";
 
 export default function Checkout() {
   const navigate = useNavigate();
@@ -18,53 +18,18 @@ export default function Checkout() {
       <div className="checkoutInfo">
         <p className="checkoutInfoTitle">Shipping Address</p>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="firstName"
+          <Field
             label="First Name"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="firstName"
             autoComplete="given-name"
-            autoFocus
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
-          {/* @TODO: I'd avoid using spaces like that {" "} */}
-          <TextField
-            margin="normal"
-            required
-            id="lastName"
-            label="Last Name"
-            InputLabelProps={{ style: { color: "gray" } }}
-            name="lastName"
-            autoComplete="family-name"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
+          />
+          <Field label="Last Name" name="lastName" autoComplete="family-name" />
         </div>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="adress"
+          <Field
             label="Adress Line"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="street-address"
             autoComplete="street-address"
-            className="adress"
             sx={{
               width: 600,
               "& .MuiOutlinedInput-root": {
@@ -73,78 +38,31 @@ export default function Checkout() {
                 },
               },
             }}
-          />{" "}
+          />
         </div>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="city"
+          <Field
             label="City"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="address-level2"
             autoComplete="address-level2"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
-          <TextField
-            margin="normal"
-            id="provinceState"
+          />
+          <Field
             label="Province/State"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="address-level1"
             autoComplete="address-level1"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
+          />
         </div>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="country"
+          <Field
             label="Country"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="country-name"
             autoComplete="country-name"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
-          <TextField
-            margin="normal"
-            required
-            id="zipPostal"
+          />
+          <Field
             label="Zip/Postal Code"
-            InputLabelProps={{ style: { color: "gray" } }}
             name="postal-code"
-            autoComplete="postal-code"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
+            autoComplete="postal-codee"
+          />
         </div>
         <div>
           <p className="checkoutInfoTitle">Shipping Method</p>
@@ -174,42 +92,8 @@ export default function Checkout() {
         </div>
         <p className="checkoutInfoTitle">Customer Info</p>
         <div>
-          <TextField
-            margin="normal"
-            required
-            id="email"
-            label="Email adress"
-            InputLabelProps={{ style: { color: "gray" } }}
-            name="email"
-            autoComplete="email"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
-          <TextField
-            margin="normal"
-            required
-            id="phone"
-            label="Phone number"
-            InputLabelProps={{ style: { color: "gray" } }}
-            name="tel"
-            autoComplete="tel"
-            inputProps={{ maxLength: 13 }}
-            placeholder="+48 000000000"
-            sx={{
-              width: 300,
-              "& .MuiOutlinedInput-root": {
-                "&.Mui-focused fieldSet": {
-                  borderColor: "gray",
-                },
-              },
-            }}
-          />{" "}
+          <Field label="Email adress" name="email" autoComplete="email" />
+          <Field label="Phone number" name="tel" autoComplete="tel" />
         </div>
         <div>
           <Button

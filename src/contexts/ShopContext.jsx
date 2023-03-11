@@ -3,8 +3,6 @@ import { bikes } from "../mocks/bikes";
 
 export const ShopContext = createContext();
 
-// @TODO: Replace cartItem structure from [quantity, price] to Object like {quantity, price}
-// It's better not to operate on array indexes if we do not have to
 export function ShopContextProvider({ children }) {
   const [cartItems, setCartItems] = useState({});
   const [itemCount, setItemCount] = useState(0);
@@ -16,8 +14,8 @@ export function ShopContextProvider({ children }) {
     setCartItems((prev) => ({
       ...prev,
       [itemId]: prev[itemId]
-        ? [prev[itemId][0] + 1, bike.price]
-        : [1, bike.price],
+        ? { quantity: prev[itemId].quantity + 1, price: bike.price }
+        : { quantity: 1, price: bike.price },
     }));
   };
 
@@ -29,12 +27,12 @@ export function ShopContextProvider({ children }) {
 
     setItemCount(Math.max(itemCount - 1, 0));
 
-    if (cartItems[itemId][0] - 1 < 1) {
+    if (cartItems[itemId].quantity - 1 < 1) {
       setCartItems(cartItemsCopy);
     } else {
       setCartItems((prev) => ({
         ...prev,
-        [itemId]: [prev[itemId][0] - 1, bike.price],
+        [itemId]: { quantity: prev[itemId].quantity - 1, price: bike.price },
       }));
     }
   };

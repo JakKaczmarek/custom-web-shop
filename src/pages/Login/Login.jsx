@@ -39,31 +39,21 @@ export default function Login() {
   const navigate = useNavigate();
   const { setIsAuthenticated } = useContext(AuthContext);
 
+  const [error, setError] = React.useState(false);
+
   const logoSumbit = () => {
     navigate("/");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // @TODO: I'd suggest to assign credentials values to it's own variables
-    // const email = e.target.email.value;
-    // const password = e.target.password.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-    // @TODO: I'd suggest to rewrite these ifs to guard clauses to make it clearer
-    // https://learningactors.com/javascript-guard-clauses-how-you-can-refactor-conditional-logic/
-    if (!e.target.email.value) {
-      alert("Email is required");
-    } else if (!e.target.password.value) {
-      alert("Password is required");
-    } else if (
-      e.target.email.value === "b" &&
-      e.target.password.value === "b"
-    ) {
+    if (email === "b" && password === "b") {
       setIsAuthenticated(true);
       navigate("/");
-    } else {
-      alert("Wrong email or password combination");
-    }
+    } else setError(true);
   };
 
   return (
@@ -99,6 +89,7 @@ export default function Login() {
               inputProps={{ "data-testid": "email-input" }}
               margin="normal"
               required
+              error={error}
               fullWidth
               id="email"
               label="Email Address"
@@ -118,6 +109,7 @@ export default function Login() {
               inputProps={{ "data-testid": "password-input" }}
               margin="normal"
               required
+              error={error}
               fullWidth
               name="password"
               label="Password"

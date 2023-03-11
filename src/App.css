@@ -387,7 +387,8 @@ body {
 }
 .paymentBtns {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,500,700);
