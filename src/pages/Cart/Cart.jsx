@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "./CartItem";
 import { ShopContext } from "../../contexts/ShopContext";
@@ -8,6 +8,8 @@ import NavBar from "../../components/NavBar/NavBar";
 export default function Cart() {
   const { cartItems } = useContext(ShopContext);
 
+  const [discount, setDiscount] = useState(0);
+
   let totalPrice = 0;
 
   Object.keys(cartItems).forEach((key) => {
@@ -15,6 +17,14 @@ export default function Cart() {
   });
 
   const navigate = useNavigate();
+
+  const [discountCode, setDiscountCode] = useState(null);
+
+  const handleSumbitDiscount = () => {
+    if (discountCode === "BIKE") {
+      setDiscount(599);
+    }
+  };
   const handleSubmitCart = () => {
     navigate("/checkout");
   };
@@ -45,9 +55,9 @@ export default function Cart() {
           <div className="cartTotalPrice">
             {" "}
             <p className="subPrice"> Subtotal: ${totalPrice} </p>
-            <p className="subPrice">Discount: $0</p>
+            <p className="subPrice">Discount: ${discount}</p>
             <p className="subPrice">Shipping: $0</p>
-            <p className="totalPrice">Total: ${totalPrice} </p>
+            <p className="totalPrice">Total: ${totalPrice - discount}</p>
             <div className="cartBtns">
               <button
                 type="button"
@@ -67,6 +77,23 @@ export default function Cart() {
               >
                 {" "}
                 Continue Shopping{" "}
+              </button>
+            </div>
+          </div>
+          <div className="discount">
+            <div>
+              {" "}
+              <input
+                type="text"
+                id="coupon"
+                onChange={(e) => {
+                  setDiscountCode(e.target.value);
+                }}
+              />
+            </div>
+            <div>
+              <button type="button" onClick={handleSumbitDiscount}>
+                Submit
               </button>
             </div>
           </div>
