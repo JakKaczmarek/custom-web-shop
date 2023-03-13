@@ -9,6 +9,13 @@ export default function Products() {
   const { addToCart } = useContext(ShopContext);
   const [query, setQuery] = useState("");
   const { enqueueSnackbar } = useSnackbar();
+  const [data, setData] = useState(bikes);
+  const filterResult = (catItem) => {
+    const result = bikes.filter((curData) => {
+      return curData.category === catItem;
+    });
+    setData(result);
+  };
 
   function Click(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
@@ -24,8 +31,38 @@ export default function Products() {
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
+      <div className="Category">
+        <button
+          type="button"
+          className="categoryBtns"
+          onClick={() => setData(bikes)}
+        >
+          All
+        </button>
+        <button
+          type="button"
+          className="categoryBtns"
+          onClick={() => filterResult("Cube")}
+        >
+          Cube
+        </button>
+        <button
+          type="button"
+          className="categoryBtns"
+          onClick={() => filterResult("Orbea")}
+        >
+          Orbea
+        </button>
+        <button
+          type="button"
+          className="categoryBtns"
+          onClick={() => filterResult("Vitus")}
+        >
+          Vitus
+        </button>
+      </div>
       <div className="products">
-        {bikes
+        {data
           .filter((bike) =>
             bike.bikeName.toLowerCase().includes(query.toLowerCase())
           )
