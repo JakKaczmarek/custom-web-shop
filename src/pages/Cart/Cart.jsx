@@ -80,19 +80,25 @@ export default function Cart() {
               </button>
             </div>
           </div>
-          <div className="discount">
+          <div className="cartDiscount">
             <div>
               {" "}
               <input
                 type="text"
                 id="coupon"
+                placeholder="DISCOUNT"
+                className="cartDiscountInput"
                 onChange={(e) => {
                   setDiscountCode(e.target.value);
                 }}
               />
             </div>
             <div>
-              <button type="button" onClick={handleSumbitDiscount}>
+              <button
+                type="button"
+                className="cartDiscountBtn"
+                onClick={handleSumbitDiscount}
+              >
                 Submit
               </button>
             </div>

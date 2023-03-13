@@ -236,6 +236,55 @@ body {
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
 }
 
+.cartSummary .cartDiscount {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+.cartSummary .cartDiscount .cartDiscountInput {
+  padding: 20px;
+  outline: 0;
+  border: 0;
+  background: none;
+  border: 1px solid #d9d9d9;
+  padding: 8px 0px;
+  margin-bottom: 20px;
+  color: #302f2f;
+  text-transform: uppercase;
+  width: 170px;
+  font-family: inherit;
+  margin-right: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.cartSummary .cartDiscount .cartDiscountBtn {
+  padding: 20px;
+  outline: 0;
+  border: 0;
+  background: none;
+  border: 1px solid #d9d9d9;
+  padding: 8px 0px;
+  margin-bottom: 20px;
+  color: #302f2f;
+  text-transform: uppercase;
+  width: 125px;
+  font-family: inherit;
+  margin-right: 5px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.cartSummary .cartDiscount .cartDiscountBtn:hover {
+  border: 1px solid #c9940d;
+  color: #c9940d;
+  cursor: pointer;
+}
+
 .cartSummary .cartHelp {
   background-color: white;
   padding: 20px;
