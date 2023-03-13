@@ -18,9 +18,9 @@ export const bikes = [
     src: bike1,
     alt: "bike1",
     id: 1,
-    category: "Orbea",
-    bikeName: "Orbea Wild FS H10",
-    price: 6700.0,
+    category: "Cube",
+    bikeName: "Cube Reaction Hybrid Pro",
+    price: 2700.0,
   },
   {
     src: bike2,
@@ -106,8 +106,8 @@ export const bikes = [
     src: bike12,
     alt: "bike12",
     id: 12,
-    category: "Orbea",
-    bikeName: "Orbea Gain D50",
+    category: "Vitus",
+    bikeName: "Vitus Escarpe 27.5 CRS",
     price: 4670.0,
   },
 ];
