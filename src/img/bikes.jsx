@@ -86,7 +86,12 @@ export const bikes = [
     category: "Cube",
     bikeName: "Cube Ella Ride Hybrid",
     price: 3700.0,
-    srcArray: [bike3f1, bike3f2, bike3f3],
+    srcArray: [
+      { id: 1, src: bike3 },
+      { id: 2, src: bike3f1 },
+      { id: 3, src: bike3f2 },
+      { id: 4, src: bike3f3 },
+    ],
   },
   {
     src: bike4,
@@ -95,7 +100,12 @@ export const bikes = [
     category: "Cube",
     bikeName: "Cube Reaction Hybrid SLT",
     price: 5000.0,
-    srcArray: [bike4f1, bike4f2, bike4f3],
+    srcArray: [
+      { id: 1, src: bike4 },
+      { id: 2, src: bike4f1 },
+      { id: 3, src: bike4f2 },
+      { id: 4, src: bike4f3 },
+    ],
   },
   {
     src: bike5,
@@ -104,7 +114,12 @@ export const bikes = [
     category: "Orbea",
     bikeName: "Orbea Vibe H10",
     price: 5250.0,
-    srcArray: [bike5f1, bike5f2, bike5f3],
+    srcArray: [
+      { id: 1, src: bike5 },
+      { id: 2, src: bike5f1 },
+      { id: 3, src: bike5f2 },
+      { id: 4, src: bike5f3 },
+    ],
   },
   {
     src: bike6,
@@ -113,7 +128,12 @@ export const bikes = [
     category: "Orbea",
     bikeName: "Orbea Vibe H10 EQ,",
     price: 4100.0,
-    srcArray: [bike6f1, bike6f2, bike6f3],
+    srcArray: [
+      { id: 1, src: bike6 },
+      { id: 2, src: bike6f1 },
+      { id: 3, src: bike6f2 },
+      { id: 4, src: bike6f3 },
+    ],
   },
   {
     src: bike7,
@@ -122,7 +142,12 @@ export const bikes = [
     category: "Cube",
     bikeName: "Cube Acid Hybrid Rookie",
     price: 3500.0,
-    srcArray: [bike7f1, bike7f2, bike7f3],
+    srcArray: [
+      { id: 1, src: bike7 },
+      { id: 2, src: bike7f1 },
+      { id: 3, src: bike7f2 },
+      { id: 4, src: bike7f3 },
+    ],
   },
   {
     src: bike8,
@@ -131,7 +156,12 @@ export const bikes = [
     category: "Orbea",
     bikeName: "Orbea Vibe Mid H30",
     price: 3800.0,
-    srcArray: [bike8f1, bike8f2, bike8f3],
+    srcArray: [
+      { id: 1, src: bike8 },
+      { id: 2, src: bike8f1 },
+      { id: 3, src: bike8f2 },
+      { id: 4, src: bike8f3 },
+    ],
   },
   {
     src: bike9,
@@ -140,7 +170,12 @@ export const bikes = [
     category: "Orbea",
     bikeName: "Orbea Keram 10",
     price: 3950.0,
-    srcArray: [bike9f1, bike9f2, bike9f3],
+    srcArray: [
+      { id: 1, src: bike9 },
+      { id: 2, src: bike9f1 },
+      { id: 3, src: bike9f2 },
+      { id: 4, src: bike9f3 },
+    ],
   },
   {
     src: bike10,
@@ -149,7 +184,12 @@ export const bikes = [
     category: "Cube",
     bikeName: "Cube Supreme Hybrid ONE",
     price: 3600.0,
-    srcArray: [bike10f1, bike10f2, bike10f3],
+    srcArray: [
+      { id: 1, src: bike10 },
+      { id: 2, src: bike10f1 },
+      { id: 3, src: bike10f2 },
+      { id: 4, src: bike10f3 },
+    ],
   },
   {
     src: bike11,
@@ -158,7 +198,12 @@ export const bikes = [
     category: "Cube",
     bikeName: "Cube Nuride Hybrid EXC",
     price: 4500.0,
-    srcArray: [bike11f1, bike11f2, bike11f3],
+    srcArray: [
+      { id: 1, src: bike11 },
+      { id: 2, src: bike11f1 },
+      { id: 3, src: bike11f2 },
+      { id: 4, src: bike11f3 },
+    ],
   },
   {
     src: bike12,
@@ -167,6 +212,11 @@ export const bikes = [
     category: "Vitus",
     bikeName: "Vitus Escarpe 27.5 CRS",
     price: 4670.0,
-    srcArray: [bike12f1, bike12f2, bike12f3],
+    srcArray: [
+      { id: 1, src: bike12 },
+      { id: 2, src: bike12f1 },
+      { id: 3, src: bike12f2 },
+      { id: 4, src: bike12f3 },
+    ],
   },
 ];
