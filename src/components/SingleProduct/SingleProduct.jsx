@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -17,6 +15,12 @@ function SingleProduct() {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
 
+  const [sldierData, setSliderData] = useState(null);
+  const handleClick = (i) => {
+    const slider = bikes[productId].srcArray[i];
+    setSliderData(slider);
+  };
+
   const backSumbit = () => {
     navigate("/");
   };
@@ -26,9 +30,13 @@ function SingleProduct() {
   }
 
   useEffect(() => {
-    setProductId(bikes.findIndex((bike) => bike.id.toString() === id));
-  }, []);
-  if (productId > -1) {
+    if (productId > -1) {
+      setSliderData(bikes[productId].srcArray[0]);
+    } else {
+      setProductId(bikes.findIndex((bike) => bike.id.toString() === id));
+    }
+  }, [productId]);
+  if (productId > -1 && sldierData) {
     return (
       <div>
         <NavBar />
@@ -42,19 +50,23 @@ function SingleProduct() {
               <div className="bikePhotoSingle">
                 {" "}
                 <img
-                  src={bikes[productId].src}
-                  alt={bikes[productId].alt}
+                  src={sldierData.src}
+                  alt={sldierData.alt}
                   className="imageSingle"
                 />
               </div>
+
               <div className="otherImages">
-                {bikes[productId].srcArray.map((image, index) => {
+                {bikes[productId].srcArray.map((image, i) => {
                   return (
-                    <div
-                      className="otherImagesSingle"
-                      // role="presentation"
-                    >
-                      <img key={index} src={image} alt={bikes[productId].alt} />
+                    <div className="otherImagesSingle" key={image.id}>
+                      <img
+                        key={image.id}
+                        src={image.src}
+                        alt={bikes[productId].alt}
+                        role="presentation"
+                        onClick={() => handleClick(i)}
+                      />
                     </div>
                   );
                 })}

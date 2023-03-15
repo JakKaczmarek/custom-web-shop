@@ -57,7 +57,12 @@ export const bikes = [
     category: "Cube",
     bikeName: "Cube Reaction Hybrid Pro",
     price: 2700.0,
-    srcArray: [bike1f1, bike1f2, bike1f3],
+    srcArray: [
+      { id: 1, src: bike1 },
+      { id: 2, src: bike1f1 },
+      { id: 3, src: bike1f2 },
+      { id: 4, src: bike1f3 },
+    ],
   },
 
   {
@@ -67,7 +72,12 @@ export const bikes = [
     category: "Vitus",
     bikeName: "Vitus E-substance Carbon",
     price: 4300.0,
-    srcArray: [bike2f1, bike2f2, bike2f3],
+    srcArray: [
+      { id: 1, src: bike2 },
+      { id: 2, src: bike2f1 },
+      { id: 3, src: bike2f2 },
+      { id: 4, src: bike2f3 },
+    ],
   },
   {
     src: bike3,
