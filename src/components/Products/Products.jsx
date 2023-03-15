@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useSnackbar } from "notistack";
-import { bikes } from "../../mocks/bikes";
+import { bikes } from "../../img/bikes";
 import { ShopContext } from "../../contexts/ShopContext";
 
 export default function Products() {

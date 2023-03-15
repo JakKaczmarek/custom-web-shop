@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
@@ -5,7 +6,7 @@ import { useParams } from "react-router";
 import { useSnackbar } from "notistack";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useNavigate } from "react-router-dom";
-import { bikes } from "../../mocks/bikes";
+import { bikes } from "../../img/bikes";
 import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
 
@@ -49,7 +50,10 @@ function SingleProduct() {
               <div className="otherImages">
                 {bikes[productId].srcArray.map((image, index) => {
                   return (
-                    <div className="otherImagesSingle">
+                    <div
+                      className="otherImagesSingle"
+                      // role="presentation"
+                    >
                       <img key={index} src={image} alt={bikes[productId].alt} />
                     </div>
                   );

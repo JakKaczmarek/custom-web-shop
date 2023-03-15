@@ -1,5 +1,5 @@
 import { createContext, useState, useMemo } from "react";
-import { bikes } from "../mocks/bikes";
+import { bikes } from "../img/bikes";
 
 export const ShopContext = createContext();
 

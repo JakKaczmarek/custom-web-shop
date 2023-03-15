@@ -529,6 +529,11 @@ nav {
   border-top: 2px solid #efefef;
 }
 
+.otherImagesSingle {
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
 .otherImagesSingle:hover {
   cursor: pointer;
 }
@@ -575,7 +580,6 @@ nav {
 }
 
 .descriptionSingle {
-  margin-top: 10px;
   padding: 30px;
   float: right;
   width: 55%;

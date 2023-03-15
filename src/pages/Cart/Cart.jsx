@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartItem } from "./CartItem";
 import { ShopContext } from "../../contexts/ShopContext";
-import { bikes } from "../../mocks/bikes";
+import { bikes } from "../../img/bikes";
 import NavBar from "../../components/NavBar/NavBar";
 
 export default function Cart() {

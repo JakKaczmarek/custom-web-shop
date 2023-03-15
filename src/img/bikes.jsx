@@ -47,7 +47,7 @@ import {
   bike12f1,
   bike12f2,
   bike12f3,
-} from "./bikesPng";
+} from "./bikesImages";
 
 export const bikes = [
   {
