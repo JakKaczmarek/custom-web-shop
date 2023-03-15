@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -36,13 +37,24 @@ function SingleProduct() {
             Back to all bikes
           </nav>
           <div className="cardSingle">
-            <div className="bikePhotoSingle">
-              {" "}
-              <img
-                src={bikes[productId].src}
-                alt={bikes[productId].alt}
-                className="imageSingle"
-              />
+            <div className="cardSignleImages">
+              <div className="bikePhotoSingle">
+                {" "}
+                <img
+                  src={bikes[productId].src}
+                  alt={bikes[productId].alt}
+                  className="imageSingle"
+                />
+              </div>
+              <div className="otherImages">
+                {bikes[productId].srcArray.map((image, index) => {
+                  return (
+                    <div className="otherImagesSingle">
+                      <img key={index} src={image} alt={bikes[productId].alt} />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
             <div className="descriptionSingle">
               <h2 className="titleSingle">{bikes[productId].bikeName}</h2>
@@ -66,7 +78,6 @@ function SingleProduct() {
                 Add To Cart
               </button>
             </div>
-
             <br />
           </div>
         </div>
