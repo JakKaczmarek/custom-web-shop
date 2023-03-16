@@ -49,7 +49,7 @@ export { default as bike10f2 } from "./bike10/bike102.jpg";
 export { default as bike10f3 } from "./bike10/bike103.jpg";
 
 export { default as bike11 } from "./bike11/bike11.jpg";
-export { default as bike11f1 } from "./bike11/bike11.jpg";
+export { default as bike11f1 } from "./bike11/bike111.jpg";
 export { default as bike11f2 } from "./bike11/bike112.jpg";
 export { default as bike11f3 } from "./bike11/bike113.jpg";
 

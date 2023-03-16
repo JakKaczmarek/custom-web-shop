@@ -56,7 +56,6 @@ export default function Cart() {
             {" "}
             <p className="subPrice"> Subtotal: ${totalPrice} </p>
             <p className="subPrice">Discount: ${discount}</p>
-            <p className="subPrice">Shipping: $0</p>
             <p className="totalPrice">Total: ${totalPrice - discount}</p>
             <div className="cartBtns">
               <button

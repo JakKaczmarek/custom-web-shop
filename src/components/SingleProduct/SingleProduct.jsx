@@ -15,7 +15,7 @@ function SingleProduct() {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
 
-  const [sldierData, setSliderData] = useState(null);
+  const [sliderData, setSliderData] = useState(null);
   const handleClick = (i) => {
     const slider = bikes[productId].srcArray[i];
     setSliderData(slider);
@@ -36,7 +36,7 @@ function SingleProduct() {
       setProductId(bikes.findIndex((bike) => bike.id.toString() === id));
     }
   }, [productId]);
-  if (productId > -1 && sldierData) {
+  if (productId > -1 && sliderData) {
     return (
       <div>
         <NavBar />
@@ -50,8 +50,8 @@ function SingleProduct() {
               <div className="bikePhotoSingle">
                 {" "}
                 <img
-                  src={sldierData.src}
-                  alt={sldierData.alt}
+                  src={sliderData.src}
+                  alt={sliderData.alt}
                   className="imageSingle"
                 />
               </div>
@@ -63,6 +63,7 @@ function SingleProduct() {
                       <img
                         key={image.id}
                         src={image.src}
+                        className={sliderData.id === i + 1 ? "clicked" : ""}
                         alt={bikes[productId].alt}
                         role="presentation"
                         onClick={() => handleClick(i)}
