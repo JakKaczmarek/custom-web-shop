@@ -9,10 +9,11 @@ import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function Sign() {
   const navigate = useNavigate();
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
   const handleSubmit = () => {
     navigate("/login");
+    setIsAuthenticated(false);
   };
 
   return (

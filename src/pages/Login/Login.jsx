@@ -37,26 +37,6 @@ const theme = createTheme();
 
 export default function Login() {
   const { error, logoSumbit, handleSubmit } = useContext(AuthContext);
-  // const navigate = useNavigate();
-  // const { setIsAuthenticated } = useContext(AuthContext);
-
-  // const [error, setError] = React.useState(false);
-
-  // const logoSumbit = () => {
-  //   navigate("/");
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const email = e.target.email.value;
-  //   const password = e.target.password.value;
-
-  //   if (email === "b" && password === "b") {
-  //     setIsAuthenticated(true);
-  //     navigate("/");
-  //   } else setError(true);
-  // };
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">

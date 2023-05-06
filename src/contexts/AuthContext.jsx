@@ -1,13 +1,13 @@
-import { createContext, useMemo, useContext } from "react";
-// import { createContext, useMemo } from "react";
+import { createContext, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
 
 export const AuthContext = createContext(false);
 
 export function AuthContextProvider({ children }) {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
   const navigate = useNavigate();
-  const { setIsAuthenticated } = useContext(AuthContext);
   const [error, setError] = React.useState(false);
 
   const logoSumbit = () => {
@@ -30,8 +30,9 @@ export function AuthContextProvider({ children }) {
       error,
       handleSubmit,
       logoSumbit,
+      isAuthenticated,
     }),
-    [error, logoSumbit, handleSubmit]
+    [error, logoSumbit, handleSubmit, isAuthenticated]
   );
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

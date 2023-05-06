@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { useState, useMemo } from "react";
+// import { useState, useMemo } from "react";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { SnackbarProvider } from "notistack";
 import Login from "./pages/Login/Login";
@@ -13,15 +13,6 @@ import { ShopContextProvider } from "./contexts/ShopContext";
 import { AuthContextProvider } from "./contexts/AuthContext";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const value = useMemo(
-    () => ({
-      isAuthenticated,
-      setIsAuthenticated,
-    }),
-    [isAuthenticated, setIsAuthenticated]
-  );
-
   return (
     <div className="App">
       <div className="app">
@@ -33,7 +24,7 @@ function App() {
           }}
         >
           <ShopContextProvider>
-            <AuthContextProvider value={value}>
+            <AuthContextProvider>
               <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/login" element={<Login />} />
