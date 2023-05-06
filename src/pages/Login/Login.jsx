@@ -10,7 +10,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import logoebike from "../../components/NavBar/logoebike.png";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -36,25 +36,26 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
-  const navigate = useNavigate();
-  const { setIsAuthenticated } = useContext(AuthContext);
+  const { error, logoSumbit, handleSubmit } = useContext(AuthContext);
+  // const navigate = useNavigate();
+  // const { setIsAuthenticated } = useContext(AuthContext);
 
-  const [error, setError] = React.useState(false);
+  // const [error, setError] = React.useState(false);
 
-  const logoSumbit = () => {
-    navigate("/");
-  };
+  // const logoSumbit = () => {
+  //   navigate("/");
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   const email = e.target.email.value;
+  //   const password = e.target.password.value;
 
-    if (email === "b" && password === "b") {
-      setIsAuthenticated(true);
-      navigate("/");
-    } else setError(true);
-  };
+  //   if (email === "b" && password === "b") {
+  //     setIsAuthenticated(true);
+  //     navigate("/");
+  //   } else setError(true);
+  // };
 
   return (
     <ThemeProvider theme={theme}>

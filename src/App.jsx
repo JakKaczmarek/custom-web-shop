@@ -5,12 +5,12 @@ import { useState, useMemo } from "react";
 import { SnackbarProvider } from "notistack";
 import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
-import { AuthContext } from "./contexts/AuthContext";
 import SingleProduct from "./components/SingleProduct/SingleProduct";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Payment from "./pages/Checkout/Payment";
 import { ShopContextProvider } from "./contexts/ShopContext";
+import { AuthContextProvider } from "./contexts/AuthContext";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -33,7 +33,7 @@ function App() {
           }}
         >
           <ShopContextProvider>
-            <AuthContext.Provider value={value}>
+            <AuthContextProvider value={value}>
               <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/login" element={<Login />} />
@@ -42,7 +42,7 @@ function App() {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/checkout/payment" element={<Payment />} />
               </Routes>
-            </AuthContext.Provider>
+            </AuthContextProvider>
           </ShopContextProvider>
         </SnackbarProvider>
       </div>
