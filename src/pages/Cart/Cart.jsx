@@ -10,11 +10,9 @@ export default function Cart() {
 
   const [discount, setDiscount] = useState(0);
 
-  let totalPrice = 0;
+  const totalPrice = 0;
 
-  Object.keys(cartItems).forEach((key) => {
-    totalPrice += cartItems[key].quantity * cartItems[key].price;
-  });
+  Object.values(totalPrice).reduce((quantity, price) => quantity + price, 0);
 
   const navigate = useNavigate();
 
@@ -53,7 +51,7 @@ export default function Cart() {
         </div>
         <div className="cartSummary">
           <div className="cartTotalPrice">
-            {" "}
+            &nbsp;
             <p className="subPrice"> Subtotal: ${totalPrice} </p>
             <p className="subPrice">Discount: ${discount}</p>
             <p className="totalPrice">Total: ${totalPrice - discount}</p>
@@ -74,14 +72,13 @@ export default function Cart() {
                   handleSubmitHome();
                 }}
               >
-                {" "}
-                Continue Shopping{" "}
+                &nbsp; Continue Shopping &nbsp;
               </button>
             </div>
           </div>
           <div className="cartDiscount">
             <div>
-              {" "}
+              &nbsp;
               <input
                 type="text"
                 id="coupon"

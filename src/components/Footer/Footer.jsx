@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 import { MDBFooter, MDBContainer, MDBCol, MDBRow } from "mdb-react-ui-kit";
 
@@ -35,7 +34,7 @@ export default function Footer() {
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-        &copy; {new Date().getFullYear()} Copyright:{" "}
+        &copy; {new Date().getFullYear()} Copyright: &nbsp;
         <a className="text-dark" href="https://Google.com/">
           Google.com
         </a>

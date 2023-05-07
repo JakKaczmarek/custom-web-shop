@@ -23,7 +23,8 @@ export default function ShoppingCart() {
       badgeContent={itemCount}
       onClick={handleSubmit}
     >
-      <ShoppingCartIcon />{" "}
+      <ShoppingCartIcon />
+      &nbsp;
     </Badge>
   );
 }

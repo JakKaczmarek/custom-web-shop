@@ -10,7 +10,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import logoebike from "../../components/NavBar/logoebike.png";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -21,13 +20,13 @@ function Copyright(props) {
       variant="body2"
       color="text.secondary"
       align="center"
-      /* eslint-disable react/jsx-props-no-spreading */
       {...props}
     >
       {"Copyright © "}
       <Link color="inherit" href="http://localhost:3000/">
-        eBike Shop{" "}
-      </Link>{" "}
+        eBike Shop &nbsp;
+      </Link>
+      &nbsp;
       {new Date().getFullYear()}.
     </Typography>
   );

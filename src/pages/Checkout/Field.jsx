@@ -2,13 +2,6 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 
 export default function Field({
-  label = "",
-  name = "",
-  autoComplete = "",
-  margin = "normal",
-  InputLabelProps = { style: { color: "gray" } },
-  inputProps = {},
-  placeholder = "",
   sx = {
     width: 300,
     "& .MuiOutlinedInput-root": {
@@ -17,6 +10,13 @@ export default function Field({
       },
     },
   },
+  label = "",
+  name = "",
+  autoComplete = "",
+  margin = "normal",
+  InputLabelProps = { style: { color: "gray" } },
+  inputProps = {},
+  placeholder = "",
 }) {
   return (
     <TextField

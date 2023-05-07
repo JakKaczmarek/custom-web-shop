@@ -20,8 +20,7 @@ export function CartItem({ data }) {
             className="countHandlerMinus"
             onClick={() => removeFromCart(id)}
           >
-            {" "}
-            -{" "}
+            &nbsp; - &nbsp;
           </button>
           <input
             value={cartItems[id].quantity}
@@ -36,8 +35,7 @@ export function CartItem({ data }) {
             className="countHandlerPlus"
             onClick={() => addToCart(id)}
           >
-            {" "}
-            +{" "}
+            &nbsp; + &nbsp;
           </button>
         </div>
       </div>

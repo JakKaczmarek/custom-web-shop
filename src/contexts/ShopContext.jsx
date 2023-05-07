@@ -19,10 +19,24 @@ export function ShopContextProvider({ children }) {
     }));
   };
 
+  const clone = (input) => {
+    if (input === null || typeof input !== "object") {
+      return input;
+    }
+
+    const initialOutput = Array.isArray(input) ? [] : {};
+
+    return Object.keys(input).reduce((acc, key) => {
+      acc[key] = clone(input[key]);
+      return acc;
+    }, initialOutput);
+  };
+
   const removeFromCart = (itemId) => {
     const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
     const bike = bikes[bikeIdx];
-    const cartItemsCopy = JSON.parse(JSON.stringify(cartItems));
+    const cartItemsCopy = clone(cartItems);
+    // const cartItemsCopy = JSON.parse(JSON.stringify(cartItems));
     delete cartItemsCopy[itemId];
 
     setItemCount(Math.max(itemCount - 1, 0));
