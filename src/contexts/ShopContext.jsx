@@ -36,7 +36,7 @@ export function ShopContextProvider({ children }) {
     const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
     const bike = bikes[bikeIdx];
     const cartItemsCopy = clone(cartItems);
-    // const cartItemsCopy = JSON.parse(JSON.stringify(cartItems));
+
     delete cartItemsCopy[itemId];
 
     setItemCount(Math.max(itemCount - 1, 0));

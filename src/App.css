@@ -620,3 +620,9 @@ nav {
   color: #c9940d;
   cursor: pointer;
 }
+
+.pagination {
+  margin: auto;
+  width: 20%;
+  padding: 10px;
+}
