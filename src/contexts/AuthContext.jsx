@@ -2,7 +2,7 @@ import { createContext, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext({});
 
 export function AuthContextProvider({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -27,6 +27,7 @@ export function AuthContextProvider({ children }) {
 
   const contextValue = useMemo(
     () => ({
+      setIsAuthenticated,
       error,
       handleSubmit,
       logoSubmit,

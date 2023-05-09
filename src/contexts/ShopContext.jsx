@@ -37,12 +37,15 @@ export function ShopContextProvider({ children }) {
     const bike = bikes[bikeIdx];
     const cartItemsCopy = clone(cartItems);
 
-    delete cartItemsCopy[itemId];
+    const cartItemsAsArray = Object.entries(cartItemsCopy);
+    const newCartItems = Object.fromEntries(
+      cartItemsAsArray.filter((item) => item[0] !== itemId)
+    );
 
     setItemCount(Math.max(itemCount - 1, 0));
 
     if (cartItems[itemId].quantity - 1 < 1) {
-      setCartItems(cartItemsCopy);
+      setCartItems(newCartItems);
     } else {
       setCartItems((prev) => ({
         ...prev,

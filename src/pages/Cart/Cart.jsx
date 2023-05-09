@@ -10,9 +10,10 @@ export default function Cart() {
 
   const [discount, setDiscount] = useState(0);
 
-  const totalPrice = 0;
-
-  Object.values(totalPrice).reduce((quantity, price) => quantity + price, 0);
+  const totalPrice = Object.values(cartItems).reduce(
+    (acc, curr) => acc + curr.price * curr.quantity,
+    0
+  );
 
   const navigate = useNavigate();
 
