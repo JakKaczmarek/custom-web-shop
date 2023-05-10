@@ -36,10 +36,10 @@ export function ShopContextProvider({ children }) {
     const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
     const bike = bikes[bikeIdx];
     const cartItemsCopy = clone(cartItems);
-
-    const cartItemsAsArray = Object.entries(cartItemsCopy);
     const newCartItems = Object.fromEntries(
-      cartItemsAsArray.filter((item) => item[0] !== itemId)
+      Object.entries(cartItemsCopy).filter(
+        (item) => parseInt(item[0], 10) !== itemId
+      )
     );
 
     setItemCount(Math.max(itemCount - 1, 0));
