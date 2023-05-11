@@ -73,7 +73,7 @@ export default function Cart() {
                   handleSubmitHome();
                 }}
               >
-                &nbsp; Continue Shopping &nbsp;
+                Continue Shopping
               </button>
             </div>
           </div>
