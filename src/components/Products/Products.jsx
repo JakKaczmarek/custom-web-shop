@@ -1,21 +1,30 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import { bikes } from "../../img/bikes";
+import axios from "axios";
 import { ShopContext } from "../../contexts/ShopContext";
 
 export default function Products() {
   const { addToCart } = useContext(ShopContext);
   const [query, setQuery] = useState("");
   const { enqueueSnackbar } = useSnackbar();
-  const [data, setData] = useState(bikes);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/bikes?limit=3&page=1")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const filterResult = (catItem) => {
-    const result = bikes.filter((curData) => {
+    const result = data.filter((curData) => {
       return curData.category === catItem;
     });
     setData(result);
   };
-
   function onAddClick(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
@@ -34,7 +43,7 @@ export default function Products() {
         <button
           type="button"
           className="categoryBtns"
-          onClick={() => setData(bikes)}
+          onClick={() => setData(data)}
         >
           All
         </button>

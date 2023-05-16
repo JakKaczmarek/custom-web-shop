@@ -1,15 +1,24 @@
-import { createContext, useState, useMemo } from "react";
-import { bikes } from "../img/bikes";
+import { createContext, useState, useMemo, useEffect } from "react";
+import axios from "axios";
 
 export const ShopContext = createContext();
 
 export function ShopContextProvider({ children }) {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/bikes?limit=3&page=1")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const [cartItems, setCartItems] = useState({});
   const [itemCount, setItemCount] = useState(0);
 
   const addToCart = (itemId) => {
-    const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
-    const bike = bikes[bikeIdx];
+    const bikeIdx = data.findIndex((bike) => bike.id === itemId);
+    const bike = data[bikeIdx];
     setItemCount(itemCount + 1);
     setCartItems((prev) => ({
       ...prev,
@@ -33,8 +42,8 @@ export function ShopContextProvider({ children }) {
   };
 
   const removeFromCart = (itemId) => {
-    const bikeIdx = bikes.findIndex((bike) => bike.id === itemId);
-    const bike = bikes[bikeIdx];
+    const bikeIdx = data.findIndex((bike) => bike.id === itemId);
+    const bike = data[bikeIdx];
     const cartItemsCopy = clone(cartItems);
     const newCartItems = Object.fromEntries(
       Object.entries(cartItemsCopy).filter(

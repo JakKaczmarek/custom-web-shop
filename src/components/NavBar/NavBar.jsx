@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
+import logoebike from "../../img/logoebike.png";
 import Sign from "./Sign/Sign";
 
 export default function NavBar() {
@@ -13,7 +14,7 @@ export default function NavBar() {
       <div className="image">
         <input
           type="image"
-          src="http://localhost:8000/api/bikes/bikesImages/bikeLogo/logoebike.png"
+          src={logoebike}
           alt="logoebike"
           style={{ width: 170, height: 70 }}
           onClick={handleSubmit}

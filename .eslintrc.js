@@ -26,7 +26,20 @@ module.exports = {
     "react/react-in-jsx-scope": 0,
     "linebreak-style": 0,
     "import/prefer-default-export": 0,
-    "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: [
+          "test.{ts,tsx,js,jsx}",
+          "test-*.{ts,tsx,js,jsx}",
+          "**/*{.,_}{test,spec}.{ts,tsx,js,jsx}",
+          "**/jest.config.{ts,js}",
+          "**/jest.setup.{ts,js}",
+          "**/*.stories.*",
+          "**/.storybook/**/*.*",
+        ],
+      },
+    ],
     "react/jsx-one-expression-per-line": "off",
     "prettier/prettier": [
       "error",

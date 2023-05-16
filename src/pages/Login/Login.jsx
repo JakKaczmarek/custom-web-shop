@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useContext } from "react";
+import logoebike from "../../img/logoebike.png";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Copyright(props) {
@@ -49,7 +50,7 @@ export default function Login() {
         >
           <input
             type="image"
-            src="http://localhost:8000/api/bikes/bikesImages/bikeLogo/logoebike.png"
+            src={logoebike}
             alt="logoebike"
             style={{ width: 190, height: 80 }}
             onClick={logoSumbit}

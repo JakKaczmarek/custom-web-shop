@@ -1,11 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { CartItem } from "./CartItem";
 import { ShopContext } from "../../contexts/ShopContext";
-import { bikes } from "../../img/bikes";
 import NavBar from "../../components/NavBar/NavBar";
 
 export default function Cart() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/bikes?limit=3&page=1")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const { cartItems } = useContext(ShopContext);
 
   const [discount, setDiscount] = useState(0);
@@ -43,7 +53,7 @@ export default function Cart() {
       </span>
       <div className="cart">
         <div className="cartBikes">
-          {bikes.map((bike) => {
+          {data.map((bike) => {
             if (cartItems[bike.id] && cartItems[bike.id] !== 0) {
               return <CartItem data={bike} key={bike.id} />;
             }
