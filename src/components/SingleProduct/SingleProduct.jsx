@@ -15,7 +15,7 @@ function SingleProduct() {
   const navigate = useNavigate();
 
   const [sliderData, setSliderData] = useState(null);
-  const handleClick = (i) => {
+  const onHandleClick = (i) => {
     const slider = bikes[productId].srcArray[i];
     setSliderData(slider);
   };
@@ -24,7 +24,7 @@ function SingleProduct() {
     navigate("/");
   };
 
-  function onClick(variant) {
+  function onAddClick(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
 
@@ -66,7 +66,7 @@ function SingleProduct() {
                           className={sliderData.id === i + 1 ? "clicked" : ""}
                           alt={bikes[productId].alt}
                           role="presentation"
-                          onClick={() => handleClick(i)}
+                          onClick={() => onHandleClick(i)}
                         />
                       </div>
                     );
@@ -90,7 +90,7 @@ function SingleProduct() {
                 <button
                   type="button"
                   className="addToCartBtnSingle"
-                  onClick={() => onClick(addToCart(bikes[productId].id))}
+                  onClick={() => onAddClick(addToCart(bikes[productId].id))}
                 >
                   Add To Cart
                 </button>

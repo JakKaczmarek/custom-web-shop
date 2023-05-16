@@ -16,7 +16,7 @@ export default function Products() {
     setData(result);
   };
 
-  function OnClick(variant) {
+  function onAddClick(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
 
@@ -91,7 +91,7 @@ export default function Products() {
                     <button
                       type="button"
                       className="addToCartBtn"
-                      onClick={() => OnClick(addToCart(bike.id))}
+                      onClick={() => onAddClick(addToCart(bike.id))}
                     >
                       <b>Add To Cart </b>
                     </button>
