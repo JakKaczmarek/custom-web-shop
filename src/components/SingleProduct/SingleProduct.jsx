@@ -40,12 +40,10 @@ function SingleProduct() {
   }
 
   useEffect(() => {
-    if (productId > -1) {
-      setSliderData(data[productId].srcArray[0]);
-      return;
-    }
+    if (productId > -1) setSliderData(data[productId].srcArray[0]);
     setProductId(data.findIndex((bike) => bike.id.toString() === id));
-  }, [productId]);
+    console.log(data);
+  }, [data]);
   if (productId > -1) {
     return (
       sliderData && (
@@ -61,7 +59,7 @@ function SingleProduct() {
                 <div className="bikePhotoSingle">
                   &nbsp;
                   <img
-                    src={sliderData.src}
+                    src={sliderData.path}
                     alt={sliderData.alt}
                     className="imageSingle"
                   />
@@ -73,7 +71,7 @@ function SingleProduct() {
                       <div className="otherImagesSingle" key={image.id}>
                         <img
                           key={image.id}
-                          src={image.src}
+                          src={image.path}
                           className={sliderData.id === i + 1 ? "clicked" : ""}
                           alt={data[productId].alt}
                           role="presentation"

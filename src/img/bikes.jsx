@@ -1,87 +1,18 @@
-// import {
-//   bike2,
-//   bike2f1,
-//   bike2f2,
-//   bike2f3,
-//   bike3,
-//   bike3f1,
-//   bike3f2,
-//   bike3f3,
-//   bike4,
-//   bike4f1,
-//   bike4f2,
-//   bike4f3,
-//   bike5,
-//   bike5f1,
-//   bike5f2,
-//   bike5f3,
-//   bike6,
-//   bike6f1,
-//   bike6f2,
-//   bike6f3,
-//   bike7,
-//   bike7f1,
-//   bike7f2,
-//   bike7f3,
-//   bike8,
-//   bike8f1,
-//   bike8f2,
-//   bike8f3,
-//   bike9,
-//   bike9f1,
-//   bike9f2,
-//   bike9f3,
-//   bike10,
-//   bike10f1,
-//   bike10f2,
-//   bike10f3,
-//   bike11,
-//   bike11f1,
-//   bike11f2,
-//   bike11f3,
-//   bike12,
-//   bike12f1,
-//   bike12f2,
-//   bike12f3,
-// } from "./bikesImages";
+// import { useEffect, useState } from "react";
 // import axios from "axios";
 
-// export const bikes = axios
-//   .get("http://localhost:8000/bikes?limit=3&page=1")
-//   .then((res) => {
-//     return res.data;
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+// export async function doGetRequest() {
+//   const [data, setData] = useState([]);
 
-// [
-//   {
-//     src: "http://localhost:8000/api/bikes/bikesImages/bike1/bike1.jpg",
-//     alt: "bike1",
-//     id: 1,
-//     category: "Cube",
-//     bikeName: "Cube Reaction Hybrid Pro",
-//     price: 2700.0,
-//     srcArray: [
-//       {
-//         id: 1,
-//         src: "http://localhost:8000/api/bikes/bikesImages/bike1/bike11.jpg",
-//       },
-//       {
-//         id: 2,
-//         src: "http://localhost:8000/api/bikes/bikesImages/bikeLogo/logoebike.png",
-//       },
-//       {
-//         id: 3,
-//         src: "http://localhost:8000/api/bikes/bikesImages/bikeLogo/logoebike.png",
-//       },
-//       {
-//         id: 4,
-//         src: "http://localhost:8000/api/bikes/bikesImages/bikeLogo/logoebike.png",
-//       },
-//     ],
-//   },
+//   useEffect(() => {
+//     axios
+//       .get("http://localhost:8000/bikes?limit=3&page=1")
+//       .then((res) => {
+//         setData(res.data);
+//       })
+//       .catch((err) => console.log(err));
+//   }, [data]);
+// }
 
 //   {
 //     src: bike2,
