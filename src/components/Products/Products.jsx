@@ -10,17 +10,24 @@ export default function Products() {
   const { enqueueSnackbar } = useSnackbar();
   const [data, setData] = useState([]);
   const [filterValue, setFilterValue] = useState("");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    loadData("http://localhost:8000/api/bikes/all", setData);
+    loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
   }, []);
+
+  const loadPage = async (e) => {
+    setPage(e);
+    loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
+  };
 
   const handleFilter = async (value) => {
     setFilterValue(value);
     loadData(`http://localhost:8000/api/bikes?category=${value}`, setData);
   };
   const allData = async () => {
-    loadData("http://localhost:8000/api/bikes/all", setData);
+    setPage(1);
+    loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
   };
 
   function onAddClick(variant) {
@@ -110,6 +117,27 @@ export default function Products() {
               </div>
             );
           })}
+      </div>
+      <div>
+        <div className="pagination">
+          <button
+            className="pagination"
+            type="button"
+            onClick={() => loadPage(1)}
+          >
+            PREV
+          </button>
+          &nbsp;&nbsp;
+          <div className="pagination">{page}</div>
+          &nbsp;&nbsp;
+          <button
+            className="pagination"
+            type="button"
+            onClick={() => loadPage(2)}
+          >
+            NEXT
+          </button>
+        </div>
       </div>
     </div>
   );

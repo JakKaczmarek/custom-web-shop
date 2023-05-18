@@ -37,7 +37,6 @@ function SingleProduct() {
   useEffect(() => {
     if (productId > -1) setSliderData(data[productId].srcArray[0]);
     setProductId(data.findIndex((bike) => bike.id.toString() === id));
-    console.log(data);
   }, [data]);
   if (productId > -1) {
     return (
