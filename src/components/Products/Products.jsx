@@ -9,26 +9,34 @@ export default function Products() {
   const [query, setQuery] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const [data, setData] = useState([]);
+  const [filterValue, setFilterValue] = useState("");
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/bikes?limit=3&page=1")
+  const loadData = async () => {
+    await axios
+      .get("  http://localhost:8000/bikes?limit=3&page=1")
       .then((res) => {
         setData(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
-
-  const filterResult = (catItem) => {
-    const result = data.filter((curData) => {
-      return curData.category === catItem;
-    });
-    setData(result);
   };
+
+  const handleFilter = async (value) => {
+    setFilterValue(value);
+    await axios
+      .get(`http://localhost:8000/api/bikes?category=${value}`)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   function onAddClick(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
 
+  useEffect(() => {
+    loadData();
+  }, []);
   return (
     <div>
       <div className="Search">
@@ -43,28 +51,29 @@ export default function Products() {
         <button
           type="button"
           className="categoryBtns"
-          onClick={() => setData(data)}
+          onClick={() => loadData()}
         >
           All
         </button>
         <button
           type="button"
           className="categoryBtns"
-          onClick={() => filterResult("Cube")}
+          onClick={() => handleFilter("Cube")}
+          value={filterValue}
         >
           Cube
         </button>
         <button
           type="button"
           className="categoryBtns"
-          onClick={() => filterResult("Orbea")}
+          onClick={() => handleFilter("Orbea")}
         >
           Orbea
         </button>
         <button
           type="button"
           className="categoryBtns"
-          onClick={() => filterResult("Vitus")}
+          onClick={() => handleFilter("Vitus")}
         >
           Vitus
         </button>
