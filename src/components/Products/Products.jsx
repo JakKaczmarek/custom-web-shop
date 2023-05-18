@@ -13,12 +13,15 @@ export default function Products() {
 
   const loadData = async () => {
     await axios
-      .get("  http://localhost:8000/bikes?limit=3&page=1")
+      .get("http://localhost:8000/api/bikes/all")
       .then((res) => {
         setData(res.data);
       })
       .catch((err) => console.log(err));
   };
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const handleFilter = async (value) => {
     setFilterValue(value);
@@ -67,6 +70,7 @@ export default function Products() {
           type="button"
           className="categoryBtns"
           onClick={() => handleFilter("Orbea")}
+          value={filterValue}
         >
           Orbea
         </button>
@@ -74,6 +78,7 @@ export default function Products() {
           type="button"
           className="categoryBtns"
           onClick={() => handleFilter("Vitus")}
+          value={filterValue}
         >
           Vitus
         </button>

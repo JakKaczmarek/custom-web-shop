@@ -12,7 +12,7 @@ function SingleProduct() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/bikes?limit=3&page=1")
+      .get("http://localhost:8000/api/bikes/all")
       .then((res) => {
         setData(res.data);
       })
