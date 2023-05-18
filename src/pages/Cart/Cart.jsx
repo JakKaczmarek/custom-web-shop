@@ -1,20 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { CartItem } from "./CartItem";
 import { ShopContext } from "../../contexts/ShopContext";
 import NavBar from "../../components/NavBar/NavBar";
+import { loadData } from "../../img/bikes";
 
 export default function Cart() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/bikes/all")
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
+    loadData("http://localhost:8000/api/bikes/all", setData);
   }, []);
   const { cartItems } = useContext(ShopContext);
 

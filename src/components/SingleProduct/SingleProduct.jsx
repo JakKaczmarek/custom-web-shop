@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useSnackbar } from "notistack";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { loadData } from "../../img/bikes";
 import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
 
@@ -11,12 +11,7 @@ function SingleProduct() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/bikes/all")
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
+    loadData("http://localhost:8000/api/bikes/all", setData);
   }, []);
 
   const { id } = useParams();

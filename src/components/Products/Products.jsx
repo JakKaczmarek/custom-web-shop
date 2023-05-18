@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import axios from "axios";
+import { loadData } from "../../img/bikes";
 import { ShopContext } from "../../contexts/ShopContext";
 
 export default function Products() {
@@ -11,35 +11,22 @@ export default function Products() {
   const [data, setData] = useState([]);
   const [filterValue, setFilterValue] = useState("");
 
-  const loadData = async () => {
-    await axios
-      .get("http://localhost:8000/api/bikes/all")
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
   useEffect(() => {
-    loadData();
+    loadData("http://localhost:8000/api/bikes/all", setData);
   }, []);
 
   const handleFilter = async (value) => {
     setFilterValue(value);
-    await axios
-      .get(`http://localhost:8000/api/bikes?category=${value}`)
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
+    loadData(`http://localhost:8000/api/bikes?category=${value}`, setData);
+  };
+  const allData = async () => {
+    loadData("http://localhost:8000/api/bikes/all", setData);
   };
 
   function onAddClick(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
 
-  useEffect(() => {
-    loadData();
-  }, []);
   return (
     <div>
       <div className="Search">
@@ -54,7 +41,7 @@ export default function Products() {
         <button
           type="button"
           className="categoryBtns"
-          onClick={() => loadData()}
+          onClick={() => allData()}
         >
           All
         </button>

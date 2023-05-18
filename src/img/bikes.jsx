@@ -1,19 +1,13 @@
-// import { useEffect, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
-// export async function doGetRequest() {
-//   const [data, setData] = useState([]);
-
-//   useEffect(() => {
-//     axios
-//       .get("http://localhost:8000/bikes?limit=3&page=1")
-//       .then((res) => {
-//         setData(res.data);
-//       })
-//       .catch((err) => console.log(err));
-//     console.log(data);
-//   }, []);
-// }
+export const loadData = async (url, callback) => {
+  await axios
+    .get(url)
+    .then((res) => {
+      callback(res.data);
+    })
+    .catch((err) => console.log(err));
+};
 
 //   {
 //     src: bike2,
