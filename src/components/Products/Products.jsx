@@ -18,8 +18,10 @@ export default function Products() {
 
   const loadPage = async (e) => {
     setPage(e);
-    loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
   };
+  useEffect(() => {
+    loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
+  }, [page]);
 
   const handleFilter = async (value) => {
     setFilterValue(value);
