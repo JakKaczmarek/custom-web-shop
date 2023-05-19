@@ -9,23 +9,16 @@ import { ShopContext } from "../../contexts/ShopContext";
 
 function SingleProduct() {
   const [data, setData] = useState([]);
-
-  useEffect(() => {
-    loadData("http://localhost:8000/api/bikes/all", setData);
-  }, []);
-
   const { id } = useParams();
-  const [productId, setProductId] = useState(-1);
+  const [productId, setProductId] = useState(id);
   const { addToCart } = useContext(ShopContext);
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
-
   const [sliderData, setSliderData] = useState(null);
   const onHandleClick = (i) => {
-    const slider = data[productId].srcArray[i];
+    const slider = data.srcArray[i];
     setSliderData(slider);
   };
-
   const backSumbit = () => {
     navigate("/");
   };
@@ -33,11 +26,16 @@ function SingleProduct() {
   function onAddClick(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
+  useEffect(() => {
+    loadData(`http://localhost:8000/api/bikes/id?id=${id}`, setData);
+  }, []);
 
   useEffect(() => {
-    if (productId > -1) setSliderData(data[productId].srcArray[0]);
-    setProductId(data.findIndex((bike) => bike.id.toString() === id));
+    if (productId > -1);
+    setSliderData(data.srcArray);
+    setProductId(id);
   }, [data]);
+
   if (productId > -1) {
     return (
       sliderData && (
@@ -60,14 +58,14 @@ function SingleProduct() {
                 </div>
 
                 <div className="otherImages">
-                  {data[productId].srcArray.map((image, i) => {
+                  {data.srcArray.map((image, i) => {
                     return (
                       <div className="otherImagesSingle" key={image.id}>
                         <img
                           key={image.id}
                           src={image.path}
                           className={sliderData.id === i + 1 ? "clicked" : ""}
-                          alt={data[productId].alt}
+                          alt={data.alt}
                           role="presentation"
                           onClick={() => onHandleClick(i)}
                         />
@@ -77,8 +75,8 @@ function SingleProduct() {
                 </div>
               </div>
               <div className="descriptionSingle">
-                <h2 className="titleSingle">{data[productId].bikeName}</h2>
-                <h1 className="priceSingle">${data[productId].price}.00 </h1>
+                <h2 className="titleSingle">{data.bikeName}</h2>
+                <h1 className="priceSingle">${data.price}.00 </h1>
                 <p className="descriptionHeader">Description</p>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -93,7 +91,7 @@ function SingleProduct() {
                 <button
                   type="button"
                   className="addToCartBtnSingle"
-                  onClick={() => onAddClick(addToCart(data[productId].id))}
+                  onClick={() => onAddClick(addToCart(data.id))}
                 >
                   Add To Cart
                 </button>
