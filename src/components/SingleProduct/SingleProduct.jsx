@@ -27,7 +27,7 @@ function SingleProduct() {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
   useEffect(() => {
-    loadData(`http://localhost:8000/api/bikes/id?id=${id}`, setData);
+    loadData(`http://localhost:8000/api/bikes/${id}`, setData);
   }, []);
 
   useEffect(() => {
