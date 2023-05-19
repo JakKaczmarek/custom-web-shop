@@ -8,13 +8,14 @@ import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
 
 function SingleProduct() {
-  const [data, setData] = useState([]);
-  const { id } = useParams();
-  const [productId, setProductId] = useState(id);
   const { addToCart } = useContext(ShopContext);
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const { id } = useParams();
+  const [productId, setProductId] = useState(id);
   const [sliderData, setSliderData] = useState(null);
+
   const onHandleClick = (i) => {
     const slider = data.srcArray[i];
     setSliderData(slider);
@@ -26,14 +27,14 @@ function SingleProduct() {
   function onAddClick(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
+
   useEffect(() => {
     loadData(`http://localhost:8000/api/bikes/${id}`, setData);
   }, []);
 
   useEffect(() => {
-    if (productId > -1);
-    setSliderData(data.srcArray);
     setProductId(id);
+    if (data.srcArray && data.srcArray.length) setSliderData(data.srcArray[0]);
   }, [data]);
 
   if (productId > -1) {
