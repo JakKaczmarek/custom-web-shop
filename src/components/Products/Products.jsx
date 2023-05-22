@@ -16,11 +16,20 @@ export default function Products() {
     loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
   }, []);
 
-  const loadPage = async (e) => {
+  const loadNextPageData = async (e) => {
+    if (page === 3) {
+      return;
+    }
+    setPage(e);
+  };
+  const loadPrevPageData = async (e) => {
+    if (page === 1) {
+      return;
+    }
     setPage(e);
   };
   useEffect(() => {
-    loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
+    loadData(`http://localhost:8000/bikes?limit=3&page=${page}`, setData);
   }, [page]);
 
   const handleFilter = async (value) => {
@@ -29,13 +38,12 @@ export default function Products() {
   };
   const allData = async () => {
     setPage(1);
-    loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
+    loadData(`http://localhost:8000/bikes?limit=3&page=${page}`, setData);
   };
 
   function onAddClick(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
-
   return (
     <div>
       <div className="Search">
@@ -125,7 +133,7 @@ export default function Products() {
           <button
             className="pagination"
             type="button"
-            onClick={() => loadPage(1)}
+            onClick={() => loadPrevPageData(page - 1)}
           >
             PREV
           </button>
@@ -135,7 +143,7 @@ export default function Products() {
           <button
             className="pagination"
             type="button"
-            onClick={() => loadPage(2)}
+            onClick={() => loadNextPageData(page + 1)}
           >
             NEXT
           </button>
