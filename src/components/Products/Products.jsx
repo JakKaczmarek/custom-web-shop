@@ -16,17 +16,7 @@ export default function Products() {
   useEffect(() => {
     loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
   }, []);
-
-  const loadNextPageData = async (e) => {
-    if (data.length < 3) {
-      return;
-    }
-    setPage(e);
-  };
-  const loadPrevPageData = async (e) => {
-    if (page === 1) {
-      return;
-    }
+  const loadPageData = async (e) => {
     setPage(e);
   };
 
@@ -130,7 +120,7 @@ export default function Products() {
             );
           })}
       </div>
-      <div>{test(page, loadPrevPageData, loadNextPageData)}</div>
+      <div>{test(data, page, loadPageData)}</div>
     </div>
   );
 }
