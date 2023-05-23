@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { test } from "../Pagination/Pagination";
 import { loadData } from "../../img/bikes";
 import { ShopContext } from "../../contexts/ShopContext";
 
@@ -17,7 +18,7 @@ export default function Products() {
   }, []);
 
   const loadNextPageData = async (e) => {
-    if (page === 3) {
+    if (data.length < 3) {
       return;
     }
     setPage(e);
@@ -28,6 +29,7 @@ export default function Products() {
     }
     setPage(e);
   };
+
   useEffect(() => {
     loadData(`http://localhost:8000/bikes?limit=3&page=${page}`, setData);
   }, [page]);
@@ -128,27 +130,7 @@ export default function Products() {
             );
           })}
       </div>
-      <div>
-        <div className="pagination">
-          <button
-            className="pagination"
-            type="button"
-            onClick={() => loadPrevPageData(page - 1)}
-          >
-            PREV
-          </button>
-          &nbsp;&nbsp;
-          <div className="pagination">{page}</div>
-          &nbsp;&nbsp;
-          <button
-            className="pagination"
-            type="button"
-            onClick={() => loadNextPageData(page + 1)}
-          >
-            NEXT
-          </button>
-        </div>
-      </div>
+      <div>{test(page, loadPrevPageData, loadNextPageData)}</div>
     </div>
   );
 }
