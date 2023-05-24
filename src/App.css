@@ -492,7 +492,7 @@ body {
   transition: all 0.3s;
 }
 
-.cardSignleImages {
+.cardSingleImages {
   display: flex;
   flex-direction: column;
   margin: 0 auto;

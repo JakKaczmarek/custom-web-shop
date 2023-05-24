@@ -13,29 +13,28 @@ export default function Products() {
   const [filterValue, setFilterValue] = useState("");
   const [page, setPage] = useState(1);
 
-  useEffect(() => {
-    loadData(`http://localhost:8000/bikes?limit=2&page=${page}`, setData);
-  }, []);
-  const loadPageData = async (e) => {
-    setPage(e);
-  };
-
-  useEffect(() => {
-    loadData(`http://localhost:8000/bikes?limit=3&page=${page}`, setData);
-  }, [page]);
-
-  const handleFilter = async (value) => {
+  const handleFilter = (value) => {
     setFilterValue(value);
-    loadData(`http://localhost:8000/api/bikes?category=${value}`, setData);
   };
-  const allData = async () => {
+  const allData = () => {
     setPage(1);
-    loadData(`http://localhost:8000/bikes?limit=3&page=${page}`, setData);
+  };
+
+  const loadPageData = (e) => {
+    setPage(e);
   };
 
   function onAddClick(variant) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
+
+  useEffect(() => {
+    loadData(
+      `http://localhost:8000/bikes?limit=3&page=${page}&category=${filterValue}`,
+      setData
+    );
+  }, [page, filterValue]);
+
   return (
     <div>
       <div className="Search">

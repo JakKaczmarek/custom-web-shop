@@ -49,7 +49,7 @@ export default function Cart() {
       <div className="cart">
         <div className="cartBikes">
           {data.map((bike) => {
-            if (cartItems[bike.id] && cartItems[bike.id] !== 0) {
+            if (cartItems[bike.id]) {
               return <CartItem data={bike} key={bike.id} />;
             }
             return false;

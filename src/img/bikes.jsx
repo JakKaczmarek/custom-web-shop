@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const loadData = async (url, callback) => {
-  await axios
+export const loadData = (url, callback) => {
+  axios
     .get(url)
     .then((res) => {
       callback(res.data);

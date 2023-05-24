@@ -5,28 +5,8 @@ export const ShopContext = createContext();
 
 export function ShopContextProvider({ children }) {
   const [data, setData] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/bikes/all")
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
   const [cartItems, setCartItems] = useState({});
   const [itemCount, setItemCount] = useState(0);
-
-  const addToCart = (itemId) => {
-    const bikeIdx = data.findIndex((bike) => bike.id === itemId);
-    const bike = data[bikeIdx];
-    setItemCount(itemCount + 1);
-    setCartItems((prev) => ({
-      ...prev,
-      [itemId]: prev[itemId]
-        ? { quantity: prev[itemId].quantity + 1, price: bike.price }
-        : { quantity: 1, price: bike.price },
-    }));
-  };
 
   const clone = (input) => {
     if (input === null || typeof input !== "object") {
@@ -41,12 +21,21 @@ export function ShopContextProvider({ children }) {
     }, initialOutput);
   };
 
+  const addToCart = (itemId) => {
+    const bike = data.find((item) => item.id === itemId);
+    setItemCount(itemCount + 1);
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: prev[itemId]
+        ? { quantity: prev[itemId].quantity + 1, price: bike.price }
+        : { quantity: 1, price: bike.price },
+    }));
+  };
+
   const removeFromCart = (itemId) => {
-    const bikeIdx = data.findIndex((bike) => bike.id === itemId);
-    const bike = data[bikeIdx];
-    const cartItemsCopy = clone(cartItems);
+    const bike = data.find((item) => item.id === itemId);
     const newCartItems = Object.fromEntries(
-      Object.entries(cartItemsCopy).filter(
+      Object.entries(clone(cartItems)).filter(
         (item) => parseInt(item[0], 10) !== itemId
       )
     );
@@ -77,6 +66,16 @@ export function ShopContextProvider({ children }) {
     }),
     [cartItems, addToCart, updateCartItemCount, removeFromCart]
   );
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/bikes/all")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <ShopContext.Provider value={contextValue}>{children}</ShopContext.Provider>
   );

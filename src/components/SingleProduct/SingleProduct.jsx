@@ -13,14 +13,13 @@ function SingleProduct() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const { id } = useParams();
-  const [productId, setProductId] = useState(id);
   const [sliderData, setSliderData] = useState(null);
 
   const onHandleClick = (i) => {
     const slider = data.srcArray[i];
     setSliderData(slider);
   };
-  const backSumbit = () => {
+  const backSubmit = () => {
     navigate("/");
   };
 
@@ -33,22 +32,21 @@ function SingleProduct() {
   }, []);
 
   useEffect(() => {
-    setProductId(id);
     if (data.srcArray && data.srcArray.length) setSliderData(data.srcArray[0]);
   }, [data]);
 
-  if (productId > -1) {
+  if (id > -1) {
     return (
       sliderData && (
         <div>
           <NavBar />
           <div className="allCard">
             <nav>
-              <ArrowBackIosIcon className="arrowSingle" onClick={backSumbit} />
+              <ArrowBackIosIcon className="arrowSingle" onClick={backSubmit} />
               Back to all bikes
             </nav>
             <div className="cardSingle">
-              <div className="cardSignleImages">
+              <div className="cardSingleImages">
                 <div className="bikePhotoSingle">
                   &nbsp;
                   <img

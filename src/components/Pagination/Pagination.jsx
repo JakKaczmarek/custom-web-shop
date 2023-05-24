@@ -2,9 +2,9 @@ export function test(data, page, callback) {
   if (page === 1) {
     return (
       <div className="pagination">
-        &nbsp;&nbsp;
+        &nbsp;
         <div className="pagination">{page}</div>
-        &nbsp;&nbsp;
+        &nbsp;
         <button
           className="pagination"
           type="button"
@@ -38,9 +38,9 @@ export function test(data, page, callback) {
       >
         PREV
       </button>
-      &nbsp;&nbsp;
+      &nbsp;
       <div className="pagination">{page}</div>
-      &nbsp;&nbsp;
+      &nbsp;
       <button
         className="pagination"
         type="button"

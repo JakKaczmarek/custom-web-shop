@@ -22,9 +22,4 @@ describe("Login Page", () => {
     expect(emailInput.value).toBe("b");
     expect(passwordInput.value).toBe("b");
   });
-  //   it("Should click once on button SIGN IN", () => {
-  //     render(<Login />);
-  //     const loginButton = screen.getByTestId("login-button");
-  //     fireEvent.click(loginButton);
-  //   });
 });
