@@ -21,7 +21,9 @@ export default function Sign() {
       <Button
         variant="text"
         onClick={handleSubmit}
-        style={{ color: "black" }}
+        sx={{
+          color: "black",
+        }}
         data-testid="buttonSO"
       >
         {isAuthenticated ? (

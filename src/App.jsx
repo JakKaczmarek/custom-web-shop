@@ -14,13 +14,7 @@ function App() {
   return (
     <div className="App">
       <div className="app">
-        <SnackbarProvider
-          maxSnack={2}
-          autoHideDuration={1500}
-          style={{
-            backgroundColor: "#c9940d",
-          }}
-        >
+        <SnackbarProvider maxSnack={2} autoHideDuration={1500}>
           <ShopContextProvider>
             <AuthContextProvider>
               <Routes>

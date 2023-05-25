@@ -52,7 +52,7 @@ export default function Login() {
             type="image"
             src={logoebike}
             alt="logoebike"
-            style={{ width: 190, height: 80 }}
+            className="logoebikeImage"
             onClick={logoSumbit}
           />
 
@@ -106,14 +106,7 @@ export default function Login() {
               }}
             />
             <FormControlLabel
-              control={
-                <Checkbox
-                  value="remember"
-                  color="primary"
-                  labelstyle={{ color: "white" }}
-                  iconstyle={{ color: "white" }}
-                />
-              }
+              control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button
@@ -121,7 +114,15 @@ export default function Login() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, background: "black" }}
+              sx={{
+                mt: 3,
+                mb: 2,
+                background: "black",
+                "&:hover": {
+                  backgroundColor: "gray",
+                  color: "white",
+                },
+              }}
             >
               Sign In
             </Button>

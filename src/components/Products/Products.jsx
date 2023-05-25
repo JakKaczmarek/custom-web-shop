@@ -15,9 +15,11 @@ export default function Products() {
 
   const handleFilter = (value) => {
     setFilterValue(value);
+    setPage(1);
   };
   const allData = () => {
     setPage(1);
+    setFilterValue("");
   };
 
   const loadPageData = (e) => {
@@ -92,7 +94,6 @@ export default function Products() {
                     src={bike.src}
                     alt={bike.alt}
                     className="image"
-                    style={{ width: 380, height: 380 }}
                   />
                 </div>
                 <div className="description">

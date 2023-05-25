@@ -16,7 +16,7 @@ export default function NavBar() {
           type="image"
           src={logoebike}
           alt="logoebike"
-          style={{ width: 170, height: 70 }}
+          className="navbarImage"
           onClick={handleSubmit}
         />
       </div>

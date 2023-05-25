@@ -1,44 +1,36 @@
 import React from "react";
-import { MDBFooter, MDBContainer, MDBCol, MDBRow } from "mdb-react-ui-kit";
+import { Box, Container, Grid, Typography } from "@mui/material";
 
 export default function Footer() {
   return (
-    <MDBFooter bgColor="light" className="text-center text-lg-left">
-      <MDBContainer className="p-4">
-        <MDBRow>
-          <MDBCol lg="6" md="12" className="mb-4 mb-md-0">
-            <h5 className="text-uppercase">Footer text</h5>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
-              atque ea quis molestias. Fugiat pariatur maxime quis culpa
-              corporis vitae repudiandae aliquam voluptatem veniam, est atque
-              cumque eum delectus sint!
-            </p>
-          </MDBCol>
-
-          <MDBCol lg="6" md="12" className="mb-4 mb-md-0">
-            <h5 className="text-uppercase">Footer text</h5>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
-              atque ea quis molestias. Fugiat pariatur maxime quis culpa
-              corporis vitae repudiandae aliquam voluptatem veniam, est atque
-              cumque eum delectus sint!
-            </p>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-
-      <div
-        className="text-center p-3"
-        style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
-      >
-        &copy; {new Date().getFullYear()} Copyright: &nbsp;
-        <a className="text-dark" href="https://Google.com/">
-          Google.com
-        </a>
-      </div>
-    </MDBFooter>
+    <Box
+      sx={{
+        width: "100%",
+        height: "auto",
+        backgroundColor: "background.paper",
+        paddingTop: "1rem",
+        paddingBottom: "1rem",
+      }}
+    >
+      <Container maxWidth="lg">
+        <Grid container direction="column" alignItems="center">
+          <Grid item xs={12}>
+            <Typography color="black" variant="h5">
+              E-Bike
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography color="textSecondary" variant="subtitle1">
+              <div className="text-center p-3">
+                &copy; {new Date().getFullYear()} Copyright: &nbsp;
+                <a className="text-dark" href="http://localhost:3000/login">
+                  e-bike.com
+                </a>
+              </div>
+            </Typography>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
   );
 }
