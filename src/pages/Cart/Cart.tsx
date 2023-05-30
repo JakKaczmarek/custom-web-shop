@@ -6,7 +6,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { loadData } from "../../img/bikes";
 
 export default function Cart() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[]>([]);
 
   useEffect(() => {
     loadData("http://localhost:8000/api/bikes/all", setData);
@@ -22,7 +22,7 @@ export default function Cart() {
 
   const navigate = useNavigate();
 
-  const [discountCode, setDiscountCode] = useState(null);
+  const [discountCode, setDiscountCode] = useState<any>(null);
 
   const handleSumbitDiscount = () => {
     if (discountCode === "BIKE") {

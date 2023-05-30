@@ -42,7 +42,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar({ value }) {
+type Props = {
+  value: string;
+};
+
+export default function SearchBar({ value }: Props) {
   return (
     <div>
       <Search>

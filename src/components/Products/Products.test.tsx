@@ -1,5 +1,6 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { iButton } from "../../../@types/types";
 
 const handleClick = jest.fn();
 const bike = [
@@ -28,9 +29,9 @@ const bike = [
 function test() {
   return bike[0];
 }
-function Button({ onClick, children }) {
+function Button({ onClick, children }: iButton) {
   return (
-    <button type="button" onClick={onClick}>
+    <button type="button" onClick={() => onClick}>
       {children}
     </button>
   );
@@ -53,7 +54,7 @@ describe("Products", () => {
   });
 
   it("calls onClick prop once when clicked", () => {
-    render(<Button onClick={handleClick}>NEXT</Button>);
+    render(<Button onClick={() => handleClick}>NEXT</Button>);
     fireEvent.click(screen.getByText(/NEXT/i));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });

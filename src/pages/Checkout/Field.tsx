@@ -20,8 +20,8 @@ export default function Field({
 }) {
   return (
     <TextField
-      margin={margin}
       required
+      margin="normal"
       label={label}
       name={name}
       autoComplete={autoComplete}

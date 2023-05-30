@@ -1,4 +1,6 @@
-export function test(data, page, callback) {
+import React from "react";
+
+export function Pagination(data: any, page: number, callback: any) {
   if (page === 1) {
     return (
       <div className="pagination">

@@ -1,10 +1,14 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useMemo, useState, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
+import { IAuthContext } from "../../@types/types";
 
-export const AuthContext = createContext({});
+type Props = {
+  children: ReactNode;
+};
+export const AuthContext = createContext<IAuthContext>(null!);
 
-export function AuthContextProvider({ children }) {
+export function AuthContextProvider({ children }: Props) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigate = useNavigate();
@@ -14,7 +18,7 @@ export function AuthContextProvider({ children }) {
     navigate("/");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;

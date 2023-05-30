@@ -15,7 +15,7 @@ function SingleProduct() {
   const { id } = useParams();
   const [sliderData, setSliderData] = useState(null);
 
-  const onHandleClick = (i) => {
+  const onHandleClick = (i: number) => {
     const slider = data.srcArray[i];
     setSliderData(slider);
   };
@@ -23,7 +23,7 @@ function SingleProduct() {
     navigate("/");
   };
 
-  function onAddClick(variant) {
+  function onAddClick(variant: any) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
 

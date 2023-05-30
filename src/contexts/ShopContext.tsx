@@ -1,30 +1,35 @@
-import { createContext, useState, useMemo, useEffect } from "react";
+import { createContext, useState, useMemo, useEffect, ReactNode } from "react";
+import { IShopContext } from "../../@types/types";
 import axios from "axios";
 
-export const ShopContext = createContext();
+type Props = {
+  children: ReactNode;
+};
 
-export function ShopContextProvider({ children }) {
+export const ShopContext = createContext<IShopContext>(null!);
+
+export function ShopContextProvider({ children }: Props) {
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [itemCount, setItemCount] = useState(0);
 
-  const clone = (input) => {
+  const clone = (input: any) => {
     if (input === null || typeof input !== "object") {
       return input;
     }
 
     const initialOutput = Array.isArray(input) ? [] : {};
 
-    return Object.keys(input).reduce((acc, key) => {
+    return Object.keys(input).reduce((acc: any, key) => {
       acc[key] = clone(input[key]);
       return acc;
     }, initialOutput);
   };
 
-  const addToCart = (itemId) => {
-    const bike = data.find((item) => item.id === itemId);
+  const addToCart = (itemId: string) => {
+    const bike: any = data.find((item: any) => item.id === itemId);
     setItemCount(itemCount + 1);
-    setCartItems((prev) => ({
+    setCartItems((prev: any) => ({
       ...prev,
       [itemId]: prev[itemId]
         ? { quantity: prev[itemId].quantity + 1, price: bike.price }
@@ -32,11 +37,11 @@ export function ShopContextProvider({ children }) {
     }));
   };
 
-  const removeFromCart = (itemId) => {
-    const bike = data.find((item) => item.id === itemId);
+  const removeFromCart = (itemId: string) => {
+    const bike: any = data.find((item: any) => item.id === itemId);
     const newCartItems = Object.fromEntries(
       Object.entries(clone(cartItems)).filter(
-        (item) => parseInt(item[0], 10) !== itemId
+        (item) => parseInt(item[0], 10) !== Number(itemId)
       )
     );
 
@@ -52,7 +57,7 @@ export function ShopContextProvider({ children }) {
     }
   };
 
-  const updateCartItemCount = (newAmount, itemId) => {
+  const updateCartItemCount = (newAmount: number, itemId: number) => {
     setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
   };
 

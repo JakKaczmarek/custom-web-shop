@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import { test } from "../Pagination/Pagination";
+import { Pagination } from "../Pagination/Pagination";
 import { loadData } from "../../img/bikes";
 import { ShopContext } from "../../contexts/ShopContext";
 
@@ -13,7 +13,7 @@ export default function Products() {
   const [filterValue, setFilterValue] = useState("");
   const [page, setPage] = useState(1);
 
-  const handleFilter = (value) => {
+  const handleFilter = (value: string) => {
     setFilterValue(value);
     setPage(1);
   };
@@ -22,11 +22,11 @@ export default function Products() {
     setFilterValue("");
   };
 
-  const loadPageData = (e) => {
+  const loadPageData = (e: number) => {
     setPage(e);
   };
 
-  function onAddClick(variant) {
+  function onAddClick(variant: any) {
     enqueueSnackbar("Bike added to cart successfully!", { variant });
   }
 
@@ -82,10 +82,10 @@ export default function Products() {
       </div>
       <div className="products">
         {data
-          .filter((bike) =>
+          .filter((bike: any) =>
             bike.bikeName.toLowerCase().includes(query.toLowerCase())
           )
-          .map((bike) => {
+          .map((bike: any) => {
             return (
               <div className="product" key={bike.id}>
                 <div className="bike">
@@ -120,7 +120,7 @@ export default function Products() {
             );
           })}
       </div>
-      <div>{test(data, page, loadPageData)}</div>
+      <div>{Pagination(data, page, loadPageData)}</div>
     </div>
   );
 }

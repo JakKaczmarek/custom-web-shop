@@ -14,7 +14,7 @@ import { useContext } from "react";
 import logoebike from "../../img/logoebike.png";
 import { AuthContext } from "../../contexts/AuthContext";
 
-function Copyright(props) {
+function Copyright(props: any) {
   return (
     <Typography
       variant="body2"
@@ -35,7 +35,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
-  const { error, logoSumbit, handleSubmit } = useContext(AuthContext);
+  const { error, logoSubmit, handleSubmit } = useContext(AuthContext);
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -53,7 +53,7 @@ export default function Login() {
             src={logoebike}
             alt="logoebike"
             className="logoebikeImage"
-            onClick={logoSumbit}
+            onClick={logoSubmit}
           />
 
           <Typography component="h1" variant="h5">

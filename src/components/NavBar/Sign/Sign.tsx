@@ -37,8 +37,6 @@ export default function Sign() {
             SIGN IN
           </>
         )}
-        {/* {isAuthenticated ? <LogoutIcon /> : <LoginIcon />}
-        {isAuthenticated ? "SIGN OUT" : "SIGN IN"} */}
       </Button>
     </Stack>
   );
