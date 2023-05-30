@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import SearchBar from "./SearchBar";
+import { iSearchBar } from "../../../../@types/types";
 
 describe("Search  component", () => {
   it("Calls onChange function when user type input", () => {
@@ -17,6 +18,6 @@ describe("Search  component", () => {
 
     render(<SearchBar value={value} />);
     const inputElement = screen.getByPlaceholderText("Search…");
-    expect(inputElement.value).toBe(value);
+    expect((inputElement as HTMLInputElement).value).toBe(value);
   });
 });

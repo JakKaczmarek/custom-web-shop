@@ -11,9 +11,9 @@ function SingleProduct() {
   const { addToCart } = useContext(ShopContext);
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
-  const { id } = useParams();
-  const [sliderData, setSliderData] = useState(null);
+  const [data, setData] = useState<any>([]);
+  const { id } = useParams<string>();
+  const [sliderData, setSliderData] = useState<any>(null);
 
   const onHandleClick = (i: number) => {
     const slider = data.srcArray[i];
@@ -35,7 +35,7 @@ function SingleProduct() {
     if (data.srcArray && data.srcArray.length) setSliderData(data.srcArray[0]);
   }, [data]);
 
-  if (id > -1) {
+  if (parseFloat(id!) > -1) {
     return (
       sliderData && (
         <div>
@@ -57,7 +57,7 @@ function SingleProduct() {
                 </div>
 
                 <div className="otherImages">
-                  {data.srcArray.map((image, i) => {
+                  {data.srcArray.map((image: any, i: number) => {
                     return (
                       <div className="otherImagesSingle" key={image.id}>
                         <img

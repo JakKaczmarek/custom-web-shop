@@ -1,5 +1,5 @@
 export interface IShopContext {
-  cartItems: any[];
+  cartItems: any;
   itemCount: number;
   addToCart: (number) => void;
   removeFromCart: (number) => void;
@@ -17,4 +17,11 @@ export interface IAuthContext {
 export interface iButton {
   children: ReactNode;
   onClick: ReactNode;
+}
+export interface iCartItems {
+  [key: string]: any;
+}
+
+export interface iSearchBar {
+  onChange: jest.Mock<any, any, any>;
 }
