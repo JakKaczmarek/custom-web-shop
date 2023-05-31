@@ -17,7 +17,7 @@ export function Pagination(data: any, page: number, callback: any) {
       </div>
     );
   }
-  if (data.length < 3) {
+  if (page === 3) {
     return (
       <div className="pagination">
         <button

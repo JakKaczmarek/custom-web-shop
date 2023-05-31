@@ -3,7 +3,14 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["plugin:react/recommended", "airbnb", "prettier"],
+  extends: [
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+  ],
   overrides: [
     {
       files: ["**/*.test.js", "**/*.test.jsx"],
@@ -26,6 +33,17 @@ module.exports = {
     "no-alert": "off",
     "react/react-in-jsx-scope": 0,
     "linebreak-style": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "": "never",
+        js: "never",
+        jsx: "never",
+        ts: "never",
+        tsx: "never",
+      },
+    ],
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": [
       "error",
@@ -48,5 +66,12 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+  },
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts"],
+      },
+    },
   },
 };

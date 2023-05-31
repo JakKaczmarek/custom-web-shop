@@ -13,7 +13,6 @@ export default function Field({
   label = "",
   name = "",
   autoComplete = "",
-  margin = "normal",
   InputLabelProps = { style: { color: "gray" } },
   inputProps = {},
   placeholder = "",

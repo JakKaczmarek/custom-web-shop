@@ -1,15 +1,10 @@
-import { createContext, useState, useMemo, useEffect, ReactNode } from "react";
-import { IShopContext } from "../../@types/types";
+import { createContext, useState, useMemo, useEffect } from "react";
 import axios from "axios";
-import { iCartItems } from "../../@types/types";
-
-type Props = {
-  children: ReactNode;
-};
+import { iCartItems, IShopContext } from "../../@types/types";
 
 export const ShopContext = createContext<IShopContext>(null!);
 
-export function ShopContextProvider({ children }: Props) {
+export function ShopContextProvider({ children }: any) {
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState<iCartItems>({});
   const [itemCount, setItemCount] = useState(0);

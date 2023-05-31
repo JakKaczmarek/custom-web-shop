@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface IShopContext {
   cartItems: any;
   itemCount: number;
@@ -25,3 +27,7 @@ export interface iCartItems {
 export interface iSearchBar {
   onChange: jest.Mock<any, any, any>;
 }
+
+// export interface Props {
+//   children: ReactNode;
+// }
