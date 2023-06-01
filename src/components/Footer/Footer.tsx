@@ -24,7 +24,7 @@ export default function Footer() {
               <div className="text-center p-3">
                 &copy; {new Date().getFullYear()} Copyright: &nbsp;
                 <a className="text-dark" href="http://localhost:3000/login">
-                  e-bike.com
+                  e-bike.com/login
                 </a>
               </div>
             </Typography>

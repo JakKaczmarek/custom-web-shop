@@ -7,6 +7,7 @@ import SingleProduct from "./components/SingleProduct/SingleProduct";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Payment from "./pages/Checkout/Payment";
+import Admin from "./pages/Admin/Admin";
 import { ShopContextProvider } from "./contexts/ShopContext";
 import { AuthContextProvider } from "./contexts/AuthContext";
 
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/product/:id" element={<SingleProduct />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
+                <Route path="/admin" element={<Admin />} />
                 <Route path="/checkout/payment" element={<Payment />} />
               </Routes>
             </AuthContextProvider>
