@@ -23,6 +23,10 @@ export function AuthContextProvider({ children }: any) {
     if (email === "b" && password === "b") {
       setIsAuthenticated(true);
       navigate("/");
+    }
+    if (email === "a" && password === "a") {
+      setIsAuthenticated(true);
+      navigate("/admin");
     } else setError(true);
   };
 
