@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { iButton } from "../../../@types/types";
+import { IButton } from "../../../@types/types";
 
 const handleClick = jest.fn();
 const bike = [
@@ -29,7 +29,7 @@ const bike = [
 function test() {
   return bike[0];
 }
-function Button({ onClick, children }: iButton) {
+function Button({ onClick, children }: IButton) {
   return (
     <button type="button" onClick={() => onClick}>
       {children}

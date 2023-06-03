@@ -1,12 +1,12 @@
 import { createContext, useState, useMemo, useEffect } from "react";
 import axios from "axios";
-import { iCartItems, IShopContext } from "../../@types/types";
+import { ICartItems, IShopContext } from "../../@types/types";
 
 export const ShopContext = createContext<IShopContext>(null!);
 
 export function ShopContextProvider({ children }: any) {
   const [data, setData] = useState([]);
-  const [cartItems, setCartItems] = useState<iCartItems>({});
+  const [cartItems, setCartItems] = useState<ICartItems>({});
   const [itemCount, setItemCount] = useState(0);
 
   const clone = (input: any) => {

@@ -16,18 +16,30 @@ export interface IAuthContext {
   handleSubmit: (e: any) => void;
 }
 
-export interface iButton {
+export interface IButton {
   children: ReactNode;
   onClick: ReactNode;
 }
-export interface iCartItems {
+export interface ICartItems {
   [key: string]: any;
 }
 
-export interface iSearchBar {
+export interface ISearchBar {
   onChange: jest.Mock<any, any, any>;
 }
 
-// export interface Props {
-//   children: ReactNode;
-// }
+export interface IPath {
+  bikesId: number;
+  id: number;
+  path: string;
+}
+
+export interface IData {
+  id: number;
+  bikeName: string;
+  category: string;
+  price: number;
+  alt: string;
+  src: string;
+  srcArray: IPath[];
+}

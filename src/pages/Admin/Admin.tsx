@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,16 +13,61 @@ import { useNavigate } from "react-router";
 import { loadData } from "../../img/bikes";
 import logoebike from "../../img/logoebike.png";
 import Sign from "../../components/NavBar/Sign/Sign";
+import { IData } from "../../../@types/types";
 
 export default function Admin() {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<IData[]>([]);
   const [query, setQuery] = useState("");
+  const [bike, setBike] = useState({
+    bikeName: "",
+    price: "",
+    category: "",
+    alt: "",
+    src: "",
+  });
+  const [file, setFile] = useState(null);
+  const [bikesId, setBikesId] = useState("");
+
+  const handleChangeBike = (e: any) => {
+    setBike({
+      ...bike,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleChangeFile = (e: any) => {
+    setFile(e.target.files[0] ? e.target.files[0] : null);
+  };
+
+  const handleChangeBikesId = (e: any) => {
+    setBikesId(e.target.value);
+  };
+
+  const handleSubmitNewBike = (e: any) => {
+    e.preventDefault();
+    const bikeData = bike;
+    axios.post(`http://localhost:8000/api/bikes`, bikeData).then((response) => {
+      console.log(response.status, response.data);
+    });
+  };
+
+  const handleSubmitPathToBike = (e: any) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", file!);
+    formData.append("bikesId", bikesId);
+    axios.post(`http://localhost:8000/upload`, formData).then((response) => {
+      console.log(response.status, response.data);
+    });
+  };
+
   const navigate = useNavigate();
-  const handleSubmit = () => {
+  const handleNavigate = () => {
     navigate("/");
   };
   useEffect(() => {
     loadData(`http://localhost:8000/api/bikes/all`, setData);
+    console.log(data);
   }, []);
 
   return (
@@ -33,7 +79,7 @@ export default function Admin() {
             src={logoebike}
             alt="logoebike"
             className="navbarImage"
-            onClick={handleSubmit}
+            onClick={handleNavigate}
           />
         </div>
         <div>
@@ -110,27 +156,98 @@ export default function Admin() {
           </TableHead>
           <TableBody>
             {data
-              .filter((bike: any) =>
-                bike.category.toLowerCase().includes(query.toLowerCase())
+              .filter((item: any) =>
+                item.category.toLowerCase().includes(query.toLowerCase())
               )
-              .map((bike) => (
+              .map((item) => (
                 <TableRow
-                  key={bike.id}
+                  key={item.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {bike.id}
+                    {item.id}
                   </TableCell>
-                  <TableCell align="left">{bike.bikeName}</TableCell>
-                  <TableCell align="right">{bike.price}</TableCell>
-                  <TableCell align="right">{bike.category}</TableCell>
-                  <TableCell align="right">{bike.alt}</TableCell>
-                  <TableCell align="right">{bike.src}</TableCell>
+                  <TableCell align="left">{item.bikeName}</TableCell>
+                  <TableCell align="right">{item.price}</TableCell>
+                  <TableCell align="right">{item.category}</TableCell>
+                  <TableCell align="right">{item.alt}</TableCell>
+                  <TableCell align="right">{item.src}</TableCell>
                 </TableRow>
               ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <div>
+        <h1>New Bike:</h1>
+        <form onSubmit={handleSubmitNewBike}>
+          <label htmlFor="bikeName">
+            bikeName
+            <input
+              type="text"
+              name="bikeName"
+              value={bike.bikeName}
+              onChange={handleChangeBike}
+            />
+          </label>
+          <label htmlFor="price">
+            price
+            <input
+              type="text"
+              name="price"
+              value={bike.price}
+              onChange={handleChangeBike}
+            />
+          </label>
+          <label htmlFor="category">
+            category
+            <input
+              type="text"
+              name="category"
+              value={bike.category}
+              onChange={handleChangeBike}
+            />
+          </label>
+          <label htmlFor="alt">
+            alt
+            <input
+              type="text"
+              name="alt"
+              value={bike.alt}
+              onChange={handleChangeBike}
+            />
+          </label>
+          <label htmlFor="src">
+            src
+            <input
+              type="text"
+              name="src"
+              value={bike.src}
+              onChange={handleChangeBike}
+            />
+          </label>
+          <button type="submit">SAVE NEW BIKE</button>
+        </form>
+        <h1>New Path</h1>
+        <form
+          method="POST"
+          onSubmit={handleSubmitPathToBike}
+          encType="multipart/form-data"
+        >
+          <input
+            type="file"
+            name="path"
+            id="path"
+            onChange={handleChangeFile}
+          />
+          <input
+            type="number"
+            name="bikesId"
+            id="bikesId"
+            onChange={handleChangeBikesId}
+          />
+          <button type="submit">SAVE NEW PATH</button>
+        </form>
+      </div>
     </div>
   );
 }

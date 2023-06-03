@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import SearchBar from "./SearchBar";
-import { iSearchBar } from "../../../../@types/types";
+import { ISearchBar } from "../../../../@types/types";
 
 describe("Search  component", () => {
   // it("Calls onChange function when user type input", () => {
