@@ -2,6 +2,7 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { SearchBarProps } from "../../../../@types/types";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -42,11 +43,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-type Props = {
-  value: string;
-};
-
-export default function SearchBar({ value }: Props) {
+export default function SearchBar({ value }: SearchBarProps) {
   return (
     <div>
       <Search>

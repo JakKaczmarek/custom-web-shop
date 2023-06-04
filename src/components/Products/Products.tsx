@@ -83,10 +83,10 @@ export default function Products() {
       </div>
       <div className="products">
         {data
-          .filter((bike: any) =>
+          .filter((bike: IData) =>
             bike.bikeName.toLowerCase().includes(query.toLowerCase())
           )
-          .map((bike: any) => {
+          .map((bike: IData) => {
             return (
               <div className="product" key={bike.id}>
                 <div className="bike">

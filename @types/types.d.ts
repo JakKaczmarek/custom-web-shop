@@ -46,3 +46,6 @@ export interface IData {
 
 type HandleEvent = React.ChangeEvent<HTMLInputElement>;
 type SubmitEvent = React.FormEvent<HTMLFormElement>;
+type SearchBarProps = {
+  value: string;
+};

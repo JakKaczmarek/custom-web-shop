@@ -4,9 +4,10 @@ import { CartItem } from "./CartItem";
 import { ShopContext } from "../../contexts/ShopContext";
 import NavBar from "../../components/NavBar/NavBar";
 import { loadData } from "../../img/bikes";
+import { IData } from "../../../@types/types";
 
 export default function Cart() {
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<IData[]>([]);
 
   useEffect(() => {
     loadData("http://localhost:8000/api/bikes/all", setData);
