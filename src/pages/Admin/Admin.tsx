@@ -14,8 +14,6 @@ import { loadData } from "../../img/bikes";
 import logoebike from "../../img/logoebike.png";
 import Sign from "../../components/NavBar/Sign/Sign";
 import { IData } from "../../../@types/types";
-import { HandleEvent } from "../../../@types/types";
-import { SubmitEvent } from "../../../@types/types";
 
 export default function Admin() {
   const [data, setData] = useState<IData[]>([]);
@@ -30,7 +28,7 @@ export default function Admin() {
   const [file, setFile] = useState(null);
   const [bikesId, setBikesId] = useState("");
 
-  const handleChangeBike = (e: HandleEvent): void => {
+  const handleChangeBike = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setBike({
       ...bike,
       [e.target.name]: e.target.value,
@@ -41,11 +39,11 @@ export default function Admin() {
     setFile(e.target.files[0] ? e.target.files[0] : null);
   };
 
-  const handleChangeBikesId = (e: HandleEvent) => {
+  const handleChangeBikesId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBikesId(e.target.value);
   };
 
-  const handleSubmitNewBike = (e: SubmitEvent) => {
+  const handleSubmitNewBike = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const bikeData = bike;
     axios.post(`http://localhost:8000/api/bikes`, bikeData).then((response) => {
@@ -53,7 +51,7 @@ export default function Admin() {
     });
   };
 
-  const handleSubmitPathToBike = (e: SubmitEvent) => {
+  const handleSubmitPathToBike = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file!);
