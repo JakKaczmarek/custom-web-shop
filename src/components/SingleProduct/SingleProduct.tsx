@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { loadData } from "../../img/bikes";
 import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
+import { IData } from "../../../@types/types";
 
 function SingleProduct() {
   const { addToCart } = useContext(ShopContext);
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
-  const [data, setData] = useState<any>([]);
+  const [data, setData] = useState<IData>([] as any);
   const { id } = useParams<string>();
   const [sliderData, setSliderData] = useState<any>(null);
 

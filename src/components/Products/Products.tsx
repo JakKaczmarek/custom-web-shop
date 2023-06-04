@@ -4,12 +4,13 @@ import { useSnackbar } from "notistack";
 import { Pagination } from "../Pagination/Pagination";
 import { loadData } from "../../img/bikes";
 import { ShopContext } from "../../contexts/ShopContext";
+import { IData } from "../../../@types/types";
 
 export default function Products() {
   const { addToCart } = useContext(ShopContext);
   const [query, setQuery] = useState("");
   const { enqueueSnackbar } = useSnackbar();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IData[]>([]);
   const [filterValue, setFilterValue] = useState("");
   const [page, setPage] = useState(1);
 
