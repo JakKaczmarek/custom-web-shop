@@ -23,7 +23,7 @@ export default function Cart() {
 
   const navigate = useNavigate();
 
-  const [discountCode, setDiscountCode] = useState<any>(null);
+  const [discountCode, setDiscountCode] = useState<string>();
 
   const handleSumbitDiscount = () => {
     if (discountCode === "BIKE") {
