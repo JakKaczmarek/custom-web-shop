@@ -14,6 +14,8 @@ import { loadData } from "../../img/bikes";
 import logoebike from "../../img/logoebike.png";
 import Sign from "../../components/NavBar/Sign/Sign";
 import { IData } from "../../../@types/types";
+import { HandleEvent } from "../../../@types/types";
+import { SubmitEvent } from "../../../@types/types";
 
 export default function Admin() {
   const [data, setData] = useState<IData[]>([]);
@@ -28,7 +30,7 @@ export default function Admin() {
   const [file, setFile] = useState(null);
   const [bikesId, setBikesId] = useState("");
 
-  const handleChangeBike = (e: any) => {
+  const handleChangeBike = (e: HandleEvent): void => {
     setBike({
       ...bike,
       [e.target.name]: e.target.value,
@@ -39,11 +41,11 @@ export default function Admin() {
     setFile(e.target.files[0] ? e.target.files[0] : null);
   };
 
-  const handleChangeBikesId = (e: any) => {
+  const handleChangeBikesId = (e: HandleEvent) => {
     setBikesId(e.target.value);
   };
 
-  const handleSubmitNewBike = (e: any) => {
+  const handleSubmitNewBike = (e: SubmitEvent) => {
     e.preventDefault();
     const bikeData = bike;
     axios.post(`http://localhost:8000/api/bikes`, bikeData).then((response) => {
@@ -51,7 +53,7 @@ export default function Admin() {
     });
   };
 
-  const handleSubmitPathToBike = (e: any) => {
+  const handleSubmitPathToBike = (e: SubmitEvent) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file!);
@@ -156,10 +158,10 @@ export default function Admin() {
           </TableHead>
           <TableBody>
             {data
-              .filter((item: any) =>
+              .filter((item: IData) =>
                 item.category.toLowerCase().includes(query.toLowerCase())
               )
-              .map((item) => (
+              .map((item: IData) => (
                 <TableRow
                   key={item.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}

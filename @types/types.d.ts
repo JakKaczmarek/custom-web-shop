@@ -43,3 +43,6 @@ export interface IData {
   src: string;
   srcArray: IPath[];
 }
+
+type HandleEvent = React.ChangeEvent<HTMLInputElement>;
+type SubmitEvent = React.FormEvent<HTMLFormElement>;
