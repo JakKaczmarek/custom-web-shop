@@ -23,7 +23,8 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "prettier"],
+  plugins: ["react", "prettier", "plugin:react/recommended"],
+
   rules: {
     "no-console": "off",
     "react/jsx-filename-extension": [

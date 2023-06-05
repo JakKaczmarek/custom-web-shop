@@ -44,8 +44,8 @@ export interface IData {
   srcArray: IPath[];
 }
 
-type HandleEvent = React.ChangeEvent<HTMLInputElement>;
-type SubmitEvent = React.FormEvent<HTMLFormElement>;
-type SearchBarProps = {
+export type HandleEvent = React.ChangeEvent<HTMLInputElement>;
+export type SubmitEvent = React.FormEvent<HTMLFormElement>;
+export type SearchBarProps = {
   value: string;
 };
