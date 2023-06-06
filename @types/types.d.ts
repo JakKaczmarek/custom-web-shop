@@ -25,7 +25,7 @@ export interface ICartItems {
 }
 
 export interface ISearchBar {
-  onChange: jest.Mock<any, any, any>;
+  onChange: jest.Mock<any>;
 }
 
 export interface IPath {

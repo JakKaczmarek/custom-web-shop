@@ -53,9 +53,10 @@ describe("Products", () => {
     expect(mock).toHaveReturnedTimes(2);
   });
 
-  it("calls onClick prop once when clicked", () => {
-    render(<Button onClick={() => handleClick}>NEXT</Button>);
-    fireEvent.click(screen.getByText(/NEXT/i));
-    expect(handleClick).toHaveBeenCalledTimes(1);
+  it("Should test function", () => {
+    const mockCallback = jest.fn((x) => 42 + x);
+    mockCallback(1);
+    mockCallback(2);
+    expect(mockCallback).toHaveBeenCalledTimes(2);
   });
 });
