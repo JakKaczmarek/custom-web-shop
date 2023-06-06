@@ -13,7 +13,7 @@ import { useNavigate } from "react-router";
 import { loadData } from "../../img/bikes";
 import logoebike from "../../img/logoebike.png";
 import Sign from "../../components/NavBar/Sign/Sign";
-import { IData, HandleEvent, SubmitEvent } from "../../../@types/types";
+import { IData } from "../../../@types/types";
 
 export default function Admin() {
   const [data, setData] = useState<IData[]>([]);
@@ -28,7 +28,7 @@ export default function Admin() {
   const [file, setFile] = useState(null);
   const [bikesId, setBikesId] = useState("");
 
-  const handleChangeBike = (e: HandleEvent): void => {
+  const handleChangeBike = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setBike({
       ...bike,
       [e.target.name]: e.target.value,
@@ -39,11 +39,11 @@ export default function Admin() {
     setFile(e.target.files[0] ? e.target.files[0] : null);
   };
 
-  const handleChangeBikesId = (e: HandleEvent) => {
+  const handleChangeBikesId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBikesId(e.target.value);
   };
 
-  const handleSubmitNewBike = (e: SubmitEvent) => {
+  const handleSubmitNewBike = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const bikeData = bike;
     axios.post(`http://localhost:8000/api/bikes`, bikeData).then((response) => {
@@ -51,7 +51,7 @@ export default function Admin() {
     });
   };
 
-  const handleSubmitPathToBike = (e: SubmitEvent) => {
+  const handleSubmitPathToBike = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file!);
@@ -60,7 +60,14 @@ export default function Admin() {
       console.log(response.status, response.data);
     });
   };
-
+  const deleteBike = (id: number) => {
+    axios
+      .delete(`http://localhost:8000/api/bikes/delete?id=${id}`)
+      .then((response) => {
+        console.log(response.status, response.data);
+        loadData(`http://localhost:8000/api/bikes/all`, setData);
+      });
+  };
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/");
@@ -172,13 +179,19 @@ export default function Admin() {
                   <TableCell align="right">{item.category}</TableCell>
                   <TableCell align="right">{item.alt}</TableCell>
                   <TableCell align="right">{item.src}</TableCell>
+                  <TableCell align="right">
+                    {" "}
+                    <button type="button" onClick={() => deleteBike(item.id)}>
+                      Delete
+                    </button>
+                  </TableCell>
                 </TableRow>
               ))}
           </TableBody>
         </Table>
       </TableContainer>
       <div>
-        <h1>New Bike:</h1>
+        <h1>Add new bike</h1>
         <form onSubmit={handleSubmitNewBike}>
           <label htmlFor="bikeName">
             bikeName
@@ -225,9 +238,10 @@ export default function Admin() {
               onChange={handleChangeBike}
             />
           </label>
-          <button type="submit">SAVE NEW BIKE</button>
+          <button type="submit">Add</button>
         </form>
-        <h1>New Path</h1>
+        &nbsp;
+        <h1>Add photo to bike</h1>
         <form
           method="POST"
           onSubmit={handleSubmitPathToBike}
@@ -245,7 +259,7 @@ export default function Admin() {
             id="bikesId"
             onChange={handleChangeBikesId}
           />
-          <button type="submit">SAVE NEW PATH</button>
+          <button type="submit">Add</button>
         </form>
       </div>
     </div>

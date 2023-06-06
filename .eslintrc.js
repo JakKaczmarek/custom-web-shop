@@ -4,12 +4,13 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    "plugin:react/recommended",
     "airbnb",
     "prettier",
+    "plugin:react/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
+    "eslint:recommended",
   ],
   overrides: [
     {
@@ -23,9 +24,14 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "prettier", "plugin:react/recommended"],
+  plugins: ["react", "prettier"],
 
   rules: {
+    "no-unused-vars": [
+      "error",
+      { vars: "all", args: "after-used", ignoreRestSiblings: false },
+    ],
+
     "no-console": "off",
     "react/jsx-filename-extension": [
       1,
@@ -77,5 +83,13 @@ module.exports = {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts"],
       },
     },
+
+    "eslint.workingDirectories": ["Dir1", "Dir2"],
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    ],
   },
 };

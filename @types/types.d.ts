@@ -24,10 +24,6 @@ export interface ICartItems {
   [key: string]: any;
 }
 
-export interface ISearchBar {
-  onChange: jest.Mock<any>;
-}
-
 export interface IPath {
   bikesId: number;
   id: number;
