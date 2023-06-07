@@ -10,56 +10,20 @@ import Paper from "@mui/material/Paper";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, TextField, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router";
+import ModalBike from "../../components/Modal/ModalBike";
+import ModalImage from "../../components/Modal/ModalImage";
 import { loadData } from "../../img/bikes";
 import logoebike from "../../img/logoebike.png";
 import Sign from "../../components/NavBar/Sign/Sign";
 import { IData } from "../../../@types/types";
+import "../../App.css";
 
 export default function Admin() {
   const [data, setData] = useState<IData[]>([]);
+  const [modalOpenBike, setModalOpenBike] = useState(false);
+  const [modalOpenImage, setModalOpenImage] = useState(false);
   const [query, setQuery] = useState("");
-  const [bike, setBike] = useState({
-    bikeName: "",
-    price: "",
-    category: "",
-    alt: "",
-    src: "",
-  });
-  const [file, setFile] = useState(null);
-  const [bikesId, setBikesId] = useState("");
 
-  const handleChangeBike = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setBike({
-      ...bike,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleChangeFile = (e: any) => {
-    setFile(e.target.files[0] ? e.target.files[0] : null);
-  };
-
-  const handleChangeBikesId = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBikesId(e.target.value);
-  };
-
-  const handleSubmitNewBike = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const bikeData = bike;
-    axios.post(`http://localhost:8000/api/bikes`, bikeData).then((response) => {
-      console.log(response.status, response.data);
-    });
-  };
-
-  const handleSubmitPathToBike = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", file!);
-    formData.append("bikesId", bikesId);
-    axios.post(`http://localhost:8000/upload`, formData).then((response) => {
-      console.log(response.status, response.data);
-    });
-  };
   const deleteBike = (id: number) => {
     axios
       .delete(`http://localhost:8000/api/bikes/delete?id=${id}`)
@@ -123,6 +87,29 @@ export default function Admin() {
             <Sign />
           </div>
         </div>
+      </div>
+      <div className="App">
+        <button
+          type="button"
+          className="openModalBtn"
+          onClick={() => {
+            setModalOpenBike(true);
+          }}
+        >
+          Add new bike
+        </button>
+        {modalOpenBike && <ModalBike setModalOpenBike={setModalOpenBike} />}
+        &nbsp;
+        <button
+          type="button"
+          className="openModalBtn"
+          onClick={() => {
+            setModalOpenImage(true);
+          }}
+        >
+          Add new image
+        </button>
+        {modalOpenImage && <ModalImage setModalOpenImage={setModalOpenImage} />}
       </div>
       &nbsp;
       <TableContainer component={Paper}>
@@ -190,78 +177,6 @@ export default function Admin() {
           </TableBody>
         </Table>
       </TableContainer>
-      <div>
-        <h1>Add new bike</h1>
-        <form onSubmit={handleSubmitNewBike}>
-          <label htmlFor="bikeName">
-            bikeName
-            <input
-              type="text"
-              name="bikeName"
-              value={bike.bikeName}
-              onChange={handleChangeBike}
-            />
-          </label>
-          <label htmlFor="price">
-            price
-            <input
-              type="text"
-              name="price"
-              value={bike.price}
-              onChange={handleChangeBike}
-            />
-          </label>
-          <label htmlFor="category">
-            category
-            <input
-              type="text"
-              name="category"
-              value={bike.category}
-              onChange={handleChangeBike}
-            />
-          </label>
-          <label htmlFor="alt">
-            alt
-            <input
-              type="text"
-              name="alt"
-              value={bike.alt}
-              onChange={handleChangeBike}
-            />
-          </label>
-          <label htmlFor="src">
-            src
-            <input
-              type="text"
-              name="src"
-              value={bike.src}
-              onChange={handleChangeBike}
-            />
-          </label>
-          <button type="submit">Add</button>
-        </form>
-        &nbsp;
-        <h1>Add photo to bike</h1>
-        <form
-          method="POST"
-          onSubmit={handleSubmitPathToBike}
-          encType="multipart/form-data"
-        >
-          <input
-            type="file"
-            name="path"
-            id="path"
-            onChange={handleChangeFile}
-          />
-          <input
-            type="number"
-            name="bikesId"
-            id="bikesId"
-            onChange={handleChangeBikesId}
-          />
-          <button type="submit">Add</button>
-        </form>
-      </div>
     </div>
   );
 }
