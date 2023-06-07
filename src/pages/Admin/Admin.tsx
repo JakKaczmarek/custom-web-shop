@@ -16,7 +16,6 @@ import { loadData } from "../../img/bikes";
 import logoebike from "../../img/logoebike.png";
 import Sign from "../../components/NavBar/Sign/Sign";
 import { IData } from "../../../@types/types";
-import "../../App.css";
 
 export default function Admin() {
   const [data, setData] = useState<IData[]>([]);

@@ -11,6 +11,7 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:import/typescript",
     "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
   ],
   overrides: [
     {
@@ -20,18 +21,16 @@ module.exports = {
       },
     },
   ],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "prettier"],
+  plugins: ["react", "prettier", "@typescript-eslint"],
 
   rules: {
-    "no-unused-vars": [
-      "error",
-      { vars: "all", args: "after-used", ignoreRestSiblings: false },
-    ],
-
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
     "no-console": "off",
     "react/jsx-filename-extension": [
       1,
