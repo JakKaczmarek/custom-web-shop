@@ -13,7 +13,7 @@ import { useNavigate } from "react-router";
 import { loadData } from "../../img/bikes";
 import logoebike from "../../img/logoebike.png";
 import Sign from "../../components/NavBar/Sign/Sign";
-import { IData } from "../../../@types/types";
+import { HandleEvent, IData } from "../../../@types/types";
 
 export default function Admin() {
   const [data, setData] = useState<IData[]>([]);
@@ -27,8 +27,7 @@ export default function Admin() {
   });
   const [file, setFile] = useState(null);
   const [bikesId, setBikesId] = useState("");
-
-  const handleChangeBike = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChangeBike = (e: HandleEvent): void => {
     setBike({
       ...bike,
       [e.target.name]: e.target.value,
@@ -39,7 +38,7 @@ export default function Admin() {
     setFile(e.target.files[0] ? e.target.files[0] : null);
   };
 
-  const handleChangeBikesId = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeBikesId = (e: HandleEvent) => {
     setBikesId(e.target.value);
   };
 
