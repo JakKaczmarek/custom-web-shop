@@ -37,6 +37,8 @@ function ModalImage({ setModalOpenImage }: any) {
           </div>
           <div className="title">
             <h1>Add photo to bike</h1>
+          </div>
+          <div className="body">
             <input
               type="file"
               name="path"
@@ -49,7 +51,6 @@ function ModalImage({ setModalOpenImage }: any) {
               id="bikesId"
               onChange={handleChangeBikesId}
             />
-            <button type="submit">Add</button>
           </div>
           <div className="footer">
             <button

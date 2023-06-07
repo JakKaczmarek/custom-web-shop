@@ -99,7 +99,9 @@ function ModalBike({ setModalOpenBike }: any) {
             >
               Cancel
             </button>
-            <button type="submit">Add</button>
+            <button type="submit" onClick={() => window.alert("Bike added")}>
+              Add
+            </button>
           </div>
         </div>
       </form>

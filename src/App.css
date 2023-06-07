@@ -640,16 +640,12 @@ nav {
   height: 70px;
 }
 
-/* .App {
-  width: 100vw;
-  height: 100vh;
+.AppModal {
   display: flex;
-  align-items: center;
   flex-direction: column;
-  font-family: "Nunito", sans-serif;
-} */
+}
 
-.App .openModalBtn {
+.AppModal .openModalBtn {
   width: 200px;
   height: 40px;
   border: none;
@@ -659,9 +655,11 @@ nav {
   cursor: pointer;
 }
 .modalBackground {
-  width: auto;
+  position: absolute;
+  background: rgb(231, 229, 229);
+  margin-top: auto;
   height: 100%;
-  position: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -672,7 +670,7 @@ nav {
   height: 500px;
   border-radius: 12px;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35);
   display: flex;
   flex-direction: column;
   padding: 25px;
@@ -697,12 +695,12 @@ nav {
 }
 
 .modalContainer .body {
-  flex: 50%;
+  flex: auto;
   display: grid;
   justify-content: center;
   align-items: center;
   font-size: 1.7rem;
-  text-align: center;
+  text-align: right;
 }
 
 .modalContainer .footer {
