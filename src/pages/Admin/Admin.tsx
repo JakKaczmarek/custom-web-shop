@@ -87,7 +87,7 @@ export default function Admin() {
         </div>
       </div>
       <div className="AppModal">
-        <div>
+        <div className="AdminTable">
           <button
             type="button"
             className="openModalBtn"
@@ -113,7 +113,7 @@ export default function Admin() {
           )}
         </div>
         &nbsp;
-        <div>
+        <div className="AdminTable">
           <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
