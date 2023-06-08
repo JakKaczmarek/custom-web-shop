@@ -27,7 +27,7 @@ export default function Admin() {
     axios
       .delete(`http://localhost:8000/api/bikes/delete?id=${id}`)
       .then((response) => {
-        console.log(response.status, response.data);
+        console.log(response.status);
         loadData(`http://localhost:8000/api/bikes/all`, setData);
       });
   };
@@ -97,7 +97,12 @@ export default function Admin() {
           >
             Add new bike
           </button>
-          {modalOpenBike && <ModalBike setModalOpenBike={setModalOpenBike} />}
+          {modalOpenBike && (
+            <ModalBike
+              setModalOpenBike={setModalOpenBike}
+              modalOpenBike={false}
+            />
+          )}
           &nbsp;
           <button
             type="button"
@@ -109,7 +114,10 @@ export default function Admin() {
             Add new image
           </button>
           {modalOpenImage && (
-            <ModalImage setModalOpenImage={setModalOpenImage} />
+            <ModalImage
+              setModalOpenImage={setModalOpenImage}
+              modalOpenImage={false}
+            />
           )}
         </div>
         &nbsp;

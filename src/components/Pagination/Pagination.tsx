@@ -1,6 +1,11 @@
 import React from "react";
+import { IData } from "../../../@types/types";
 
-export function Pagination(data: any, page: number, callback: any) {
+export function Pagination(
+  data: IData[],
+  page: number,
+  callback: (e: number) => void
+) {
   if (page === 1) {
     return (
       <div className="pagination">

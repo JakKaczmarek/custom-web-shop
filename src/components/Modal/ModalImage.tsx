@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../../App.css";
 import axios from "axios";
+import { IsetModalOpenImage } from "../../../@types/types";
 
-function ModalImage({ setModalOpenImage }: any) {
+function ModalImage({ setModalOpenImage }: IsetModalOpenImage) {
   const [file, setFile] = useState(null);
   const [bikesId, setBikesId] = useState("");
   const handleSubmitPathToBike = (e: React.FormEvent<HTMLFormElement>) => {

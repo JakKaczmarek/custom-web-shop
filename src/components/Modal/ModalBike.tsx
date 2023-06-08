@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../../App.css";
 import axios from "axios";
+import { IsetModalOpenBike } from "../../../@types/types";
 
-function ModalBike({ setModalOpenBike }: any) {
+function ModalBike({ setModalOpenBike }: IsetModalOpenBike) {
   const [bike, setBike] = useState({
     bikeName: "",
     price: "",
@@ -15,7 +16,7 @@ function ModalBike({ setModalOpenBike }: any) {
     e.preventDefault();
     const bikeData = bike;
     axios.post(`http://localhost:8000/api/bikes`, bikeData).then((response) => {
-      console.log(response.status, response.data);
+      console.log(response.status);
     });
   };
   const handleChangeBike = (e: React.ChangeEvent<HTMLInputElement>) => {

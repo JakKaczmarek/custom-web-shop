@@ -13,7 +13,7 @@ export interface IAuthContext {
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
   error: boolean;
   logoSubmit: () => void;
-  handleSubmit: (e: any) => void;
+  handleSubmit: (e) => void;
 }
 
 export interface IButton {
@@ -38,6 +38,16 @@ export interface IData {
   alt: string;
   src: string;
   srcArray: IPath[];
+}
+
+interface IsetModalOpenBike {
+  modalOpenBike: boolean;
+  setModalOpenBike: (open: boolean) => void;
+}
+
+interface IsetModalOpenImage {
+  modalOpenImage: boolean;
+  setModalOpenImage: (open: boolean) => void;
 }
 
 export type HandleEvent = React.ChangeEvent<HTMLInputElement>;

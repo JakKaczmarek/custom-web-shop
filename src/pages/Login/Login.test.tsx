@@ -15,11 +15,11 @@ describe("Login Page", () => {
   });
   it("Should render proper value in email and password input", () => {
     render(<Login />);
-    const emailInput: any = screen.getByTestId("email-input");
-    const passwordInput:  = screen.getByTestId("password-input");
+    const emailInput = screen.getByTestId("email-input");
+    const passwordInput = screen.getByTestId("password-input");
     fireEvent.change(emailInput, { target: { value: "b" } });
     fireEvent.change(passwordInput, { target: { value: "b" } });
-    expect(emailInput.value).toBe("b");
-    expect(passwordInput.value).toBe("b");
+    expect(emailInput as HTMLElement).toBe("b");
+    expect(passwordInput as HTMLElement).toBe("b");
   });
 });

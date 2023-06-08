@@ -1,6 +1,12 @@
 import axios from "axios";
+import { IData } from "../../@types/types";
 
-export const loadData = (url: string, callback: any) => {
+export const loadData = (
+  url: string,
+  callback:
+    | React.Dispatch<React.SetStateAction<IData>>
+    | React.Dispatch<React.SetStateAction<IData[]>>
+) => {
   axios
     .get(url)
     .then((res) => {

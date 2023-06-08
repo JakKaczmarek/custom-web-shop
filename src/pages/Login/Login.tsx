@@ -14,14 +14,9 @@ import { useContext } from "react";
 import logoebike from "../../img/logoebike.png";
 import { AuthContext } from "../../contexts/AuthContext";
 
-function Copyright(props: any) {
+function Copyright() {
   return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
+    <Typography variant="body2" color="text.secondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="http://localhost:3000/">
         eBike Shop &nbsp;
@@ -148,7 +143,8 @@ export default function Login() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        &nbsp;
+        <Copyright />
       </Container>
     </ThemeProvider>
   );

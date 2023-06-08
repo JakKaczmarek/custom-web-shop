@@ -29,7 +29,7 @@ function SingleProduct() {
   }
 
   useEffect(() => {
-    loadData(`http://localhost:8000/api/bikes/${id}`, setData);
+    return loadData(`http://localhost:8000/api/bikes/${id}`, setData);
   }, []);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ function SingleProduct() {
                 </div>
 
                 <div className="otherImages">
-                  {data.srcArray.map((image: any, i: number) => {
+                  {data.srcArray.map((image, i: number) => {
                     return (
                       <div className="otherImagesSingle" key={image.id}>
                         <img
