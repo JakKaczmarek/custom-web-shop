@@ -22,7 +22,7 @@ export function ShopContextProvider({ children }: any) {
     }, initialOutput);
   };
 
-  const addToCart = (itemId: string) => {
+  const addToCart = (itemId: number) => {
     const bike: any = data.find((item: any) => item.id === itemId);
     setItemCount(itemCount + 1);
     setCartItems((prev: any) => ({
@@ -33,9 +33,9 @@ export function ShopContextProvider({ children }: any) {
     }));
   };
 
-  const removeFromCart = (itemId: string) => {
+  const removeFromCart = (itemId: any) => {
     const bike: any = data.find((item: any) => item.id === itemId);
-    const newCartItems = Object.fromEntries(
+    const newCartItems: any = Object.fromEntries(
       Object.entries(clone(cartItems)).filter(
         (item) => parseInt(item[0], 10) !== Number(itemId)
       )
@@ -54,7 +54,10 @@ export function ShopContextProvider({ children }: any) {
   };
 
   const updateCartItemCount = (newAmount: number, itemId: number) => {
-    setCartItems((prev) => ({ ...prev, [itemId]: newAmount }));
+    setCartItems((prev) => ({
+      ...prev,
+      [itemId]: { quantity: newAmount, price: prev[itemId].price },
+    }));
   };
 
   const contextValue = useMemo(

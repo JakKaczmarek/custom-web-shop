@@ -4,7 +4,7 @@ import { CartItem } from "./CartItem";
 import { ShopContext } from "../../contexts/ShopContext";
 import NavBar from "../../components/NavBar/NavBar";
 import { loadData } from "../../img/bikes";
-import { IData } from "../../../@types/types";
+import { ICartItem, IData, IShopContext } from "../../../@types/types";
 
 export default function Cart() {
   const [data, setData] = useState<IData[]>([]);
@@ -12,17 +12,16 @@ export default function Cart() {
   useEffect(() => {
     loadData("http://localhost:8000/api/bikes/all", setData);
   }, []);
-  const { cartItems } = useContext(ShopContext);
+  const { cartItems }: IShopContext = useContext(ShopContext);
 
   const [discount, setDiscount] = useState(0);
 
   const totalPrice = Object.values(cartItems).reduce(
-    (acc: number, curr: any) => acc + curr.price * curr.quantity,
+    (acc: number, curr: ICartItem) => acc + curr.price * curr.quantity,
     0
   );
 
   const navigate = useNavigate();
-
   const [discountCode, setDiscountCode] = useState<string>();
 
   const handleSumbitDiscount = () => {

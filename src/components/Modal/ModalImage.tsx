@@ -4,7 +4,7 @@ import axios from "axios";
 import { IsetModalOpenImage } from "../../../@types/types";
 
 function ModalImage({ setModalOpenImage }: IsetModalOpenImage) {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>();
   const [bikesId, setBikesId] = useState("");
   const handleSubmitPathToBike = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,9 +15,8 @@ function ModalImage({ setModalOpenImage }: IsetModalOpenImage) {
       console.log(response.status, response.data);
     });
   };
-
-  const handleChangeFile = (e: any) => {
-    setFile(e.target.files[0] ? e.target.files[0] : null);
+  const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFile(e.target.files && e.target.files[0] ? e.target.files[0] : null);
   };
   const handleChangeBikesId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBikesId(e.target.value);

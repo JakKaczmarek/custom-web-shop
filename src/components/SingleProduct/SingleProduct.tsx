@@ -6,26 +6,29 @@ import { useNavigate } from "react-router-dom";
 import { loadData } from "../../img/bikes";
 import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
-import { IData } from "../../../@types/types";
+import { IData, IPath } from "../../../@types/types";
 
 function SingleProduct() {
   const { addToCart } = useContext(ShopContext);
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
-  const [data, setData] = useState<IData>([] as any);
+  const [data, setData] = useState<IData | null>(null);
   const { id } = useParams<string>();
-  const [sliderData, setSliderData] = useState<any>(null);
+  const [sliderData, setSliderData] = useState<IPath | null>(null);
+
+  console.log(sliderData);
 
   const onHandleClick = (i: number) => {
-    const slider = data.srcArray[i];
+    const slider = data?.srcArray ? data.srcArray[i] : null;
     setSliderData(slider);
   };
   const backSubmit = () => {
     navigate("/");
   };
 
-  function onAddClick(variant: any) {
-    enqueueSnackbar("Bike added to cart successfully!", { variant });
+  function onAddClick() {
+    enqueueSnackbar("Bike added to cart successfully!");
+    addToCart(data?.id);
   }
 
   useEffect(() => {
@@ -33,7 +36,8 @@ function SingleProduct() {
   }, []);
 
   useEffect(() => {
-    if (data.srcArray && data.srcArray.length) setSliderData(data.srcArray[0]);
+    if (data?.srcArray && data?.srcArray.length)
+      setSliderData(data?.srcArray[0]);
   }, [data]);
 
   if (parseFloat(id!) > -1) {
@@ -52,20 +56,20 @@ function SingleProduct() {
                   &nbsp;
                   <img
                     src={sliderData.path}
-                    alt={sliderData.alt}
+                    alt="Can not load bike img"
                     className="imageSingle"
                   />
                 </div>
 
                 <div className="otherImages">
-                  {data.srcArray.map((image, i: number) => {
+                  {data?.srcArray.map((image, i: number) => {
                     return (
                       <div className="otherImagesSingle" key={image.id}>
                         <img
                           key={image.id}
                           src={image.path}
                           className={sliderData.id === i + 1 ? "clicked" : ""}
-                          alt={data.alt}
+                          alt={data?.alt}
                           role="presentation"
                           onClick={() => onHandleClick(i)}
                         />
@@ -75,8 +79,8 @@ function SingleProduct() {
                 </div>
               </div>
               <div className="descriptionSingle">
-                <h2 className="titleSingle">{data.bikeName}</h2>
-                <h1 className="priceSingle">${data.price}.00 </h1>
+                <h2 className="titleSingle">{data?.bikeName}</h2>
+                <h1 className="priceSingle">${data?.price}.00 </h1>
                 <p className="descriptionHeader">Description</p>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -91,7 +95,7 @@ function SingleProduct() {
                 <button
                   type="button"
                   className="addToCartBtnSingle"
-                  onClick={() => onAddClick(addToCart(data.id))}
+                  onClick={() => onAddClick()}
                 >
                   Add To Cart
                 </button>

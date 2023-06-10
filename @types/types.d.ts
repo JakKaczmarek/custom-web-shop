@@ -1,7 +1,14 @@
 import { ReactNode } from "react";
 
+export interface ICartItem {
+  quantity: number;
+  price: number;
+}
+export interface ICartItems {
+  [key: number]: ICartItem;
+}
 export interface IShopContext {
-  cartItems: any;
+  cartItems: ICartItems;
   itemCount: number;
   addToCart: (number) => void;
   removeFromCart: (number) => void;
@@ -19,9 +26,6 @@ export interface IAuthContext {
 export interface IButton {
   children: ReactNode;
   onClick: ReactNode;
-}
-export interface ICartItems {
-  [key: string]: any;
 }
 
 export interface IPath {
