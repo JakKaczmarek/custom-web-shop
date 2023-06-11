@@ -4,12 +4,16 @@ import { ICartItems, IData, IShopContext } from "../../@types/types";
 
 export const ShopContext = createContext<IShopContext>(null!);
 
-export function ShopContextProvider({ children }: any) {
+export function ShopContextProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [data, setData] = useState<IData[] | null>(null);
   const [cartItems, setCartItems] = useState<ICartItems>({});
   const [itemCount, setItemCount] = useState(0);
 
-  const clone = (input: any) => {
+  const clone = (input: Record<string, any>) => {
     if (input === null || typeof input !== "object") {
       return input;
     }
@@ -23,18 +27,18 @@ export function ShopContextProvider({ children }: any) {
   };
 
   const addToCart = (itemId: number) => {
-    const bike: any = data?.find((item: IData) => item.id === itemId);
+    const bike = data?.find((item) => item.id === itemId);
     setItemCount(itemCount + 1);
     setCartItems((prev) => ({
       ...prev,
       [itemId]: prev[itemId]
-        ? { quantity: prev[itemId].quantity + 1, price: bike.price }
-        : { quantity: 1, price: bike.price },
+        ? { quantity: prev[itemId].quantity + 1, price: bike!.price }
+        : { quantity: 1, price: bike!.price },
     }));
   };
 
   const removeFromCart = (itemId: number) => {
-    const bike: any = data?.find((item: IData) => item.id === itemId);
+    const bike = data?.find((item) => item.id === itemId);
     const newCartItems: any = Object.fromEntries(
       Object.entries(clone(cartItems)).filter(
         (item) => parseInt(item[0], 10) !== Number(itemId)
@@ -48,7 +52,7 @@ export function ShopContextProvider({ children }: any) {
     } else {
       setCartItems((prev) => ({
         ...prev,
-        [itemId]: { quantity: prev[itemId].quantity - 1, price: bike.price },
+        [itemId]: { quantity: prev[itemId].quantity - 1, price: bike!.price },
       }));
     }
   };

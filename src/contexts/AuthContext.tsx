@@ -5,7 +5,11 @@ import { IAuthContext } from "../../@types/types";
 
 export const AuthContext = createContext<IAuthContext>(null!);
 
-export function AuthContextProvider({ children }: any) {
+export function AuthContextProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigate = useNavigate();
@@ -18,7 +22,7 @@ export function AuthContextProvider({ children }: any) {
   const handleSubmit = (e: Event) => {
     e.preventDefault();
 
-    const email = (e.target as HTMLFormElement).email?.value;
+    const email = (e.target as HTMLFormElement).email.value;
     const password = (e.target as HTMLFormElement).password.value;
 
     if (email === "b" && password === "b") {

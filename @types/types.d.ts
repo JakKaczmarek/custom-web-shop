@@ -5,7 +5,7 @@ export interface ICartItem {
   price: number;
 }
 export interface ICartItems {
-  [key: number]: ICartItem;
+  [key: string]: ICartItem;
 }
 export interface IShopContext {
   cartItems: ICartItems;

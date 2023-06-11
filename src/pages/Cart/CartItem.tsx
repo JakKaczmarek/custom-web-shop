@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../../contexts/ShopContext";
+import { IData } from "../../../@types/types";
 
-export function CartItem({ data }: any) {
+export function CartItem({ data }: { data: IData }) {
   const { id, bikeName, price, src, alt } = data;
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
     useContext(ShopContext);
