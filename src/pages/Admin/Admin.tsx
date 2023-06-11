@@ -18,7 +18,7 @@ import Sign from "../../components/NavBar/Sign/Sign";
 import { IData } from "../../../@types/types";
 
 export default function Admin() {
-  const [data, setData] = useState<IData[]>([]);
+  const [data, setData] = useState<IData[] | null>(null);
   const [modalOpenBike, setModalOpenBike] = useState(false);
   const [modalOpenImage, setModalOpenImage] = useState(false);
   const [query, setQuery] = useState("");
@@ -160,7 +160,7 @@ export default function Admin() {
               </TableHead>
               <TableBody>
                 {data
-                  .filter((item: IData) =>
+                  ?.filter((item: IData) =>
                     item.category.toLowerCase().includes(query.toLowerCase())
                   )
                   .map((item: IData) => (

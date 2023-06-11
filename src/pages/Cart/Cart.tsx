@@ -7,7 +7,7 @@ import { loadData } from "../../img/bikes";
 import { ICartItem, IData, IShopContext } from "../../../@types/types";
 
 export default function Cart() {
-  const [data, setData] = useState<IData[]>([]);
+  const [data, setData] = useState<IData[] | null>(null);
 
   useEffect(() => {
     loadData("http://localhost:8000/api/bikes/all", setData);
@@ -48,7 +48,7 @@ export default function Cart() {
       </span>
       <div className="cart">
         <div className="cartBikes">
-          {data.map((bike) => {
+          {data?.map((bike) => {
             if (cartItems[bike.id]) {
               return <CartItem data={bike} key={bike.id} />;
             }

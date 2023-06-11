@@ -1,11 +1,11 @@
 import { createContext, useState, useMemo, useEffect } from "react";
 import axios from "axios";
-import { ICartItems, IShopContext } from "../../@types/types";
+import { ICartItems, IData, IShopContext } from "../../@types/types";
 
 export const ShopContext = createContext<IShopContext>(null!);
 
 export function ShopContextProvider({ children }: any) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IData[] | null>(null);
   const [cartItems, setCartItems] = useState<ICartItems>({});
   const [itemCount, setItemCount] = useState(0);
 
@@ -23,9 +23,9 @@ export function ShopContextProvider({ children }: any) {
   };
 
   const addToCart = (itemId: number) => {
-    const bike: any = data.find((item: any) => item.id === itemId);
+    const bike: any = data?.find((item: IData) => item.id === itemId);
     setItemCount(itemCount + 1);
-    setCartItems((prev: any) => ({
+    setCartItems((prev) => ({
       ...prev,
       [itemId]: prev[itemId]
         ? { quantity: prev[itemId].quantity + 1, price: bike.price }
@@ -33,8 +33,8 @@ export function ShopContextProvider({ children }: any) {
     }));
   };
 
-  const removeFromCart = (itemId: any) => {
-    const bike: any = data.find((item: any) => item.id === itemId);
+  const removeFromCart = (itemId: number) => {
+    const bike: any = data?.find((item: IData) => item.id === itemId);
     const newCartItems: any = Object.fromEntries(
       Object.entries(clone(cartItems)).filter(
         (item) => parseInt(item[0], 10) !== Number(itemId)
