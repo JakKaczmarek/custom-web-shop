@@ -2,7 +2,7 @@ import React from "react";
 import { IData } from "../../../@types/types";
 
 export function Pagination(
-  data: IData[],
+  data: IData[] | null,
   page: number,
   callback: (e: number) => void
 ) {

@@ -5,7 +5,7 @@ export const loadData = (
   url: string,
   callback:
     | React.Dispatch<React.SetStateAction<IData | null>>
-    | React.Dispatch<React.SetStateAction<IData[]>>
+    | React.Dispatch<React.SetStateAction<IData[] | null>>
 ) => {
   axios
     .get(url)

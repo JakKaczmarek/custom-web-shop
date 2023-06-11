@@ -10,7 +10,7 @@ export default function Products() {
   const { addToCart } = useContext(ShopContext);
   const [query, setQuery] = useState("");
   const { enqueueSnackbar } = useSnackbar();
-  const [data, setData] = useState<IData[]>([]);
+  const [data, setData] = useState<IData[] | null>(null);
   const [filterValue, setFilterValue] = useState("");
   const [page, setPage] = useState(1);
 
@@ -18,6 +18,7 @@ export default function Products() {
     setFilterValue(value);
     setPage(1);
   };
+
   const allData = () => {
     setPage(1);
     setFilterValue("");
@@ -27,12 +28,13 @@ export default function Products() {
     setPage(e);
   };
 
-  function onAddClick(variant: any) {
-    enqueueSnackbar("Bike added to cart successfully!", { variant });
+  function onAddClick(e: number) {
+    enqueueSnackbar("Bike added to cart successfully!");
+    addToCart(data![data!.findIndex((bike) => e === bike.id)].id);
   }
 
   useEffect(() => {
-    loadData(
+    return loadData(
       `http://localhost:8000/bikes?limit=3&page=${page}&category=${filterValue}`,
       setData
     );
@@ -83,7 +85,7 @@ export default function Products() {
       </div>
       <div className="products">
         {data
-          .filter((bike: IData) =>
+          ?.filter((bike: IData) =>
             bike.bikeName.toLowerCase().includes(query.toLowerCase())
           )
           .map((bike: IData) => {
@@ -111,7 +113,7 @@ export default function Products() {
                     <button
                       type="button"
                       className="addToCartBtn"
-                      onClick={() => onAddClick(addToCart(bike.id))}
+                      onClick={() => onAddClick(bike.id)}
                     >
                       <b>Add To Cart </b>
                     </button>

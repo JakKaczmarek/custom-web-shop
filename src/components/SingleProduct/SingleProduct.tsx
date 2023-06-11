@@ -16,8 +16,6 @@ function SingleProduct() {
   const { id } = useParams<string>();
   const [sliderData, setSliderData] = useState<IPath | null>(null);
 
-  console.log(sliderData);
-
   const onHandleClick = (i: number) => {
     const slider = data?.srcArray ? data.srcArray[i] : null;
     setSliderData(slider);
