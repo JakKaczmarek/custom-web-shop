@@ -22,7 +22,7 @@ export function Pagination(
       </div>
     );
   }
-  if (page === 3) {
+  if (data!.length < 3) {
     return (
       <div className="pagination">
         <button
