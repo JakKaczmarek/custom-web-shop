@@ -21,23 +21,26 @@ export default function Admin() {
   const [data, setData] = useState<IData[] | null>(null);
   const [modalOpenBike, setModalOpenBike] = useState(false);
   const [modalOpenImage, setModalOpenImage] = useState(false);
-  const [query, setQuery] = useState("");
+  const [filterBikeName, setfilterBikeName] = useState("");
+
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate("/");
+  };
 
   const deleteBike = (id: number) => {
     axios
       .delete(`http://localhost:8000/api/bikes/delete?id=${id}`)
       .then((response) => {
         console.log(response.status);
-        loadData(`http://localhost:8000/api/bikes/all`, setData);
       });
+    setfilterBikeName("");
+    loadData(`http://localhost:8000/bikes?bikeName=${filterBikeName}`, setData);
   };
-  const navigate = useNavigate();
-  const handleNavigate = () => {
-    navigate("/");
-  };
+
   useEffect(() => {
-    loadData(`http://localhost:8000/api/bikes/all`, setData);
-  }, []);
+    loadData(`http://localhost:8000/bikes?bikeName=${filterBikeName}`, setData);
+  }, [filterBikeName]);
 
   return (
     <div>
@@ -56,9 +59,9 @@ export default function Admin() {
             <TextField
               id="search"
               type="search"
-              label="Search by category"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              label="Search by bikeName"
+              value={filterBikeName}
+              onChange={(e) => setfilterBikeName(e.target.value)}
               sx={{
                 width: 350,
                 color: "black",
@@ -159,34 +162,27 @@ export default function Admin() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data
-                  ?.filter((item: IData) =>
-                    item.category.toLowerCase().includes(query.toLowerCase())
-                  )
-                  .map((item: IData) => (
-                    <TableRow
-                      key={item.id}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
-                      <TableCell component="th" scope="row">
-                        {item.id}
-                      </TableCell>
-                      <TableCell align="left">{item.bikeName}</TableCell>
-                      <TableCell align="right">{item.price}</TableCell>
-                      <TableCell align="right">{item.category}</TableCell>
-                      <TableCell align="right">{item.alt}</TableCell>
-                      <TableCell align="right">{item.src}</TableCell>
-                      <TableCell align="right">
-                        {" "}
-                        <button
-                          type="button"
-                          onClick={() => deleteBike(item.id)}
-                        >
-                          Delete
-                        </button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                {data?.map((item: IData) => (
+                  <TableRow
+                    key={item.id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {item.id}
+                    </TableCell>
+                    <TableCell align="left">{item.bikeName}</TableCell>
+                    <TableCell align="right">{item.price}</TableCell>
+                    <TableCell align="right">{item.category}</TableCell>
+                    <TableCell align="right">{item.alt}</TableCell>
+                    <TableCell align="right">{item.src}</TableCell>
+                    <TableCell align="right">
+                      {" "}
+                      <button type="button" onClick={() => deleteBike(item.id)}>
+                        Delete
+                      </button>
+                    </TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>

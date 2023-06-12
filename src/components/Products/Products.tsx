@@ -8,20 +8,20 @@ import { IData } from "../../../@types/types";
 
 export default function Products() {
   const { addToCart } = useContext(ShopContext);
-  const [query, setQuery] = useState("");
   const { enqueueSnackbar } = useSnackbar();
   const [data, setData] = useState<IData[] | null>(null);
-  const [filterValue, setFilterValue] = useState("");
+  const [filterCategory, setFilterCategory] = useState("");
+  const [filterBikeName, setfilterBikeName] = useState("");
   const [page, setPage] = useState(1);
 
   const handleFilter = (value: string) => {
-    setFilterValue(value);
+    setFilterCategory(value);
     setPage(1);
   };
 
   const allData = () => {
     setPage(1);
-    setFilterValue("");
+    setFilterCategory("");
   };
 
   const loadPageData = (e: number) => {
@@ -35,10 +35,10 @@ export default function Products() {
 
   useEffect(() => {
     return loadData(
-      `http://localhost:8000/bikes?limit=3&page=${page}&category=${filterValue}`,
+      `http://localhost:8000/bikes?limit=3&page=${page}&category=${filterCategory}&bikeName=${filterBikeName}`,
       setData
     );
-  }, [page, filterValue]);
+  }, [page, filterCategory, filterBikeName]);
 
   return (
     <div>
@@ -47,7 +47,7 @@ export default function Products() {
           type="text"
           placeholder="Search for product ... "
           className="SearchInput"
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => setfilterBikeName(e.target.value)}
         />
       </div>
       <div className="Category">
@@ -62,7 +62,7 @@ export default function Products() {
           type="button"
           className="categoryBtns"
           onClick={() => handleFilter("Cube")}
-          value={filterValue}
+          value={filterCategory}
         >
           Cube
         </button>
@@ -70,7 +70,7 @@ export default function Products() {
           type="button"
           className="categoryBtns"
           onClick={() => handleFilter("Orbea")}
-          value={filterValue}
+          value={filterCategory}
         >
           Orbea
         </button>
@@ -78,50 +78,46 @@ export default function Products() {
           type="button"
           className="categoryBtns"
           onClick={() => handleFilter("Vitus")}
-          value={filterValue}
+          value={filterCategory}
         >
           Vitus
         </button>
       </div>
       <div className="products">
-        {data
-          ?.filter((bike: IData) =>
-            bike.bikeName.toLowerCase().includes(query.toLowerCase())
-          )
-          .map((bike: IData) => {
-            return (
-              <div className="product" key={bike.id}>
-                <div className="bike">
-                  <img
-                    key={bike.id}
-                    src={bike.src}
-                    alt={bike.alt}
-                    className="image"
-                  />
-                </div>
-                <div className="description">
-                  <p className="bikeName">
-                    <b>{bike.bikeName}</b>
-                  </p>
-                  <p className="bikePrice"> ${bike.price}</p>
-                  <div className="Btns">
-                    <NavLink to={`/product/${bike.id}`}>
-                      <button type="button" className="infoBtn">
-                        <b>Show Info</b>
-                      </button>
-                    </NavLink>
-                    <button
-                      type="button"
-                      className="addToCartBtn"
-                      onClick={() => onAddClick(bike.id)}
-                    >
-                      <b>Add To Cart </b>
+        {data?.map((bike: IData) => {
+          return (
+            <div className="product" key={bike.id}>
+              <div className="bike">
+                <img
+                  key={bike.id}
+                  src={bike.src}
+                  alt={bike.alt}
+                  className="image"
+                />
+              </div>
+              <div className="description">
+                <p className="bikeName">
+                  <b>{bike.bikeName}</b>
+                </p>
+                <p className="bikePrice"> ${bike.price}</p>
+                <div className="Btns">
+                  <NavLink to={`/product/${bike.id}`}>
+                    <button type="button" className="infoBtn">
+                      <b>Show Info</b>
                     </button>
-                  </div>
+                  </NavLink>
+                  <button
+                    type="button"
+                    className="addToCartBtn"
+                    onClick={() => onAddClick(bike.id)}
+                  >
+                    <b>Add To Cart </b>
+                  </button>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          );
+        })}
       </div>
       <div>{Pagination(data, page, loadPageData)}</div>
     </div>
