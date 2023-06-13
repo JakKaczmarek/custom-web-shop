@@ -20,7 +20,7 @@ export function ShopContextProvider({
 
     const initialOutput = Array.isArray(input) ? [] : {};
 
-    return Object.keys(input).reduce((acc: any, key) => {
+    return Object.keys(input).reduce((acc: Record<string, any>, key) => {
       acc[key] = clone(input[key]);
       return acc;
     }, initialOutput);
@@ -39,11 +39,11 @@ export function ShopContextProvider({
 
   const removeFromCart = (itemId: number) => {
     const bike = data?.find((item) => item.id === itemId);
-    const newCartItems: any = Object.fromEntries(
+    const newCartItems: ICartItems = Object.fromEntries(
       Object.entries(clone(cartItems)).filter(
         (item) => parseInt(item[0], 10) !== Number(itemId)
       )
-    );
+    ) as ICartItems;
 
     setItemCount(Math.max(itemCount - 1, 0));
 
