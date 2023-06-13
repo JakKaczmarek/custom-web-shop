@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { Pagination } from "../Pagination/Pagination";
-import { loadData } from "../../img/bikes";
+import { loadData } from "../../img/FetchData";
 import { ShopContext } from "../../contexts/ShopContext";
 import { IData } from "../../../@types/types";
 

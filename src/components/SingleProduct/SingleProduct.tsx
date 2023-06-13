@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import { useSnackbar } from "notistack";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useNavigate } from "react-router-dom";
-import { loadData } from "../../img/bikes";
+import { loadData } from "../../img/FetchData";
 import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
 import { IData, IPath } from "../../../@types/types";

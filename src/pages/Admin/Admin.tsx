@@ -5,7 +5,7 @@ import { Container, TextField, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router";
 import ModalBike from "../../components/Modal/ModalBike";
 import ModalImage from "../../components/Modal/ModalImage";
-import { loadData } from "../../img/bikes";
+import { loadData } from "../../img/FetchData";
 import logoebike from "../../img/logoebike.png";
 import Sign from "../../components/NavBar/Sign/Sign";
 import { IData } from "../../../@types/types";
@@ -35,7 +35,6 @@ export default function Admin() {
   useEffect(() => {
     loadData(`http://localhost:8000/bikes?bikeName=${filterBikeName}`, setData);
   }, [filterBikeName]);
-
   return (
     <div>
       <div className="navBar">

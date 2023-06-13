@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CartItem } from "./CartItem";
 import { ShopContext } from "../../contexts/ShopContext";
 import NavBar from "../../components/NavBar/NavBar";
-import { loadData } from "../../img/bikes";
+import { loadData } from "../../img/FetchData";
 import { ICartItem, IData, IShopContext } from "../../../@types/types";
 
 export default function Cart() {
