@@ -8,90 +8,55 @@ export function Pagination(
   page: number,
   callback: (e: number) => void
 ) {
+  const buttonVariant = "contained";
+  const buttonStyles = {
+    background: "black",
+    color: "white",
+    ":hover": {
+      bgcolor: "grey",
+    },
+  };
+
+  const renderButton = (text: string, onClick: () => void) => (
+    <Stack direction="row" spacing={2}>
+      <Button variant={buttonVariant} sx={buttonStyles} onClick={onClick}>
+        {text}
+      </Button>
+    </Stack>
+  );
+
   if (page === 1) {
     return (
       <div className="pagination">
         &nbsp;
         <div className="pagination">{page}</div>
         &nbsp;
-        <Stack direction="row" spacing={2}>
-          <Button
-            variant="contained"
-            sx={{
-              background: "black",
-              color: "white",
-              ":hover": {
-                bgcolor: "grey",
-              },
-            }}
-            onClick={() => callback(page + 1)}
-          >
-            Next
-          </Button>
-        </Stack>
+        {renderButton("Next", () => callback(page + 1))}
       </div>
     );
   }
+
   if (data!.length < 3 && data!.length > 0) {
     return (
       <div className="pagination">
-        <Stack direction="row" spacing={2}>
-          <Button
-            variant="contained"
-            sx={{
-              background: "black",
-              color: "white",
-              ":hover": {
-                bgcolor: "grey",
-              },
-            }}
-            onClick={() => callback(page - 1)}
-          >
-            Prev
-          </Button>
-        </Stack>
+        {renderButton("Prev", () => callback(page - 1))}
         <div className="pagination">{page}</div>
       </div>
     );
   }
-  if (data?.length)
+
+  if (data?.length) {
     return (
       <div className="pagination">
-        <Stack direction="row" spacing={2}>
-          <Button
-            variant="contained"
-            sx={{
-              background: "black",
-              color: "white",
-              ":hover": {
-                bgcolor: "grey",
-              },
-            }}
-            onClick={() => callback(page - 1)}
-          >
-            Prev
-          </Button>
-        </Stack>
+        {renderButton("Prev", () => callback(page - 1))}
         &nbsp;
         <div className="pagination">{page}</div>
         &nbsp;
-        <Stack direction="row" spacing={2}>
-          <Button
-            variant="contained"
-            sx={{
-              background: "black",
-              color: "white",
-              ":hover": {
-                bgcolor: "grey",
-              },
-            }}
-            onClick={() => callback(page + 1)}
-          >
-            Next
-          </Button>
-        </Stack>
+        {renderButton("Next", () => callback(page + 1))}
       </div>
     );
+  }
+
   return (
     <div>
       <div>
@@ -106,7 +71,7 @@ export function Pagination(
           justifyContent="center"
         >
           <Button
-            variant="contained"
+            variant={buttonVariant}
             sx={{
               height: 75,
               width: 200,
