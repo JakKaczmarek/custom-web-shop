@@ -54,6 +54,10 @@ interface IsetModalOpenImage {
   setModalOpenImage: (open: boolean) => void;
 }
 
+interface IaddBike {
+  addBike: () => void;
+}
+
 export type HandleEvent = React.ChangeEvent<HTMLInputElement>;
 export type SubmitEvent = React.FormEvent<HTMLFormElement>;
 export type SearchBarProps = {

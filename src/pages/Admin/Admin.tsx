@@ -22,14 +22,22 @@ export default function Admin() {
     navigate("/");
   };
 
+  const addBike = () => {
+    setModalOpenBike(false);
+    setfilterBikeName("");
+    loadData(`http://localhost:8000/bikes?bikeName=${filterBikeName}`, setData);
+  };
+
   const deleteBike = (id: number) => {
     axios
       .delete(`http://localhost:8000/api/bikes/delete?id=${id}`)
       .then((response) => {
         console.log(response.status);
+        setData((prevData) => prevData!.filter((item) => item.id !== id));
+      })
+      .catch((error) => {
+        console.error(error);
       });
-    setfilterBikeName("");
-    loadData(`http://localhost:8000/bikes?bikeName=${filterBikeName}`, setData);
   };
 
   useEffect(() => {
@@ -97,6 +105,7 @@ export default function Admin() {
             <ModalBike
               setModalOpenBike={setModalOpenBike}
               modalOpenBike={false}
+              addBike={addBike}
             />
           )}
           &nbsp;
