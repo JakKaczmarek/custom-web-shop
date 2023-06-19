@@ -35,7 +35,7 @@ export default function Products() {
 
   useEffect(() => {
     return loadData(
-      `http://localhost:8000/bikes?limit=3&page=${page}&category=${filterCategory}&bikeName=${filterBikeName}`,
+      `http://localhost:8000/bikes?limit=3&page=${page}&category=${filterCategory}&bike_name=${filterBikeName}`,
       setData
     );
   }, [page, filterCategory, filterBikeName]);
@@ -97,7 +97,7 @@ export default function Products() {
               </div>
               <div className="description">
                 <p className="bikeName">
-                  <b>{bike.bikeName}</b>
+                  <b>{bike.bike_name}</b>
                 </p>
                 <p className="bikePrice"> ${bike.price}</p>
                 <div className="Btns">

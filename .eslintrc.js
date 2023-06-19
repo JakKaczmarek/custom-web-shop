@@ -29,6 +29,7 @@ module.exports = {
   plugins: ["react", "prettier", "@typescript-eslint"],
 
   rules: {
+    camelcase: "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-non-null-assertion": "off",

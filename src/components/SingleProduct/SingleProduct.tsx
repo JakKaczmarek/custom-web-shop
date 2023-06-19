@@ -77,7 +77,7 @@ function SingleProduct() {
                 </div>
               </div>
               <div className="descriptionSingle">
-                <h2 className="titleSingle">{data?.bikeName}</h2>
+                <h2 className="titleSingle">{data?.bike_name}</h2>
                 <h1 className="priceSingle">${data?.price}.00 </h1>
                 <p className="descriptionHeader">Description</p>
                 <p>

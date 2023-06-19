@@ -6,7 +6,7 @@ const handleClick = jest.fn();
 const bike = [
   {
     id: 2,
-    bikeName: "Vitus E-substance Carbon",
+    bike_name: "Vitus E-substance Carbon",
     price: 4300,
     category: "Vitus",
     src: "http://localhost:8000/api/bikes/bikesImages/bike2/bike2.jpg",
@@ -38,7 +38,7 @@ function Button({ onClick, children }: IButton) {
 }
 describe("Products", () => {
   it("Should return bikeName and price", () => {
-    expect(bike[0].bikeName).toBe("Vitus E-substance Carbon");
+    expect(bike[0].bike_name).toBe("Vitus E-substance Carbon");
     expect(bike[0].price).toBeGreaterThanOrEqual(1000);
     expect(bike[0].price).toEqual(4300);
   });

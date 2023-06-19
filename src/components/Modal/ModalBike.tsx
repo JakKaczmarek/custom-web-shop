@@ -8,7 +8,7 @@ function ModalBike({
   addBike,
 }: IsetModalOpenBike & IaddBike) {
   const [bike, setBike] = useState({
-    bikeName: "",
+    bike_name: "",
     price: "",
     category: "",
     alt: "",
@@ -53,7 +53,7 @@ function ModalBike({
               <input
                 type="text"
                 name="bikeName"
-                value={bike.bikeName}
+                value={bike.bike_name}
                 onChange={handleChangeBike}
               />
             </label>

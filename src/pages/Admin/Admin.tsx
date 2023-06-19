@@ -25,7 +25,10 @@ export default function Admin() {
   const addBike = () => {
     setModalOpenBike(false);
     setfilterBikeName("");
-    loadData(`http://localhost:8000/bikes?bikeName=${filterBikeName}`, setData);
+    loadData(
+      `http://localhost:8000/bikes?bike_name=${filterBikeName}`,
+      setData
+    );
   };
 
   const deleteBike = (id: number) => {
@@ -41,7 +44,10 @@ export default function Admin() {
   };
 
   useEffect(() => {
-    loadData(`http://localhost:8000/bikes?bikeName=${filterBikeName}`, setData);
+    loadData(
+      `http://localhost:8000/bikes?bike_name=${filterBikeName}`,
+      setData
+    );
   }, [filterBikeName]);
   return (
     <div>
@@ -60,7 +66,7 @@ export default function Admin() {
             <TextField
               id="search"
               type="search"
-              label="Search by bikeName"
+              label="Search by bike name"
               value={filterBikeName}
               onChange={(e) => setfilterBikeName(e.target.value)}
               sx={{

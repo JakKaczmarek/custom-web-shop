@@ -3,7 +3,7 @@ import { ShopContext } from "../../contexts/ShopContext";
 import { IData } from "../../../@types/types";
 
 export function CartItem({ data }: { data: IData }) {
-  const { id, bikeName, price, src, alt } = data;
+  const { id, bike_name, price, src, alt } = data;
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } =
     useContext(ShopContext);
 
@@ -12,7 +12,7 @@ export function CartItem({ data }: { data: IData }) {
       <img src={src} alt={alt} />
       <div className="description">
         <p>
-          <b>{bikeName}</b>
+          <b>{bike_name}</b>
         </p>
         <p> Price: ${price}</p>
         <div className="countHandler">

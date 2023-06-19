@@ -59,7 +59,7 @@ export default function AdminTable(
                 <TableCell component="th" scope="row">
                   {item.id}
                 </TableCell>
-                <TableCell align="left">{item.bikeName}</TableCell>
+                <TableCell align="left">{item.bike_name}</TableCell>
                 <TableCell align="right">{item.price}</TableCell>
                 <TableCell align="right">{item.category}</TableCell>
                 <TableCell align="right">{item.alt}</TableCell>

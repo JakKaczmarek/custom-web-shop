@@ -36,7 +36,7 @@ export interface IPath {
 
 export interface IData {
   id: number;
-  bikeName: string;
+  bike_name: string;
   category: string;
   price: number;
   alt: string;
