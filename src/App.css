@@ -1,6 +1,6 @@
 body {
   background-color: rgb(231, 229, 229);
-  font-family: "Raleway";
+  font-family: "Helvetica";
 }
 .navBar {
   display: flex;
@@ -34,17 +34,11 @@ body {
 .Search {
   margin: auto;
   width: 50%;
+  margin-bottom: 20px;
 }
 .Search .SearchInput {
   display: flex;
   margin: 0 auto;
-  background-color: white;
-  border: 1px solid #d9d9d9;
-  min-width: 280px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 .Search .SearchInput:focus {
   outline: none !important;
@@ -54,14 +48,15 @@ body {
 .Category {
   display: flex;
   justify-content: center;
+  background-color: #ffffff;
 }
 
 .Category .categoryBtns {
   padding: 20px;
   outline: 0;
   border: 0;
-  background: white;
-  border: 1px solid #d9d9d9;
+  font-size: 40px;
+  background: none;
   padding: 8px 0px;
   color: #302f2f;
   text-transform: uppercase;
@@ -69,12 +64,14 @@ body {
   font-family: inherit;
   margin-right: 15px;
   margin-top: 20px;
+  margin-bottom: 20px;
   transition: all 0.3s ease;
   font-weight: 500;
 }
 
 .Category .categoryBtns:hover {
   border: 1px solid #c9940d;
+  border-radius: 40px;
   color: #c9940d;
   cursor: pointer;
 }
@@ -96,6 +93,7 @@ body {
   padding: 5px;
   overflow: hidden;
   background-color: rgb(208, 211, 25);
+  border-radius: 20px;
   color: rgb(0, 0, 0);
   -webkit-box-shadow: inset 0px 0px 9px 2px rgba(150, 145, 145, 1);
   -moz-box-shadow: inset 0px 0px 9px 2px rgba(150, 145, 145, 1);
@@ -176,6 +174,7 @@ body {
   border: 0;
   background: none;
   border: 1px solid #d9d9d9;
+  border-radius: 10px;
   padding: 8px 0px;
   margin-bottom: 20px;
   color: #000000;
@@ -199,6 +198,7 @@ body {
   border: 0;
   background: none;
   border: 1px solid #d9d9d9;
+  border-radius: 10px;
   padding: 8px 0px;
   margin-bottom: 20px;
   color: #000000;
@@ -289,6 +289,7 @@ body {
   border: 0;
   background: none;
   border: 1px solid #d9d9d9;
+  border-radius: 10px;
   padding: 8px 0px;
   margin-bottom: 20px;
   color: #302f2f;
@@ -307,6 +308,7 @@ body {
   border: 0;
   background: none;
   border: 1px solid #d9d9d9;
+  border-radius: 10px;
   padding: 8px 0px;
   margin-bottom: 20px;
   color: #302f2f;
@@ -356,6 +358,7 @@ body {
   border: 0;
   background: none;
   border: 1px solid #d9d9d9;
+  border-radius: 10px;
   padding: 8px 0px;
   margin-bottom: 20px;
   color: #302f2f;
@@ -379,6 +382,7 @@ body {
   border: 0;
   background: none;
   border: 1px solid #b7b5b5;
+  border-radius: 10px;
   padding: 8px 0px;
   margin-bottom: 20px;
   color: #302f2f;
@@ -400,8 +404,7 @@ body {
   outline: 0;
   border: 0;
   background: none;
-  border: 1px solid #d9d9d9;
-  padding: 8px 0px;
+  border: none;
   margin-bottom: 20px;
   color: #302f2f;
   text-transform: uppercase;
@@ -413,7 +416,6 @@ body {
   font-weight: 500;
 }
 .countHandler .countHandlerMinus:hover {
-  border: 1px solid #c9940d;
   color: #c9940d;
   cursor: pointer;
 }
@@ -423,14 +425,12 @@ body {
   border: 0;
   background: none;
   border: 1px solid #d9d9d9;
-  padding: 8px 0px;
   margin-bottom: 20px;
   color: #302f2f;
   text-transform: uppercase;
-  width: 100px;
+  width: 50px;
   font-family: inherit;
   margin-right: 5px;
-  margin-top: 20px;
   transition: all 0.3s ease;
   font-weight: 500;
 }
@@ -438,8 +438,7 @@ body {
   outline: 0;
   border: 0;
   background: none;
-  border: 1px solid #d9d9d9;
-  padding: 8px 0px;
+  border: none;
   margin-bottom: 20px;
   color: #302f2f;
   text-transform: uppercase;
@@ -451,7 +450,6 @@ body {
   font-weight: 500;
 }
 .countHandler .countHandlerPlus:hover {
-  border: 1px solid #c9940d;
   color: #c9940d;
   cursor: pointer;
 }
@@ -611,6 +609,7 @@ nav {
   border: 0;
   background: none;
   border: 1px solid #d9d9d9;
+  border-radius: 10px;
   padding: 8px 0px;
   margin-bottom: 20px;
   color: #302f2f;

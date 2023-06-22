@@ -1,10 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { Container, InputAdornment, TextField } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import { Pagination } from "../Pagination/Pagination";
 import { loadData } from "../../img/FetchData";
 import { ShopContext } from "../../contexts/ShopContext";
 import { IData } from "../../../@types/types";
+import CUBE from "../../img/CUBE.png";
+import ORBEA from "../../img/ORBEA.png";
+import VITUS from "../../img/VITUS.png";
 
 export default function Products() {
   const { addToCart } = useContext(ShopContext);
@@ -43,12 +48,31 @@ export default function Products() {
   return (
     <div>
       <div className="Search">
-        <input
-          type="text"
-          placeholder="Search for product ... "
-          className="SearchInput"
-          onChange={(e) => setfilterBikeName(e.target.value)}
-        />
+        <Container maxWidth="md" sx={{ mt: 5 }}>
+          <TextField
+            id="search"
+            type="search"
+            label="Search"
+            InputLabelProps={{ style: { color: "gray" } }}
+            className="SearchInput"
+            onChange={(e) => setfilterBikeName(e.target.value)}
+            sx={{
+              width: 400,
+              "& .MuiOutlinedInput-root": {
+                "&.Mui-focused fieldSet": {
+                  borderColor: "gray",
+                },
+              },
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </Container>
       </div>
       <div className="Category">
         <button
@@ -58,30 +82,30 @@ export default function Products() {
         >
           All
         </button>
-        <button
-          type="button"
+        <input
+          type="image"
+          src={CUBE}
+          alt="logoebike"
           className="categoryBtns"
           onClick={() => handleFilter("Cube")}
           value={filterCategory}
-        >
-          Cube
-        </button>
-        <button
-          type="button"
+        />
+        <input
+          type="image"
+          src={ORBEA}
+          alt="logoebike"
           className="categoryBtns"
           onClick={() => handleFilter("Orbea")}
           value={filterCategory}
-        >
-          Orbea
-        </button>
-        <button
-          type="button"
+        />
+        <input
+          type="image"
+          src={VITUS}
+          alt="logoebike"
           className="categoryBtns"
           onClick={() => handleFilter("Vitus")}
           value={filterCategory}
-        >
-          Vitus
-        </button>
+        />
       </div>
       <div className="products">
         {data?.map((bike: IData) => {

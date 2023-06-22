@@ -48,11 +48,11 @@ function ModalBike({
             <h1>Add new bike to shop</h1>
           </div>
           <div className="body">
-            <label htmlFor="bikeName">
-              bikeName
+            <label htmlFor="bike_name">
+              name
               <input
                 type="text"
-                name="bikeName"
+                name="bike_name"
                 value={bike.bike_name}
                 onChange={handleChangeBike}
               />
