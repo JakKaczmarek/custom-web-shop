@@ -10,7 +10,7 @@ export function Pagination(
 ) {
   const buttonVariant = "contained";
   const buttonStyles = {
-    background: "black",
+    background: "#3d3d3d",
     color: "white",
     ":hover": {
       bgcolor: "grey",

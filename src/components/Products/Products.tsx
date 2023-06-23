@@ -57,6 +57,7 @@ export default function Products() {
             className="SearchInput"
             onChange={(e) => setfilterBikeName(e.target.value)}
             sx={{
+              background: "white",
               width: 400,
               "& .MuiOutlinedInput-root": {
                 "&.Mui-focused fieldSet": {

@@ -42,8 +42,9 @@ export default function Cart() {
       <span>
         <h1 className="cartTitle">Your Cart Items</h1>
         <p className="cartTitleDescription">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
-          urna, dignissim nec auctor in, mattis vitae leo.
+          Thank you for choosing our store and adding bicycles to your shopping
+          cart! We are delighted to provide you with an exceptional cycling
+          experience!
         </p>
       </span>
       <div className="cart">
