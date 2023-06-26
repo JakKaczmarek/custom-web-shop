@@ -3,6 +3,8 @@ import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, TextField, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import debounce from "lodash.debounce";
 import ModalBike from "../../components/Modal/ModalBike";
 import ModalImage from "../../components/Modal/ModalImage";
 import { loadData } from "../../img/FetchData";
@@ -15,16 +17,18 @@ export default function Admin() {
   const [data, setData] = useState<IData[] | null>(null);
   const [modalOpenBike, setModalOpenBike] = useState(false);
   const [modalOpenImage, setModalOpenImage] = useState(false);
-  const [filterBikeName, setfilterBikeName] = useState("");
+  const [filterBikeName, setFilterBikeName] = useState("");
 
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/");
   };
 
+  const debouncedFilterBikeName = debounce(setFilterBikeName, 400);
+
   const addBike = () => {
     setModalOpenBike(false);
-    setfilterBikeName("");
+    setFilterBikeName("");
     loadData(
       `http://localhost:8000/bikes?bike_name=${filterBikeName}`,
       setData
@@ -67,8 +71,7 @@ export default function Admin() {
               id="search"
               type="search"
               label="Search by bike name"
-              value={filterBikeName}
-              onChange={(e) => setfilterBikeName(e.target.value)}
+              onChange={(e) => debouncedFilterBikeName(e.target.value)}
               sx={{
                 width: 350,
                 color: "black",

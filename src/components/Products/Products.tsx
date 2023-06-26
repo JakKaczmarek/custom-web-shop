@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { Container, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import debounce from "lodash.debounce";
 import { Pagination } from "../Pagination/Pagination";
 import { loadData } from "../../img/FetchData";
 import { ShopContext } from "../../contexts/ShopContext";
@@ -16,7 +18,7 @@ export default function Products() {
   const { enqueueSnackbar } = useSnackbar();
   const [data, setData] = useState<IData[] | null>(null);
   const [filterCategory, setFilterCategory] = useState("");
-  const [filterBikeName, setfilterBikeName] = useState("");
+  const [filterBikeName, setFilterBikeName] = useState("");
   const [page, setPage] = useState(1);
 
   const handleFilter = (value: string) => {
@@ -32,6 +34,8 @@ export default function Products() {
   const loadPageData = (e: number) => {
     setPage(e);
   };
+
+  const debouncedFilterBikeName = debounce(setFilterBikeName, 400);
 
   function onAddClick(e: number) {
     enqueueSnackbar("Bike added to cart successfully!");
@@ -55,7 +59,7 @@ export default function Products() {
             label="Search"
             InputLabelProps={{ style: { color: "gray" } }}
             className="SearchInput"
-            onChange={(e) => setfilterBikeName(e.target.value)}
+            onChange={(e) => debouncedFilterBikeName(e.target.value)}
             sx={{
               background: "white",
               width: 400,
