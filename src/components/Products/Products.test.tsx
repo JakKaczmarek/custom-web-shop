@@ -1,8 +1,3 @@
-import React, { ReactNode } from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import { IButton } from "../../../@types/types";
-
-const handleClick = jest.fn();
 const bike = [
   {
     id: 2,
@@ -26,31 +21,26 @@ const bike = [
   },
 ];
 
-function test() {
+function testing() {
   return bike[0];
 }
-function Button({ onClick, children }: IButton) {
-  return (
-    <button type="button" onClick={() => onClick}>
-      {children}
-    </button>
-  );
-}
+
 describe("Products", () => {
   it("Should return bikeName and price", () => {
     expect(bike[0].bike_name).toBe("Vitus E-substance Carbon");
     expect(bike[0].price).toBeGreaterThanOrEqual(1000);
     expect(bike[0].price).toEqual(4300);
   });
+
   it("test() should return srcArray", () => {
-    expect(test()).toHaveProperty("srcArray");
+    expect(testing()).toHaveProperty("srcArray");
   });
 
   it("Should return twice", () => {
     const mock = jest.fn(() => true);
     mock();
     mock();
-    expect(mock).toHaveReturnedTimes(2);
+    expect(mock).toHaveBeenCalledTimes(2);
   });
 
   it("Should test function", () => {

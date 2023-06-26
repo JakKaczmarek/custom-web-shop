@@ -27,7 +27,9 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "prettier", "@typescript-eslint"],
-
+  globals: {
+    jest: true,
+  },
   rules: {
     camelcase: "off",
     "no-unused-vars": "off",
