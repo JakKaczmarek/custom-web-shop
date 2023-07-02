@@ -10,27 +10,22 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import logoebike from "../../img/logoebike.png";
 import { AuthContext } from "../../contexts/AuthContext";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="http://localhost:3000/">
-        eBike Shop &nbsp;
-      </Link>
-      &nbsp;
-      {new Date().getFullYear()}.
-    </Typography>
-  );
-}
+function Login() {
+  const { loginError, handleSubmit, logoSubmit } = useContext(AuthContext);
+  const [error, setError] = useState(loginError);
 
-const theme = createTheme();
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(false);
+    handleSubmit(e);
+  };
 
-export default function Login() {
-  const { error, logoSubmit, handleSubmit } = useContext(AuthContext);
+  const theme = createTheme();
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -56,7 +51,7 @@ export default function Login() {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={handleFormSubmit}
             noValidate
             sx={{ mt: 1 }}
           >
@@ -143,9 +138,9 @@ export default function Login() {
             </Grid>
           </Box>
         </Box>
-        &nbsp;
-        <Copyright />
       </Container>
     </ThemeProvider>
   );
 }
+
+export default Login;
