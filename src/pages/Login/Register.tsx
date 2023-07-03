@@ -2,26 +2,21 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useContext, useState } from "react";
-import logoebike from "../../img/logoebike.png";
 import { AuthContext } from "../../contexts/AuthContext";
 
-function Login() {
-  const { loginError, handleSubmit, logoSubmit } = useContext(AuthContext);
-  const [error, setError] = useState(loginError);
+function Register() {
+  const { handleRegisterSubmit } = useContext(AuthContext);
+  const [error, setError] = useState(false);
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(false);
-    handleSubmit(e);
+    handleRegisterSubmit(e);
   };
 
   const theme = createTheme();
@@ -38,16 +33,8 @@ function Login() {
             alignItems: "center",
           }}
         >
-          <input
-            type="image"
-            src={logoebike}
-            alt="logoebike"
-            className="logoebikeImage"
-            onClick={logoSubmit}
-          />
-
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign up
           </Typography>
           <Box
             component="form"
@@ -56,7 +43,6 @@ function Login() {
             sx={{ mt: 1 }}
           >
             <TextField
-              inputProps={{ "data-testid": "email-input" }}
               margin="normal"
               required
               error={error}
@@ -76,7 +62,6 @@ function Login() {
               }}
             />
             <TextField
-              inputProps={{ "data-testid": "password-input" }}
               margin="normal"
               required
               error={error}
@@ -86,7 +71,7 @@ function Login() {
               InputLabelProps={{ style: { color: "gray" } }}
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete="new-password"
               sx={{
                 "& .MuiOutlinedInput-root": {
                   "&.Mui-focused fieldSet": {
@@ -95,12 +80,7 @@ function Login() {
                 },
               }}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
-              data-testid="login-button"
               type="submit"
               fullWidth
               variant="contained"
@@ -114,28 +94,8 @@ function Login() {
                 },
               }}
             >
-              Sign In
+              Sign Up
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link
-                  href="!#"
-                  variant="body2"
-                  sx={{ color: "black", textDecorationColor: "grey" }}
-                >
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link
-                  href="/register"
-                  variant="body2"
-                  sx={{ color: "black", textDecorationColor: "grey" }}
-                >
-                  Do not have an account? Sign Up
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
       </Container>
@@ -143,4 +103,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

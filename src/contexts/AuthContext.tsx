@@ -48,7 +48,23 @@ export function AuthContextProvider({
       setLoginError(true);
     }
   };
+  const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
+    const email = (e.target as HTMLFormElement).email.value;
+    const password = (e.target as HTMLFormElement).password.value;
+
+    try {
+      await axios.post("http://localhost:8000/api/users/register", {
+        email,
+        password,
+      });
+      navigate("/login");
+    } catch (error) {
+      console.error("Error registering user:", error);
+      setLoginError(true);
+    }
+  };
   const contextValue = useMemo(
     () => ({
       setIsAuthenticated,
@@ -56,8 +72,15 @@ export function AuthContextProvider({
       handleSubmit,
       logoSubmit,
       isAuthenticated,
+      handleRegisterSubmit,
     }),
-    [loginError, logoSubmit, handleSubmit, isAuthenticated]
+    [
+      loginError,
+      logoSubmit,
+      handleSubmit,
+      isAuthenticated,
+      handleRegisterSubmit,
+    ]
   );
 
   return (

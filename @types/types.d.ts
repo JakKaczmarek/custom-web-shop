@@ -21,6 +21,7 @@ export interface IAuthContext {
   loginError: boolean;
   logoSubmit: () => void;
   handleSubmit: (e) => void;
+  handleRegisterSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export interface IButton {

@@ -10,6 +10,7 @@ import Payment from "./pages/Checkout/Payment";
 import Admin from "./pages/Admin/Admin";
 import { ShopContextProvider } from "./contexts/ShopContext";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import Register from "./pages/Login/Register";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
