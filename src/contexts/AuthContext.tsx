@@ -27,27 +27,31 @@ export function AuthContextProvider({
 
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/users/${email}`
+        `http://localhost:8000/api/users/${email}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
       );
-      const user = response.data;
-
-      if (user && user.password === password) {
+      if (response.data && response.data.password === password) {
         setIsAuthenticated(true);
 
-        if (email === "admin" && password === "admin") {
+        if (response.data.email === "admin") {
           navigate("/admin");
         } else {
           navigate("/");
         }
       } else {
         setLoginError(true);
-        window.alert("wrong email or password");
+        window.alert("Wrong email or password");
       }
     } catch (error) {
-      console.error("Error getting user:", error);
+      console.error("Error logging in:", error);
       setLoginError(true);
     }
   };
+
   const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -55,16 +59,31 @@ export function AuthContextProvider({
     const password = (e.target as HTMLFormElement).password.value;
 
     try {
-      await axios.post("http://localhost:8000/api/users/register", {
-        email,
-        password,
-      });
-      navigate("/login");
+      const response = await axios.post(
+        "http://localhost:8000/api/users/register",
+        {
+          email,
+          password,
+        }
+      );
+
+      const { token } = response.data;
+
+      if (token) {
+        setIsAuthenticated(true);
+        localStorage.setItem("token", token);
+        console.log(token);
+        navigate("/login");
+      } else {
+        setLoginError(true);
+        window.alert("Registration failed");
+      }
     } catch (error) {
       console.error("Error registering user:", error);
       setLoginError(true);
     }
   };
+
   const contextValue = useMemo(
     () => ({
       setIsAuthenticated,
