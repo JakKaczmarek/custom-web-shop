@@ -12,6 +12,9 @@ describe("Sign", () => {
       isAuthenticated: true,
       setIsAuthenticated,
       error: false,
+      logoSubmit: jest.fn(),
+      handleSubmit: jest.fn(),
+      handleRegisterSubmit: jest.fn(),
     };
     const { getByTestId, getByText } = render(
       <MemoryRouter>
@@ -34,6 +37,9 @@ describe("Sign", () => {
       isAuthenticated: false,
       setIsAuthenticated,
       error: false,
+      logoSubmit: jest.fn(),
+      handleSubmit: jest.fn(),
+      handleRegisterSubmit: jest.fn(),
     };
     const { getByTestId, getByText } = render(
       <MemoryRouter>

@@ -18,7 +18,7 @@ export interface IShopContext {
 export interface IAuthContext {
   isAuthenticated: boolean;
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
-  loginError: boolean;
+  loginError?: boolean;
   logoSubmit: () => void;
   handleSubmit: (e) => void;
   handleRegisterSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
