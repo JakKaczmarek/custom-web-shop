@@ -1,6 +1,8 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
+import { ShopContextProvider } from "./contexts/ShopContext";
+import { AuthContextProvider } from "./contexts/AuthContext";
 import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
 import SingleProduct from "./components/SingleProduct/SingleProduct";
@@ -8,8 +10,6 @@ import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
 import Payment from "./pages/Checkout/Payment";
 import Admin from "./pages/Admin/Admin";
-import { ShopContextProvider } from "./contexts/ShopContext";
-import { AuthContextProvider } from "./contexts/AuthContext";
 import Register from "./pages/Login/Register";
 
 function App() {

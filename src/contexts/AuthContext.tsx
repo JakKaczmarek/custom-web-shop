@@ -15,6 +15,38 @@ export function AuthContextProvider({
   const [loginError, setLoginError] = React.useState(false);
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
+  const isValidToken = async () => {
+    const token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
+      "$1"
+    );
+    if (token) {
+      try {
+        const response = await axios.post(
+          "http://localhost:8000/api/users/verify",
+          { token }
+        );
+        const { isValid } = response.data;
+        if (isValid === true) {
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+          document.cookie =
+            "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          navigate("/login");
+        }
+      } catch (error) {
+        console.error("Wystąpił błąd:", error);
+      }
+    } else {
+      setIsAuthenticated(false);
+    }
+  };
+
+  React.useEffect(() => {
+    isValidToken();
+  }, []);
+
   const logoSubmit = () => {
     navigate("/");
   };
@@ -37,8 +69,7 @@ export function AuthContextProvider({
       const { token } = response.data;
 
       if (token) {
-        localStorage.setItem("token", token);
-        console.log(token);
+        document.cookie = `token=${token}; path=/;`;
 
         if (email === "admin") {
           navigate("/admin");
