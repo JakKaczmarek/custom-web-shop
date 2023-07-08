@@ -66,12 +66,12 @@ export function AuthContextProvider({
         }
       );
 
-      const { token } = response.data;
-
+      const { token, role } = response.data;
       if (token) {
         document.cookie = `token=${token}; path=/;`;
 
-        if (email === "admin") {
+        if (role === "admin") {
+          setIsAuthenticated(true);
           navigate("/admin");
         } else {
           navigate("/");
