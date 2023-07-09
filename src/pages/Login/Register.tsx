@@ -7,16 +7,19 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useContext, useState } from "react";
+import { useSnackbar } from "notistack";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Register() {
   const { handleRegisterSubmit } = useContext(AuthContext);
   const [error, setError] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(false);
     handleRegisterSubmit(e);
+    enqueueSnackbar("New account created!");
   };
 
   const theme = createTheme();

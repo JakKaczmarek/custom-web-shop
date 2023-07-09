@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { Container, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import debounce from "lodash.debounce";
 import { Pagination } from "../Pagination/Pagination";
 import { loadData } from "../../img/FetchData";
