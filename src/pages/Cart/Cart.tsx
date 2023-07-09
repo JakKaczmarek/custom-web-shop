@@ -40,12 +40,18 @@ export default function Cart() {
     <div className="shoppingCart">
       <NavBar />
       <span>
-        <h1 className="cartTitle">Your Cart Items</h1>
-        <p className="cartTitleDescription">
-          Thank you for choosing our store and adding bicycles to your shopping
-          cart! We are delighted to provide you with an exceptional cycling
-          experience!
-        </p>
+        {Object.keys(cartItems).length > 0 ? (
+          <>
+            <h1 className="cartTitle">Your Cart Items</h1>
+            <p className="cartTitleDescription">
+              Thank you for choosing our store and adding bicycles to your
+              shopping cart! We are delighted to provide you with an exceptional
+              cycling experience!
+            </p>
+          </>
+        ) : (
+          <h1 className="cartTitle">Your cart is empty</h1>
+        )}
       </span>
       <div className="cart">
         <div className="cartBikes">
