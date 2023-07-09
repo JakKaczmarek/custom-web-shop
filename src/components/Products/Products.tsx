@@ -11,6 +11,7 @@ import { IData } from "../../../@types/types";
 import CUBE from "../../img/CUBE.png";
 import ORBEA from "../../img/ORBEA.png";
 import VITUS from "../../img/VITUS.png";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Products() {
   const { addToCart } = useContext(ShopContext);
@@ -19,6 +20,7 @@ export default function Products() {
   const [filterCategory, setFilterCategory] = useState("");
   const [filterBikeName, setFilterBikeName] = useState("");
   const [page, setPage] = useState(1);
+  const { isAuthenticated } = useContext(AuthContext);
 
   const handleFilter = (value: string) => {
     setFilterCategory(value);
@@ -37,8 +39,10 @@ export default function Products() {
   const debouncedFilterBikeName = debounce(setFilterBikeName, 400);
 
   function onAddClick(e: number) {
-    enqueueSnackbar("Bike added to cart successfully!");
-    addToCart(data![data!.findIndex((bike) => e === bike.id)].id);
+    if (isAuthenticated === true) {
+      enqueueSnackbar("Bike added to cart successfully!");
+      addToCart(data![data!.findIndex((bike) => e === bike.id)].id);
+    } else window.alert("You need to sign in");
   }
 
   useEffect(() => {

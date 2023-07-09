@@ -7,6 +7,7 @@ import { loadData } from "../../img/FetchData";
 import NavBar from "../NavBar/NavBar";
 import { ShopContext } from "../../contexts/ShopContext";
 import { IData, IPath } from "../../../@types/types";
+import { AuthContext } from "../../contexts/AuthContext";
 
 function SingleProduct() {
   const { addToCart } = useContext(ShopContext);
@@ -15,6 +16,7 @@ function SingleProduct() {
   const [data, setData] = useState<IData | null>(null);
   const { id } = useParams<string>();
   const [sliderData, setSliderData] = useState<IPath | null>(null);
+  const { isAuthenticated } = useContext(AuthContext);
 
   const onHandleClick = (i: number) => {
     const slider = data?.srcArray ? data.srcArray[i] : null;
@@ -25,8 +27,10 @@ function SingleProduct() {
   };
 
   function onAddClick() {
-    enqueueSnackbar("Bike added to cart successfully!");
-    addToCart(data?.id);
+    if (isAuthenticated === true) {
+      enqueueSnackbar("Bike added to cart successfully!");
+      addToCart(data?.id);
+    } else window.alert("You need to sign in");
   }
 
   useEffect(() => {
