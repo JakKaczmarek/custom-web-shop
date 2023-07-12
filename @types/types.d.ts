@@ -45,6 +45,18 @@ export interface IData {
   srcArray: IPath[];
 }
 
+export interface IOrders {
+  id?: number;
+  name: string;
+  email: string;
+  shipping_address: string;
+  postal_code: string;
+  city: string;
+  country: string;
+  phone: string;
+  total_amount: number;
+}
+
 interface IsetModalOpenBike {
   modalOpenBike: boolean;
   setModalOpenBike: (open: boolean) => void;
@@ -57,6 +69,25 @@ interface IsetModalOpenImage {
 
 interface IaddBike {
   addBike: () => void;
+}
+
+interface FieldProps {
+  sx?: {
+    width: number;
+    "& .MuiOutlinedInput-root": {
+      "&.Mui-focused fieldSet": {
+        borderColor: string;
+      };
+    };
+  };
+  label?: string;
+  name?: string;
+  autoComplete?: string;
+  InputLabelProps?: { style: { color: string } };
+  inputProps?: any;
+  placeholder?: string;
+  value?: string;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export type HandleEvent = React.ChangeEvent<HTMLInputElement>;

@@ -3,18 +3,19 @@ import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, TextField, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import debounce from "lodash.debounce";
 import ModalBike from "../../components/Modal/ModalBike";
 import ModalImage from "../../components/Modal/ModalImage";
 import { loadData } from "../../img/FetchData";
 import logoebike from "../../img/logoebike.png";
 import Sign from "../../components/NavBar/Sign/Sign";
-import { IData } from "../../../@types/types";
+import { IData, IOrders } from "../../../@types/types";
 import AdminTable from "./AdminTable";
+import AdminOrderTable from "./AdminOrderTable";
 
 export default function Admin() {
   const [data, setData] = useState<IData[] | null>(null);
+  const [orderData, setOrderData] = useState<IOrders[] | null>(null);
   const [modalOpenBike, setModalOpenBike] = useState(false);
   const [modalOpenImage, setModalOpenImage] = useState(false);
   const [filterBikeName, setFilterBikeName] = useState("");
@@ -52,7 +53,9 @@ export default function Admin() {
       `http://localhost:8000/bikes?bike_name=${filterBikeName}`,
       setData
     );
+    loadData(`http://localhost:8000/api/orders/all`, setOrderData);
   }, [filterBikeName]);
+
   return (
     <div>
       <div className="navBar">
@@ -135,7 +138,11 @@ export default function Admin() {
           )}
         </div>
         &nbsp;
+        <h2 className="AdminTable">Bikes</h2>
         {AdminTable(data, deleteBike)}
+        &nbsp;
+        <h2 className="AdminTable">Orders</h2>
+        {AdminOrderTable(orderData)}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
+import { FieldProps } from "../../../@types/types";
 
 export default function Field({
   sx = {
@@ -16,9 +17,13 @@ export default function Field({
   InputLabelProps = { style: { color: "gray" } },
   inputProps = {},
   placeholder = "",
-}) {
+  value = "",
+  onChange,
+}: FieldProps) {
   return (
     <TextField
+      onChange={onChange}
+      value={value}
       required
       margin="normal"
       label={label}

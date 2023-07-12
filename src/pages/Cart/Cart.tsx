@@ -73,7 +73,11 @@ export default function Cart() {
                 type="button"
                 className="cartCheckoutShoppingBtn"
                 onClick={() => {
-                  handleSubmitCart();
+                  if (Object.keys(cartItems).length > 0) {
+                    handleSubmitCart();
+                  } else {
+                    window.alert("You need to add at least one bike");
+                  }
                 }}
               >
                 Checkout
