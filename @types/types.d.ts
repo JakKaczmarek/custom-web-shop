@@ -13,6 +13,8 @@ export interface IShopContext {
   addToCart: (number) => void;
   removeFromCart: (number) => void;
   updateCartItemCount: (newAmount: number, itemId: number) => void;
+  discount: number;
+  setDiscount: (discount: number) => void;
 }
 
 export interface IAuthContext {

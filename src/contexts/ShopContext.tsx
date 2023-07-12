@@ -1,4 +1,10 @@
-import { createContext, useState, useMemo, useEffect } from "react";
+import {
+  createContext,
+  useState,
+  useMemo,
+  useEffect,
+  SetStateAction,
+} from "react";
 import axios from "axios";
 import { ICartItems, IData, IShopContext } from "../../@types/types";
 
@@ -64,6 +70,13 @@ export function ShopContextProvider({
     }));
   };
 
+  const [discount, setDiscount] = useState(0);
+
+  // Funkcja ustawiająca zniżkę
+  const setDiscountValue = (discountValue: SetStateAction<number>) => {
+    setDiscount(discountValue);
+  };
+
   const contextValue = useMemo(
     () => ({
       cartItems,
@@ -71,8 +84,18 @@ export function ShopContextProvider({
       addToCart,
       updateCartItemCount,
       removeFromCart,
+      discount,
+      setDiscount: setDiscountValue,
     }),
-    [cartItems, addToCart, updateCartItemCount, removeFromCart]
+    [
+      cartItems,
+      addToCart,
+      updateCartItemCount,
+      removeFromCart,
+      discount,
+      setDiscount,
+      setDiscountValue,
+    ]
   );
 
   useEffect(() => {

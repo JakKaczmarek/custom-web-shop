@@ -11,11 +11,12 @@ import { ICartItem, IShopContext } from "../../../@types/types";
 import { ShopContext } from "../../contexts/ShopContext";
 
 export default function Checkout() {
-  const { cartItems }: IShopContext = useContext(ShopContext);
+  const { cartItems, discount }: IShopContext = useContext(ShopContext);
   const totalPrice = Object.values(cartItems).reduce(
     (acc: number, curr: ICartItem) => acc + curr.price * curr.quantity,
     0
   );
+  const discountedPrice = totalPrice - discount;
   const [order, setOrder] = useState({
     name: "",
     email: "",
@@ -24,7 +25,7 @@ export default function Checkout() {
     phone: "",
     city: "",
     country: "",
-    total_amount: totalPrice,
+    total_amount: discountedPrice,
   });
 
   const navigate = useNavigate();

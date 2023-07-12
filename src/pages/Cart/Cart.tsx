@@ -12,9 +12,10 @@ export default function Cart() {
   useEffect(() => {
     loadData("http://localhost:8000/api/bikes/all", setData);
   }, []);
-  const { cartItems }: IShopContext = useContext(ShopContext);
+  const { cartItems, discount, setDiscount }: IShopContext =
+    useContext(ShopContext);
 
-  const [discount, setDiscount] = useState(0);
+  // const [discount, setDiscount] = useState(0);
 
   const totalPrice = Object.values(cartItems).reduce(
     (acc: number, curr: ICartItem) => acc + curr.price * curr.quantity,
