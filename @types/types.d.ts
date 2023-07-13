@@ -25,6 +25,8 @@ export interface IAuthContext {
   logoSubmit: () => void;
   handleSubmit: (e) => void;
   handleRegisterSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  userId: string;
+  setUserId: (value: string) => void;
 }
 
 export interface IButton {
@@ -87,7 +89,7 @@ interface FieldProps {
   name?: string;
   autoComplete?: string;
   InputLabelProps?: { style: { color: string } };
-  inputProps?: any;
+  inputProps?: object;
   placeholder?: string;
   value?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;

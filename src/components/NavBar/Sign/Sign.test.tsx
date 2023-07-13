@@ -15,6 +15,8 @@ describe("Sign", () => {
       logoSubmit: jest.fn(),
       handleSubmit: jest.fn(),
       handleRegisterSubmit: jest.fn(),
+      userId: "",
+      setUserId: jest.fn(),
     };
     const { getByTestId, getByText } = render(
       <MemoryRouter>
@@ -40,6 +42,8 @@ describe("Sign", () => {
       logoSubmit: jest.fn(),
       handleSubmit: jest.fn(),
       handleRegisterSubmit: jest.fn(),
+      userId: "",
+      setUserId: jest.fn(),
     };
     const { getByTestId, getByText } = render(
       <MemoryRouter>
