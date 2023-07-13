@@ -72,9 +72,13 @@ export function ShopContextProvider({
 
   const [discount, setDiscount] = useState(0);
 
-  // Funkcja ustawiająca zniżkę
   const setDiscountValue = (discountValue: SetStateAction<number>) => {
     setDiscount(discountValue);
+  };
+
+  const clearCart = () => {
+    setCartItems({});
+    setItemCount(0);
   };
 
   const contextValue = useMemo(
@@ -86,6 +90,7 @@ export function ShopContextProvider({
       removeFromCart,
       discount,
       setDiscount: setDiscountValue,
+      clearCart,
     }),
     [
       cartItems,
@@ -95,6 +100,7 @@ export function ShopContextProvider({
       discount,
       setDiscount,
       setDiscountValue,
+      clearCart,
     ]
   );
 

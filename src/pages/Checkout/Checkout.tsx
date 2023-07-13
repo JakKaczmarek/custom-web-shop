@@ -11,7 +11,8 @@ import { ICartItem, IShopContext } from "../../../@types/types";
 import { ShopContext } from "../../contexts/ShopContext";
 
 export default function Checkout() {
-  const { cartItems, discount }: IShopContext = useContext(ShopContext);
+  const { cartItems, discount, clearCart }: IShopContext =
+    useContext(ShopContext);
   const totalPrice = Object.values(cartItems).reduce(
     (acc: number, curr: ICartItem) => acc + curr.price * curr.quantity,
     0
@@ -45,6 +46,7 @@ export default function Checkout() {
     alert(
       "Thank you for shopping! We will send you an email confirming your purchase."
     );
+    clearCart();
     navigate("/");
   };
   const handleChangeOrder = (e: React.ChangeEvent<HTMLInputElement>) => {

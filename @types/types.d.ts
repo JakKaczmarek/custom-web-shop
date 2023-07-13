@@ -15,6 +15,7 @@ export interface IShopContext {
   updateCartItemCount: (newAmount: number, itemId: number) => void;
   discount: number;
   setDiscount: (discount: number) => void;
+  clearCart: () => void;
 }
 
 export interface IAuthContext {
