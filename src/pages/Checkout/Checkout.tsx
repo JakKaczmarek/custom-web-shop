@@ -14,7 +14,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 export default function Checkout() {
   const { cartItems, discount, clearCart }: IShopContext =
     useContext(ShopContext);
-  const { userId } = useContext(AuthContext);
+  const { userEmail } = useContext(AuthContext);
 
   const totalPrice = Object.values(cartItems).reduce(
     (acc: number, curr: ICartItem) => acc + curr.price * curr.quantity,
@@ -40,7 +40,7 @@ export default function Checkout() {
 
   const handleSubmitNewOrder = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const orderData = { ...order, email: userId };
+    const orderData = { ...order, email: userEmail };
 
     axios
       .post(`http://localhost:8000/api/orders/register`, orderData)

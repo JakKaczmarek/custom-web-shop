@@ -12,8 +12,8 @@ test("renders Admin component without errors", () => {
     logoSubmit: jest.fn(),
     isAuthenticated: false,
     handleRegisterSubmit: jest.fn(),
-    userId: "",
-    setUserId: jest.fn(),
+    userEmail: "",
+    setUserEmail: jest.fn(),
   };
 
   render(

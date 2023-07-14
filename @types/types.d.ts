@@ -25,8 +25,8 @@ export interface IAuthContext {
   logoSubmit: () => void;
   handleSubmit: (e) => void;
   handleRegisterSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  userId: string;
-  setUserId: (value: string) => void;
+  userEmail: string;
+  setUserEmail: (value: string) => void;
 }
 
 export interface IButton {

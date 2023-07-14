@@ -14,7 +14,7 @@ export function AuthContextProvider({
   const navigate = useNavigate();
   const [loginError, setLoginError] = React.useState(false);
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-  const [userId, setUserId] = React.useState("");
+  const [userEmail, setUserEmail] = React.useState("");
 
   const isValidToken = async () => {
     const token = document.cookie.replace(
@@ -70,7 +70,7 @@ export function AuthContextProvider({
       const { token, role } = response.data;
       if (token) {
         document.cookie = `token=${token}; path=/;`;
-        setUserId(email);
+        setUserEmail(email);
 
         if (role === "admin") {
           setIsAuthenticated(true);
@@ -119,8 +119,8 @@ export function AuthContextProvider({
       handleSubmit,
       logoSubmit,
       handleRegisterSubmit,
-      userId,
-      setUserId,
+      userEmail,
+      setUserEmail,
     }),
     [
       loginError,
@@ -129,8 +129,8 @@ export function AuthContextProvider({
       handleRegisterSubmit,
       isAuthenticated,
       setIsAuthenticated,
-      userId,
-      setUserId,
+      userEmail,
+      setUserEmail,
     ]
   );
 

@@ -6,10 +6,13 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default function CustomerOrders() {
   const [orderData, setOrderData] = useState<IOrders[] | null>(null);
-  const { userId } = useContext(AuthContext);
+  const { userEmail } = useContext(AuthContext);
 
   useEffect(() => {
-    loadData(`http://localhost:8000/api/orders?email=${userId}`, setOrderData);
+    loadData(
+      `http://localhost:8000/api/orders?email=${userEmail}`,
+      setOrderData
+    );
   });
   return (
     <div>
