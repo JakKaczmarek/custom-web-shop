@@ -27,7 +27,10 @@ body {
   transition: all 0.3s ease;
 }
 .navBar .right .cart {
-  margin-top: 4%;
+  margin-top: 2%;
+  margin-right: 50px;
+}
+.navBar .right .sign {
   margin-right: 50px;
 }
 

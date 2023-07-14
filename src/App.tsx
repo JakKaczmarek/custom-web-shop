@@ -7,6 +7,7 @@ import Login from "./pages/Login/Login";
 import Main from "./pages/Main/Main";
 import SingleProduct from "./components/SingleProduct/SingleProduct";
 import Checkout from "./pages/Checkout/Checkout";
+import CustomerOrders from "./pages/Customer/CustomerOrders";
 import Cart from "./pages/Cart/Cart";
 import Admin from "./pages/Admin/Admin";
 import Register from "./pages/Login/Register";
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
+                <Route path="/history" element={<CustomerOrders />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/checkout" element={<Checkout />} />
