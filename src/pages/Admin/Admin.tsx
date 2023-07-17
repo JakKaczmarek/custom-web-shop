@@ -20,6 +20,8 @@ export default function Admin() {
   const [modalOpenImage, setModalOpenImage] = useState(false);
   const [filterBikeName, setFilterBikeName] = useState("");
   const [totalRevenue, setTotalRevenue] = useState(0);
+  const [showAdminTable, setShowAdminTable] = useState(true);
+  const [showOrderTable, setShowOrderTable] = useState(false);
 
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -147,11 +149,25 @@ export default function Admin() {
         </div>
         &nbsp;
         <h2 className="AdminTable">Bikes</h2>
-        {AdminTable(data, deleteBike)}
+        <button
+          type="button"
+          className="openModalBtn"
+          onClick={() => setShowAdminTable(!showAdminTable)}
+        >
+          {showAdminTable ? "Hide bikes" : "Show bikes"}
+        </button>
+        {showAdminTable && AdminTable(data, deleteBike)}
         &nbsp;
         <h2 className="AdminTable">Orders</h2>
         <div className="TotalRevenue">Total Revenue: {totalRevenue} USD</div>
-        {AdminOrderTable(orderData)}
+        <button
+          type="button"
+          className="openModalBtn"
+          onClick={() => setShowOrderTable(!showOrderTable)}
+        >
+          {showOrderTable ? "Hide orders" : "Show orders"}
+        </button>
+        {showOrderTable && AdminOrderTable(orderData)}
       </div>
     </div>
   );
