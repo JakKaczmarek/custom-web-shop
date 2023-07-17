@@ -44,8 +44,13 @@ export function AuthContextProvider({
     }
   };
 
+  const storedUserEmail = localStorage.getItem("userEmail");
+
   React.useEffect(() => {
     isValidToken();
+    if (storedUserEmail) {
+      setUserEmail(storedUserEmail);
+    }
   }, []);
 
   const logoSubmit = () => {
@@ -71,6 +76,7 @@ export function AuthContextProvider({
       if (token) {
         document.cookie = `token=${token}; path=/;`;
         setUserEmail(email);
+        localStorage.setItem("userEmail", email);
 
         if (role === "admin") {
           setIsAuthenticated(true);
