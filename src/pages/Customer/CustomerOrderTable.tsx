@@ -18,6 +18,15 @@ export default function CustomerOrderTable(orderData: IOrders[] | null) {
               <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
                 Order ID
               </TableCell>
+              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }} align="left">
+                Created at
+              </TableCell>
+              <TableCell
+                sx={{ fontSize: 20, fontWeight: "bold" }}
+                align="right"
+              >
+                Email
+              </TableCell>
               <TableCell
                 sx={{ fontSize: 20, fontWeight: "bold" }}
                 align="right"
@@ -41,6 +50,10 @@ export default function CustomerOrderTable(orderData: IOrders[] | null) {
                 <TableCell component="th" scope="row">
                   {item.id}
                 </TableCell>
+                <TableCell align="right">
+                  {new Date(item.created_at).toLocaleString()}
+                </TableCell>
+                <TableCell align="right">{item.email}</TableCell>
                 <TableCell align="right">{item.shipping_address}</TableCell>
                 <TableCell align="right">{item.total_amount}</TableCell>
               </TableRow>

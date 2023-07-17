@@ -16,8 +16,9 @@ export default function CustomerOrders() {
   });
   return (
     <div>
-      <div className="AppModal">
-        <h2 className="AdminTable">History</h2>
+      <p className="CustomerHelloHistory">Welcome {userEmail}!</p>
+      <div className="CustomerTable">
+        <h2 className="CustomerTitleHistory">History</h2>
         <div className="AdminTable">{CustomerOrderTable(orderData)}</div>
       </div>
     </div>

@@ -19,16 +19,31 @@ export default function AdminOrderTable(orderData: IOrders[] | null) {
                 ID
               </TableCell>
               <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
+                Created at
+              </TableCell>
+              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
                 Name
               </TableCell>
               <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
                 Email
+              </TableCell>
+              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
+                Phone
               </TableCell>
               <TableCell
                 sx={{ fontSize: 20, fontWeight: "bold" }}
                 align="right"
               >
                 Address
+              </TableCell>
+              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
+                City
+              </TableCell>
+              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
+                Postal Code
+              </TableCell>
+              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
+                Country
               </TableCell>
               <TableCell
                 sx={{ fontSize: 20, fontWeight: "bold" }}
@@ -47,9 +62,16 @@ export default function AdminOrderTable(orderData: IOrders[] | null) {
                 <TableCell component="th" scope="row">
                   {item.id}
                 </TableCell>
+                <TableCell align="left">
+                  {new Date(item.created_at).toLocaleString()}
+                </TableCell>
                 <TableCell align="left">{item.name}</TableCell>
                 <TableCell align="left">{item.email}</TableCell>
+                <TableCell align="left">{item.phone}</TableCell>
                 <TableCell align="right">{item.shipping_address}</TableCell>
+                <TableCell align="left">{item.city}</TableCell>
+                <TableCell align="center">{item.postal_code}</TableCell>
+                <TableCell align="center">{item.country}</TableCell>
                 <TableCell align="right">{item.total_amount}</TableCell>
               </TableRow>
             ))}

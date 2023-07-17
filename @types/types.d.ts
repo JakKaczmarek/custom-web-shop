@@ -60,6 +60,7 @@ export interface IOrders {
   country: string;
   phone: string;
   total_amount: number;
+  created_at: string;
 }
 
 interface IsetModalOpenBike {

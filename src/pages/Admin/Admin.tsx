@@ -19,6 +19,7 @@ export default function Admin() {
   const [modalOpenBike, setModalOpenBike] = useState(false);
   const [modalOpenImage, setModalOpenImage] = useState(false);
   const [filterBikeName, setFilterBikeName] = useState("");
+  const [totalRevenue, setTotalRevenue] = useState(0);
 
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -54,7 +55,14 @@ export default function Admin() {
       setData
     );
     loadData(`http://localhost:8000/api/orders/all`, setOrderData);
-  }, [filterBikeName]);
+    if (orderData) {
+      const revenue = orderData.reduce(
+        (total, order) => total + order.total_amount,
+        0
+      );
+      setTotalRevenue(revenue);
+    }
+  }, [filterBikeName, orderData]);
 
   return (
     <div>
@@ -142,6 +150,7 @@ export default function Admin() {
         {AdminTable(data, deleteBike)}
         &nbsp;
         <h2 className="AdminTable">Orders</h2>
+        <div className="TotalRevenue">Total Revenue: {totalRevenue} USD</div>
         {AdminOrderTable(orderData)}
       </div>
     </div>
