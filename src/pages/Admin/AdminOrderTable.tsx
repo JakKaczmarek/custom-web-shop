@@ -38,6 +38,12 @@ export default function AdminOrderTable({
               <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
                 Total Amount
               </TableCell>
+              <TableCell
+                sx={{ fontSize: 20, fontWeight: "bold" }}
+                align="right"
+              >
+                Info
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

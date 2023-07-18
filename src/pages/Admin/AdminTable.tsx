@@ -44,9 +44,15 @@ export default function AdminTable(
               </TableCell>
               <TableCell
                 sx={{ fontSize: 20, fontWeight: "bold" }}
-                align="right"
+                align="center"
               >
                 Src
+              </TableCell>
+              <TableCell
+                sx={{ fontSize: 20, fontWeight: "bold" }}
+                align="center"
+              >
+                Delete
               </TableCell>
             </TableRow>
           </TableHead>
@@ -65,8 +71,11 @@ export default function AdminTable(
                 <TableCell align="right">{item.alt}</TableCell>
                 <TableCell align="right">{item.src}</TableCell>
                 <TableCell align="right">
-                  {" "}
-                  <button type="button" onClick={() => deleteBike(item.id)}>
+                  <button
+                    type="button"
+                    className="AdminOrderBtn"
+                    onClick={() => deleteBike(item.id)}
+                  >
                     Delete
                   </button>
                 </TableCell>
