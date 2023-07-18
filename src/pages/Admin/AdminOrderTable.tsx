@@ -16,11 +16,7 @@ export default function AdminOrderTable({
   const [selectedOrder, setSelectedOrder] = useState<IOrders | null>(null);
 
   const handleAddressInfoClick = (order: IOrders) => {
-    if (selectedOrder && selectedOrder.id === order.id) {
-      setSelectedOrder(null);
-    } else {
-      setSelectedOrder(order);
-    }
+    setSelectedOrder(order);
   };
 
   return (
@@ -75,15 +71,28 @@ export default function AdminOrderTable({
       </TableContainer>
 
       {selectedOrder && (
-        <div>
-          <h3>Address info:</h3>
-          <p>Name: {selectedOrder.name}</p>
-          <p>Email: {selectedOrder.email}</p>
-          <p>Shipping Address: {selectedOrder.shipping_address}</p>
-          <p>City: {selectedOrder.city}</p>
-          <p>Postal Code: {selectedOrder.postal_code}</p>
-          <p>Country: {selectedOrder.country}</p>
-          <p>Phone: {selectedOrder.phone}</p>
+        <div className="modalBackground">
+          <div className="modalContainer">
+            <div className="titleCloseBtn">
+              <button
+                type="button"
+                onClick={() => {
+                  setSelectedOrder(null);
+                }}
+              >
+                X
+              </button>
+            </div>
+            <h3>Address info:</h3>
+            &nbsp;
+            <p>Name: {selectedOrder.name}</p>
+            <p>Email: {selectedOrder.email}</p>
+            <p>Shipping Address: {selectedOrder.shipping_address}</p>
+            <p>City: {selectedOrder.city}</p>
+            <p>Postal Code: {selectedOrder.postal_code}</p>
+            <p>Country: {selectedOrder.country}</p>
+            <p>Phone: {selectedOrder.phone}</p>
+          </div>
         </div>
       )}
     </div>
