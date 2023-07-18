@@ -30,6 +30,12 @@ export default function CustomerOrderTable(orderData: IOrders[] | null) {
               >
                 Total Amount
               </TableCell>
+              <TableCell
+                sx={{ fontSize: 20, fontWeight: "bold" }}
+                align="right"
+              >
+                Orders
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -45,6 +51,11 @@ export default function CustomerOrderTable(orderData: IOrders[] | null) {
                   {new Date(item.created_at).toLocaleString()}
                 </TableCell>
                 <TableCell align="right">{item.total_amount}</TableCell>
+                <TableCell align="right">
+                  {item.bikes?.map((bike) => (
+                    <div key={bike.id}>{bike.bike_name}</div>
+                  ))}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -61,6 +61,7 @@ export interface IOrders {
   phone: string;
   total_amount: number;
   created_at: string;
+  bikes?: IBike[];
 }
 
 interface IsetModalOpenBike {

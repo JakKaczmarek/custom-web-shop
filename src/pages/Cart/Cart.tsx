@@ -109,7 +109,13 @@ export default function Cart() {
               <button
                 type="button"
                 className="cartDiscountBtn"
-                onClick={handleSumbitDiscount}
+                onClick={() => {
+                  if (Object.keys(cartItems).length > 0) {
+                    handleSumbitDiscount();
+                  } else {
+                    window.alert("You need to add at least one bike");
+                  }
+                }}
               >
                 Submit
               </button>

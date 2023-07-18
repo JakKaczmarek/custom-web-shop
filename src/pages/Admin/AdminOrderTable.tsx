@@ -32,6 +32,9 @@ export default function AdminOrderTable({
                 Created at
               </TableCell>
               <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
+                Orders
+              </TableCell>
+              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
                 Total Amount
               </TableCell>
               <TableCell
@@ -53,6 +56,11 @@ export default function AdminOrderTable({
                 </TableCell>
                 <TableCell align="left">
                   {new Date(item.created_at).toLocaleString()}
+                </TableCell>
+                <TableCell align="right">
+                  {item.bikes?.map((bike) => (
+                    <div key={bike.id}>{bike.bike_name}</div>
+                  ))}
                 </TableCell>
                 <TableCell align="center">{item.total_amount}</TableCell>
                 <TableCell align="right">

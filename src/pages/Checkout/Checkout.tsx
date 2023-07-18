@@ -30,6 +30,7 @@ export default function Checkout() {
     city: "",
     country: "",
     total_amount: discountedPrice,
+    bikeIds: Object.keys(cartItems).map((key: string) => Number(key)),
   });
 
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ export default function Checkout() {
 
   const handleSubmitNewOrder = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const orderData = { ...order, email: userEmail };
+    const orderData = { ...order, email: userEmail, bikeIds: order.bikeIds };
 
     axios
       .post(`http://localhost:8000/api/orders/register`, orderData)
