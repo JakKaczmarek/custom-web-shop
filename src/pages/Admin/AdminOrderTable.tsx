@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,7 +8,21 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { IOrders } from "../../../@types/types";
 
-export default function AdminOrderTable(orderData: IOrders[] | null) {
+export default function AdminOrderTable({
+  orderData,
+}: {
+  orderData: IOrders[] | null;
+}) {
+  const [selectedOrder, setSelectedOrder] = useState<IOrders | null>(null);
+
+  const handleAddressInfoClick = (order: IOrders) => {
+    if (selectedOrder && selectedOrder.id === order.id) {
+      setSelectedOrder(null);
+    } else {
+      setSelectedOrder(order);
+    }
+  };
+
   return (
     <div className="AdminTable">
       <TableContainer component={Paper}>
@@ -22,33 +36,6 @@ export default function AdminOrderTable(orderData: IOrders[] | null) {
                 Created at
               </TableCell>
               <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
-                Name
-              </TableCell>
-              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
-                Email
-              </TableCell>
-              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
-                Phone
-              </TableCell>
-              <TableCell
-                sx={{ fontSize: 20, fontWeight: "bold" }}
-                align="right"
-              >
-                Address
-              </TableCell>
-              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
-                City
-              </TableCell>
-              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
-                Postal Code
-              </TableCell>
-              <TableCell sx={{ fontSize: 20, fontWeight: "bold" }}>
-                Country
-              </TableCell>
-              <TableCell
-                sx={{ fontSize: 20, fontWeight: "bold" }}
-                align="right"
-              >
                 Total Amount
               </TableCell>
             </TableRow>
@@ -65,19 +52,34 @@ export default function AdminOrderTable(orderData: IOrders[] | null) {
                 <TableCell align="left">
                   {new Date(item.created_at).toLocaleString()}
                 </TableCell>
-                <TableCell align="left">{item.name}</TableCell>
-                <TableCell align="left">{item.email}</TableCell>
-                <TableCell align="left">{item.phone}</TableCell>
-                <TableCell align="right">{item.shipping_address}</TableCell>
-                <TableCell align="left">{item.city}</TableCell>
-                <TableCell align="center">{item.postal_code}</TableCell>
-                <TableCell align="center">{item.country}</TableCell>
-                <TableCell align="right">{item.total_amount}</TableCell>
+                <TableCell align="center">{item.total_amount}</TableCell>
+                <TableCell align="right">
+                  <button
+                    type="button"
+                    className="AdminOrderBtn"
+                    onClick={() => handleAddressInfoClick(item)}
+                  >
+                    Address info
+                  </button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+
+      {selectedOrder && (
+        <div>
+          <h3>Address info:</h3>
+          <p>Name: {selectedOrder.name}</p>
+          <p>Email: {selectedOrder.email}</p>
+          <p>Shipping Address: {selectedOrder.shipping_address}</p>
+          <p>City: {selectedOrder.city}</p>
+          <p>Postal Code: {selectedOrder.postal_code}</p>
+          <p>Country: {selectedOrder.country}</p>
+          <p>Phone: {selectedOrder.phone}</p>
+        </div>
+      )}
     </div>
   );
 }

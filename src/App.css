@@ -762,3 +762,12 @@ nav {
   display: flex;
   margin: auto;
 }
+.AdminOrderBtn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(191, 180, 29);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}

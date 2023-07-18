@@ -167,7 +167,7 @@ export default function Admin() {
         >
           {showOrderTable ? "Hide orders" : "Show orders"}
         </button>
-        {showOrderTable && AdminOrderTable(orderData)}
+        {showOrderTable && <AdminOrderTable orderData={orderData} />}
       </div>
     </div>
   );
