@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
 import { Container, TextField, InputAdornment } from "@mui/material";
 import { useNavigate } from "react-router";
@@ -22,13 +21,12 @@ export default function Admin() {
   const [totalRevenue, setTotalRevenue] = useState(0);
   const [showAdminTable, setShowAdminTable] = useState(true);
   const [showOrderTable, setShowOrderTable] = useState(false);
+  const debouncedFilterBikeName = debounce(setFilterBikeName, 400);
 
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate("/");
   };
-
-  const debouncedFilterBikeName = debounce(setFilterBikeName, 400);
 
   const addBike = () => {
     setModalOpenBike(false);
@@ -39,16 +37,12 @@ export default function Admin() {
     );
   };
 
-  const deleteBike = (id: number) => {
-    axios
-      .delete(`http://localhost:8000/api/bikes/delete?id=${id}`)
-      .then((response) => {
-        console.log(response.status);
-        setData((prevData) => prevData!.filter((item) => item.id !== id));
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  const handleAddNewBike = () => {
+    setModalOpenBike(true);
+  };
+
+  const handleAddNewImage = () => {
+    setModalOpenImage(true);
   };
 
   useEffect(() => {
@@ -114,15 +108,6 @@ export default function Admin() {
       </div>
       <div className="AppModal">
         <div className="AdminTable">
-          <button
-            type="button"
-            className="openModalBtn"
-            onClick={() => {
-              setModalOpenBike(true);
-            }}
-          >
-            Add new bike
-          </button>
           {modalOpenBike && (
             <ModalBike
               setModalOpenBike={setModalOpenBike}
@@ -131,15 +116,6 @@ export default function Admin() {
             />
           )}
           &nbsp;
-          <button
-            type="button"
-            className="openModalBtn"
-            onClick={() => {
-              setModalOpenImage(true);
-            }}
-          >
-            Add new image
-          </button>
           {modalOpenImage && (
             <ModalImage
               setModalOpenImage={setModalOpenImage}
@@ -156,7 +132,13 @@ export default function Admin() {
         >
           {showAdminTable ? "Hide bikes" : "Show bikes"}
         </button>
-        {showAdminTable && AdminTable(data, deleteBike)}
+        {showAdminTable && (
+          <AdminTable
+            data={data}
+            handleAddNewBike={handleAddNewBike}
+            handleAddNewImage={handleAddNewImage}
+          />
+        )}
         &nbsp;
         <h2 className="AdminTable">Orders</h2>
         <div className="TotalRevenue">Total Revenue: {totalRevenue} USD</div>
