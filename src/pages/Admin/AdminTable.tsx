@@ -104,7 +104,7 @@ export default function AdminTable({
                   <TableCell align="right">
                     <button
                       type="button"
-                      className="AdminOrderBtn"
+                      className="AdminDeleteBtn"
                       onClick={() => deleteBike(item.id)}
                     >
                       Delete

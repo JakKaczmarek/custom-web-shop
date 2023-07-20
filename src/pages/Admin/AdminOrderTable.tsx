@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -17,6 +18,17 @@ export default function AdminOrderTable({
 
   const handleAddressInfoClick = (order: IOrders) => {
     setSelectedOrder(order);
+  };
+
+  const deleteOrder = (id: number) => {
+    axios
+      .delete(`http://localhost:8000/api/orders/delete?id=${id}`)
+      .then((response) => {
+        console.log(response.status);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -39,9 +51,15 @@ export default function AdminOrderTable({
               </TableCell>
               <TableCell
                 sx={{ fontSize: 20, fontWeight: "bold" }}
-                align="right"
+                align="center"
               >
                 Info
+              </TableCell>
+              <TableCell
+                sx={{ fontSize: 20, fontWeight: "bold" }}
+                align="right"
+              >
+                Delete
               </TableCell>
             </TableRow>
           </TableHead>
@@ -70,6 +88,15 @@ export default function AdminOrderTable({
                     onClick={() => handleAddressInfoClick(item)}
                   >
                     Address info
+                  </button>
+                </TableCell>
+                <TableCell align="right">
+                  <button
+                    type="button"
+                    className="AdminDeleteBtn"
+                    onClick={() => deleteOrder(item.id!)}
+                  >
+                    Delete
                   </button>
                 </TableCell>
               </TableRow>

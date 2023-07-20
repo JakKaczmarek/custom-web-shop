@@ -772,6 +772,16 @@ nav {
   cursor: pointer;
 }
 
+.AdminDeleteBtn {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgb(216, 60, 8);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
 .OrderAddressInfo {
   background-color: cornflowerblue;
 }
