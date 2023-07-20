@@ -97,6 +97,12 @@ interface FieldProps {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
+interface AdminTableProps {
+  data: IData[] | null;
+  handleAddNewBike: () => void;
+  handleAddNewImage: () => void;
+}
+
 export type HandleEvent = React.ChangeEvent<HTMLInputElement>;
 export type SubmitEvent = React.FormEvent<HTMLFormElement>;
 export type SearchBarProps = {
