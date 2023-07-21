@@ -50,6 +50,12 @@ export interface IData {
   srcArray: IPath[];
 }
 
+export interface OrderBike {
+  id: number;
+  bike: IData;
+  quantity: number;
+}
+
 export interface IOrders {
   id?: number;
   name: string;
@@ -62,6 +68,7 @@ export interface IOrders {
   total_amount: number;
   created_at: string;
   bikes?: IBike[];
+  orderBikes?: OrderBike[];
 }
 
 interface IsetModalOpenBike {

@@ -52,8 +52,10 @@ export default function CustomerOrderTable(orderData: IOrders[] | null) {
                 </TableCell>
                 <TableCell align="right">{item.total_amount}</TableCell>
                 <TableCell align="right">
-                  {item.bikes?.map((bike) => (
-                    <div key={bike.id}>{bike.bike_name}</div>
+                  {item.orderBikes?.map((orderBike) => (
+                    <div key={orderBike.id}>
+                      x{orderBike.quantity} {orderBike.bike?.bike_name}
+                    </div>
                   ))}
                 </TableCell>
               </TableRow>

@@ -21,6 +21,13 @@ export default function Checkout() {
     0
   );
   const discountedPrice = totalPrice - discount;
+
+  const bikeIds: { id: number; quantity: number }[] = Object.entries(
+    cartItems
+  ).map(([key, item]) => ({
+    id: Number(key),
+    quantity: item.quantity,
+  }));
   const [order, setOrder] = useState({
     name: "",
     email: "",
@@ -30,7 +37,7 @@ export default function Checkout() {
     city: "",
     country: "",
     total_amount: discountedPrice,
-    bikeIds: Object.keys(cartItems).map((key: string) => Number(key)),
+    bikeIds,
   });
 
   const navigate = useNavigate();
