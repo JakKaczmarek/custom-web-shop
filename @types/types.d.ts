@@ -50,6 +50,14 @@ export interface IData {
   srcArray: IPath[];
 }
 
+export interface INewBikeData {
+  bike_name: string;
+  price: string;
+  category: string;
+  alt: string;
+  src: string;
+}
+
 export interface OrderBike {
   id: number;
   bike: IData;
@@ -108,6 +116,14 @@ interface AdminTableProps {
   data: IData[] | null;
   handleAddNewBike: () => void;
   handleAddNewImage: () => void;
+}
+
+interface TokenData {
+  token: string;
+}
+
+interface TokenVerificationResponse {
+  isValid: boolean;
 }
 
 export type HandleEvent = React.ChangeEvent<HTMLInputElement>;

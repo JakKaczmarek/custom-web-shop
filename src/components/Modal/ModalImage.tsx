@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../App.css";
-import axios from "axios";
+import { postImageToBike } from "../../img/FetchData";
 import { IsetModalOpenImage } from "../../../@types/types";
 
 function ModalImage({ setModalOpenImage }: IsetModalOpenImage) {
@@ -11,9 +11,7 @@ function ModalImage({ setModalOpenImage }: IsetModalOpenImage) {
     const formData = new FormData();
     formData.append("file", file!);
     formData.append("bikesId", bikesId);
-    axios.post(`http://localhost:8000/upload`, formData).then((response) => {
-      console.log(response.status, response.data);
-    });
+    postImageToBike(formData);
   };
   const handleChangeFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFile(e.target.files && e.target.files[0] ? e.target.files[0] : null);

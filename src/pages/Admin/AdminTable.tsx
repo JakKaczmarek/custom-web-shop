@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,6 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { deleteData } from "../../img/FetchData";
 import { IData, AdminTableProps } from "../../../@types/types";
 
 export default function AdminTable({
@@ -15,14 +15,7 @@ export default function AdminTable({
   handleAddNewImage,
 }: AdminTableProps) {
   const deleteBike = (id: number) => {
-    axios
-      .delete(`http://localhost:8000/api/bikes/delete?id=${id}`)
-      .then((response) => {
-        console.log(response.status);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    deleteData("http://localhost:8000/api/bikes/delete", id);
   };
   return (
     <>

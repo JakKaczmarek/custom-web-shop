@@ -5,7 +5,7 @@ import {
   useEffect,
   SetStateAction,
 } from "react";
-import axios from "axios";
+import { loadData } from "../img/FetchData";
 import { ICartItems, IData, IShopContext } from "../../@types/types";
 
 export const ShopContext = createContext<IShopContext>(null!);
@@ -105,12 +105,7 @@ export function ShopContextProvider({
   );
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/bikes/all")
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => console.log(err));
+    loadData("http://localhost:8000/api/bikes/all", setData);
   }, []);
 
   return (

@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import axios from "axios";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Field from "./Field";
+import { postData } from "../../img/FetchData";
 import { ICartItem, IShopContext } from "../../../@types/types";
 import { ShopContext } from "../../contexts/ShopContext";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -37,6 +37,7 @@ export default function Checkout() {
     city: "",
     country: "",
     total_amount: discountedPrice,
+    created_at: new Date().toISOString(),
     bikeIds,
   });
 
@@ -50,11 +51,13 @@ export default function Checkout() {
     e.preventDefault();
     const orderData = { ...order, email: userEmail, bikeIds: order.bikeIds };
 
-    axios
-      .post(`http://localhost:8000/api/orders/register`, orderData)
-      .then((response) => {
-        console.log(response.status);
-      });
+    postData(
+      "http://localhost:8000/api/orders/register",
+      orderData,
+      (response) => {
+        console.log(response);
+      }
+    );
     alert(
       "Thank you for shopping! We will send you an email confirming your purchase."
     );

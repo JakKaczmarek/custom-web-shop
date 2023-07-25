@@ -1,7 +1,7 @@
 import { createContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
-import axios from "axios";
+import { registerUser, loginUser, verifyToken } from "../img/FetchData";
 import { IAuthContext } from "../../@types/types";
 
 export const AuthContext = createContext<IAuthContext>(null!);
@@ -23,12 +23,11 @@ export function AuthContextProvider({
     );
     if (token) {
       try {
-        const response = await axios.post(
+        const response = await verifyToken(
           "http://localhost:8000/api/users/verify",
           { token }
         );
-        const { isValid } = response.data;
-        if (isValid === true) {
+        if (response !== null && response.isValid === true) {
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
@@ -64,13 +63,7 @@ export function AuthContextProvider({
     const password = (e.target as HTMLFormElement).password.value;
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/users/login",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await loginUser(email, password);
 
       const { token, role } = response.data;
       if (token) {
@@ -105,10 +98,7 @@ export function AuthContextProvider({
     }
 
     try {
-      await axios.post("http://localhost:8000/api/users/register", {
-        email,
-        password,
-      });
+      await registerUser(email, password);
       navigate("/login");
     } catch (error) {
       console.error("Error registering user:", error);

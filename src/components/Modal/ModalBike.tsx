@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../App.css";
-import axios from "axios";
+import { postNewBike } from "../../img/FetchData";
 import { IaddBike, IsetModalOpenBike } from "../../../@types/types";
 
 function ModalBike({
@@ -18,8 +18,7 @@ function ModalBike({
   const handleSubmitNewBike = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const bikeData = bike;
-    axios.post(`http://localhost:8000/api/bikes`, bikeData).then((response) => {
-      console.log(response.status);
+    postNewBike(bikeData, () => {
       addBike();
     });
   };
