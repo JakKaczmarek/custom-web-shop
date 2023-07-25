@@ -12,25 +12,23 @@ export default function AccountHistory() {
   const handleSubmit = () => {
     navigate("/history");
   };
+
+  if (!isAuthenticated) return null;
   return (
     <Stack spacing={2} direction="row">
-      {isAuthenticated ? (
-        <Stack spacing={2} direction="row">
-          <Button
-            variant="text"
-            onClick={handleSubmit}
-            sx={{
-              color: "black",
-            }}
-            data-testid="buttonSO"
-          >
-            <WorkHistoryIcon />
-            History
-          </Button>
-        </Stack>
-      ) : (
-        false
-      )}
+      <Stack spacing={2} direction="row">
+        <Button
+          variant="text"
+          onClick={handleSubmit}
+          sx={{
+            color: "black",
+          }}
+          data-testid="buttonSO"
+        >
+          <WorkHistoryIcon />
+          History
+        </Button>
+      </Stack>
     </Stack>
   );
 }

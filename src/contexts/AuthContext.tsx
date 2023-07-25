@@ -37,7 +37,7 @@ export function AuthContextProvider({
           navigate("/login");
         }
       } catch (error) {
-        console.error("Wystąpił błąd:", error);
+        console.error("Error:", error);
       }
     } else {
       setIsAuthenticated(false);
