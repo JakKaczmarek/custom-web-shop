@@ -41,7 +41,12 @@ export default function Products() {
   function onAddClick(e: number) {
     if (isAuthenticated === true) {
       enqueueSnackbar("Bike added to cart successfully!");
-      addToCart(data![data!.findIndex((bike) => e === bike.id)].id);
+      if (data) {
+        const bikeIndex = data.findIndex((bike) => e === bike.id);
+        if (bikeIndex !== -1) {
+          addToCart(data[bikeIndex].id);
+        }
+      }
     } else window.alert("You need to sign in");
   }
 
@@ -116,8 +121,8 @@ export default function Products() {
         />
       </div>
       <div className="products">
-        {data?.map((bike: IData) => {
-          return (
+        {data ? (
+          data.map((bike: IData) => (
             <div className="product" key={bike.id}>
               <div className="bike">
                 <img
@@ -148,8 +153,10 @@ export default function Products() {
                 </div>
               </div>
             </div>
-          );
-        })}
+          ))
+        ) : (
+          <div>Loading...</div>
+        )}
       </div>
       <div>{Pagination(data, page, loadPageData)}</div>
     </div>
