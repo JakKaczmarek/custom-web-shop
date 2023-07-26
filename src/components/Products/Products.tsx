@@ -52,7 +52,7 @@ export default function Products() {
 
   useEffect(() => {
     return loadData(
-      `http://localhost:8000/bikes?limit=3&page=${page}&category=${filterCategory}&bike_name=${filterBikeName}`,
+      `/bikes?limit=3&page=${page}&category=${filterCategory}&bike_name=${filterBikeName}`,
       setData
     );
   }, [page, filterCategory, filterBikeName]);

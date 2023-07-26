@@ -23,10 +23,7 @@ export function AuthContextProvider({
     );
     if (token) {
       try {
-        const response = await verifyToken(
-          "http://localhost:8000/api/users/verify",
-          { token }
-        );
+        const response = await verifyToken("/api/users/verify", { token });
         if (response !== null && response.isValid === true) {
           setIsAuthenticated(true);
         } else {

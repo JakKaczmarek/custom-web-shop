@@ -21,7 +21,7 @@ export default function AdminOrderTable({
   };
 
   const deleteOrder = (id: number) => {
-    deleteData("http://localhost:8000/api/orders/delete", id);
+    deleteData("/api/orders/delete", id);
   };
 
   return (

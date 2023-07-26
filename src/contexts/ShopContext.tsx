@@ -105,7 +105,7 @@ export function ShopContextProvider({
   );
 
   useEffect(() => {
-    loadData("http://localhost:8000/api/bikes/all", setData);
+    loadData("/api/bikes/all", setData);
   }, []);
 
   return (

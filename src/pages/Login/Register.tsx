@@ -11,9 +11,9 @@ import { useSnackbar } from "notistack";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Register() {
+  const { enqueueSnackbar } = useSnackbar();
   const { handleRegisterSubmit } = useContext(AuthContext);
   const [error, setError] = useState(false);
-  const { enqueueSnackbar } = useSnackbar();
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

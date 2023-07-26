@@ -15,10 +15,7 @@ export default function CustomerOrders() {
   };
 
   useEffect(() => {
-    loadData(
-      `http://localhost:8000/api/orders?email=${userEmail}`,
-      setOrderData
-    );
+    loadData(`/api/orders?email=${userEmail}`, setOrderData);
   });
   return (
     <div>

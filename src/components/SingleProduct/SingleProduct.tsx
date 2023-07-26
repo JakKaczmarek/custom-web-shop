@@ -34,7 +34,7 @@ function SingleProduct() {
   }
 
   useEffect(() => {
-    return loadData(`http://localhost:8000/api/bikes/${id}`, setData);
+    return loadData(`/api/bikes/${id}`, setData);
   }, []);
 
   useEffect(() => {

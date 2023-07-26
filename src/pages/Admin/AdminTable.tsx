@@ -15,7 +15,7 @@ export default function AdminTable({
   handleAddNewImage,
 }: AdminTableProps) {
   const deleteBike = (id: number) => {
-    deleteData("http://localhost:8000/api/bikes/delete", id);
+    deleteData("/api/bikes/delete", id);
   };
   return (
     <>

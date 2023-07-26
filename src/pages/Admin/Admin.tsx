@@ -31,10 +31,7 @@ export default function Admin() {
   const addBike = () => {
     setModalOpenBike(false);
     setFilterBikeName("");
-    loadData(
-      `http://localhost:8000/bikes?bike_name=${filterBikeName}`,
-      setData
-    );
+    loadData(`/bikes?bike_name=${filterBikeName}`, setData);
   };
 
   const handleAddNewBike = () => {
@@ -46,11 +43,8 @@ export default function Admin() {
   };
 
   useEffect(() => {
-    loadData(
-      `http://localhost:8000/bikes?bike_name=${filterBikeName}`,
-      setData
-    );
-    loadData(`http://localhost:8000/api/orders/all`, setOrderData);
+    loadData(`/bikes?bike_name=${filterBikeName}`, setData);
+    loadData(`/api/orders/all`, setOrderData);
     if (orderData) {
       const revenue = orderData.reduce(
         (total, order) => total + order.total_amount,
