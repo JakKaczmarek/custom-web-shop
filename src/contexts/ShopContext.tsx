@@ -19,6 +19,16 @@ export function ShopContextProvider({
   const [cartItems, setCartItems] = useState<ICartItems>({});
   const [itemCount, setItemCount] = useState(0);
 
+  const dataIndex = useMemo(() => {
+    const index = new Map<number, IData>();
+    if (data) {
+      data.forEach((item) => {
+        index.set(item.id, item);
+      });
+    }
+    return index;
+  }, [data]);
+
   const clone = (input: Record<string, any>) => {
     if (input === null || typeof input !== "object") {
       return input;
@@ -33,18 +43,22 @@ export function ShopContextProvider({
   };
 
   const addToCart = (itemId: number) => {
-    const bike = data?.find((item) => item.id === itemId);
-    setItemCount(itemCount + 1);
-    setCartItems((prev) => ({
-      ...prev,
-      [itemId]: prev[itemId]
-        ? { quantity: prev[itemId].quantity + 1, price: bike!.price }
-        : { quantity: 1, price: bike!.price },
-    }));
+    const bike = dataIndex.get(itemId);
+    if (bike) {
+      setItemCount(itemCount + 1);
+      setCartItems((prev) => ({
+        ...prev,
+        [itemId]: prev[itemId]
+          ? { quantity: prev[itemId].quantity + 1, price: bike.price }
+          : { quantity: 1, price: bike.price },
+      }));
+    }
   };
 
   const removeFromCart = (itemId: number) => {
-    const bike = data?.find((item) => item.id === itemId);
+    const bike = dataIndex.get(itemId);
+    if (!bike) return;
+
     const newCartItems: ICartItems = Object.fromEntries(
       Object.entries(clone(cartItems)).filter(
         (item) => parseInt(item[0], 10) !== Number(itemId)
@@ -58,7 +72,7 @@ export function ShopContextProvider({
     } else {
       setCartItems((prev) => ({
         ...prev,
-        [itemId]: { quantity: prev[itemId].quantity - 1, price: bike!.price },
+        [itemId]: { quantity: prev[itemId].quantity - 1, price: bike.price },
       }));
     }
   };
