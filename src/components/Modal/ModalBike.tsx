@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import "../../App.css";
 import { postNewBike } from "../../img/FetchData";
-import { IaddBike, IsetModalOpenBike } from "../../../@types/types";
+import {
+  IaddBike,
+  IsetModalOpenBike,
+  INewBikeData,
+} from "../../../@types/types";
 
 function ModalBike({
   setModalOpenBike,
   addBike,
 }: IsetModalOpenBike & IaddBike) {
-  const [bike, setBike] = useState({
+  const [bike, setBike] = useState<INewBikeData>({
     bike_name: "",
     price: "",
     category: "",
@@ -18,10 +22,15 @@ function ModalBike({
   const handleSubmitNewBike = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const bikeData = bike;
-    postNewBike(bikeData, () => {
-      addBike();
-    });
+    try {
+      postNewBike(bikeData, () => {
+        addBike();
+      });
+    } catch (error) {
+      console.error("Error while adding a new bike:", error);
+    }
   };
+
   const handleChangeBike = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBike({
       ...bike,

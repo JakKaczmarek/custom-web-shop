@@ -66,33 +66,34 @@ export async function verifyToken(
 }
 
 // POST order data
-export const postData = (
-  url: string,
-  data: IOrders,
-  callback: React.Dispatch<React.SetStateAction<IData | null>>
-) => {
-  axios
-    .post(url, data)
-    .then((res) => {
-      callback(res.data);
-    })
-    .catch((err) => console.log(err));
+export const postData = async (url: string, data: IOrders) => {
+  try {
+    const response = await axios.post(url, data);
+    return response.data;
+  } catch (error) {
+    console.error("Error while posting data:", error);
+    throw error;
+  }
 };
 
 // POST bike data
 
-export const postNewBike = (bikeData: INewBikeData, callback: () => void) => {
-  return axios
-    .post("http://localhost:8000/api/bikes", bikeData)
-    .then((response) => {
-      console.log(response.status);
-      callback();
-      return response.data;
-    })
-    .catch((error) => {
-      console.error(error);
-      throw error;
-    });
+export const postNewBike = async (
+  bikeData: INewBikeData,
+  callback: () => void
+) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/api/bikes",
+      bikeData
+    );
+    console.log(response.status);
+    callback();
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 };
 
 // POST image data
@@ -108,13 +109,12 @@ export const postImageToBike = async (formData: FormData) => {
 };
 
 // DELETE data
-export const deleteData = (url: string, id: number) => {
-  axios
-    .delete(`${url}?id=${id}`)
-    .then((response) => {
-      console.log(response.status);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+export const deleteData = async (url: string, id: number) => {
+  try {
+    const response = await axios.delete(`${url}?id=${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error while deleting data:", error);
+    throw error;
+  }
 };

@@ -51,13 +51,7 @@ export default function Checkout() {
     e.preventDefault();
     const orderData = { ...order, email: userEmail, bikeIds: order.bikeIds };
 
-    postData(
-      "http://localhost:8000/api/orders/register",
-      orderData,
-      (response) => {
-        console.log(response);
-      }
-    );
+    postData("http://localhost:8000/api/orders/register", orderData);
     alert(
       "Thank you for shopping! We will send you an email confirming your purchase."
     );
