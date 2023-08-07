@@ -36,7 +36,7 @@ export function Pagination(
     );
   }
 
-  if (data?.length && data?.length < 3) {
+  if (data && data?.length < 3) {
     return (
       <div className="pagination">
         {renderButton("Prev", () => callback(page - 1))}
