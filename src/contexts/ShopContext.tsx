@@ -119,7 +119,7 @@ export function ShopContextProvider({
   );
 
   useEffect(() => {
-    loadData("/api/bikes/all", setData);
+    loadData("/api/bikes/cart", setData);
   }, []);
 
   return (

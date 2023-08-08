@@ -10,7 +10,7 @@ export default function Cart() {
   const [data, setData] = useState<IData[] | null>(null);
 
   useEffect(() => {
-    loadData("/api/bikes/all", setData);
+    loadData("/api/bikes/cart", setData);
   }, []);
   const { cartItems, discount, setDiscount }: IShopContext =
     useContext(ShopContext);
